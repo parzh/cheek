@@ -53,3 +53,28 @@ check.isNot(Array, []); // false
 check.isNot(MyObject, new MyObject()); // false
 ```
 _opposite for `check.is()`_
+
+### check.isEither(types: Function[], input: any): boolean
+Checks whether the input is an instance of any of provided classes  
+@param types Array of test classes  
+@param input Test value  
+
+#### Examples:
+```javascript
+check.isEither([Number, String], {}); // false
+check.isEither([RegExp, String], /test/); // true
+check.isEither([Number, RegExp, Array], 4); // true
+```
+
+### check.isNeither(types: Function[], input: any): boolean
+Returns `true` if the input is not an instance of any of provided classes  
+@param types Array of test classes  
+@param input Test value  
+
+#### Examples:
+```javascript
+check.isNeither([Number, String], {}); // true
+check.isNeither([RegExp, String], /test/); // false
+check.isNeither([Number, RegExp, Array], 4); // false
+```
+_opposite for `check.isEither()`_

@@ -60,3 +60,5 @@ check.everyInput = function(method, inputs) {
 check.someInput = function(method, inputs) {
 	return check.bundle(inputs, [method]).map(result => result[0]).some(Boolean);
 };
+
+module.exports = check;

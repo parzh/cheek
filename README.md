@@ -79,7 +79,57 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   ```
   _opposite for `check.isEither()`_
 
-~~_8 more methods in the chapter Types_~~  
+- ### check.isPrimitive(input: any): boolean
+  Checks whether the input is a primitive value  
+  @param `input` Test value  
+
+  #### Examples:
+  ```javascript
+  check.isPrimitive(42); // true
+  check.isPrimitive(new Array()); // false
+  check.isPrimitive(null); // true
+  ``` 
+
+- ### check.isObject(input: any): boolean
+  Returns `true` if the input is not a primitive value  
+  @param `input` Test value  
+
+  #### Examples:
+  ```javascript
+  check.isObject(42); // false
+  check.isObject(new Array()); // true
+  check.isObject(null); // false
+  ``` 
+
+  _opposite for `check.isPrimitive()`_
+
+~~_6 more methods in the chapter Types_~~
+
+- ### check.isString(input: any): boolean
+  Checks whether the input is a string  
+
+- ### check.isNotString(input: any): boolean
+  Returns `true` if the input is not a string  
+
+  _opposite for `check.isString()`_
+
+- ### check.isNumber(input: any): boolean
+  Checks whether the input is a number  
+
+- ### check.isNotNumber(input: any): boolean
+  Returns `true` if the input is not a number  
+
+  _opposite for `check.isNumber()`_
+  _not to be confused with `check.isNaN()`_
+
+- ### check.isArray(input: any): boolean
+  Checks whether the input is an array  
+
+- ### check.isNotArray(input: any): boolean
+  Returns `true` if the input is not an array  
+
+  _opposite for `check.isArray()`_
+
 
 ## Array
 ~~_2 more methods in the chapter Array_~~  

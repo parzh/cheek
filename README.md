@@ -52,7 +52,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   check.isNot(Array, []); // false
   check.isNot(MyObject, new MyObject()); // false
   ```
-  _opposite for `check.is()`_
+  _reversed `check.is()`_
 
 - ### check.isEither(types: Function[], input: any): boolean
   Checks whether the input is an instance of any of provided classes  
@@ -77,7 +77,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   check.isNeither([RegExp, String], /test/); // false
   check.isNeither([Number, RegExp, Array], 4); // false
   ```
-  _opposite for `check.isEither()`_
+  _reversed `check.isEither()`_
 
 - ### check.isPrimitive(input: any): boolean
   Checks whether the input is a primitive value  
@@ -101,34 +101,87 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   check.isObject(null); // false
   ``` 
 
-  _opposite for `check.isPrimitive()`_
-
-~~_6 more methods in the chapter Types_~~
+  _reversed `check.isPrimitive()`_
 
 - ### check.isString(input: any): boolean
   Checks whether the input is a string  
+  @param `input` Test value  
+
+  #### Examples:
+  ```javascript
+  check.isString(""); // true
+  check.isString(new String()); // true
+  check.isString(new (class extends String {})()); // true
+  ``` 
 
 - ### check.isNotString(input: any): boolean
   Returns `true` if the input is not a string  
+  @param `input` Test value  
 
-  _opposite for `check.isString()`_
+  #### Examples:
+  ```javascript
+  check.isNotString(""); // false
+  check.isNotString(new String()); // false
+  check.isNotString(new (class {})()); // true
+  ``` 
+
+  _reversed `check.isString()`_
 
 - ### check.isNumber(input: any): boolean
   Checks whether the input is a number  
+  @param `input` Test value  
+
+  #### Examples:
+  ```javascript
+  check.isNumber(5); // true
+  check.isNumber(new Number()); // true
+  check.isNumber(NaN); // true
+  ```
 
 - ### check.isNotNumber(input: any): boolean
   Returns `true` if the input is not a number  
+  @param `input` Test value  
 
-  _opposite for `check.isNumber()`_  
+  #### Examples:
+  ```javascript
+  check.isNotNumber(undefined); // true
+  check.isNotNumber(new Number()); // false
+  check.isNotNumber(NaN); // false
+  ```
+
+  _reversed `check.isNumber()`_  
   _not to be confused with `check.isNaN()`_
 
 - ### check.isArray(input: any): boolean
   Checks whether the input is an array  
+  @param `input` Test value  
+
+  #### Examples:
+  ```javascript
+  check.isArray({}); // false
+  check.isArray([]); // true
+  check.isArray(new (class extends Array {})()); // true
+  ```
+
+  ```javascript
+  function(...args) {
+    let checkArguments = check.isArray(arguments); // false
+    let checkArgs = check.isArray(args); // true
+  }
+  ```
 
 - ### check.isNotArray(input: any): boolean
   Returns `true` if the input is not an array  
+  @param `input` Test value  
 
-  _opposite for `check.isArray()`_
+  #### Examples:
+  ```javascript
+  check.isNotArray({}); // true
+  check.isNotArray([]); // false
+  check.isNotArray(new (class {})()); // true
+  ```
+
+  _reversed `check.isArray()`_
 
 
 ## Array

@@ -1,6 +1,6 @@
 "use strict";
 
-const CHAPTERS = ["existance", "multiple", "types", "array", "number"];
+const CHAPTERS = ["existance", "types", "array", "number", "multiple"];
 
 let check = {};
 

@@ -1,7 +1,7 @@
 # check
 #### Check and validate values by criteria in JavaScript
 
-__check__ provides a single object (ideally called `check` in lowercase) which has different methods and alias for simple verification and validation of any values. I'll describe them using TypeScript style for convenience.
+___check___ provides a single object (ideally called `check` in lowercase) which has different methods and alias for simple verification and validation of any values. I'll describe them using TypeScript style for convenience.
 
 ***
 
@@ -27,3 +27,4 @@ check.isFalse(true); // false
 check.isFalse(false); // true
 check.isFalse(new Object()); // false
 ```
+

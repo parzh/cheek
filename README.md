@@ -5,6 +5,14 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
 
 ***
 
+## TODO:
+
+  ```javascript
+  check.input(5).isInRange(range, inclusively);
+  ```
+
+***
+
 ## General
 - ### check.isTrue(input: any): boolean
   Checks whether the `input` is truthy.  

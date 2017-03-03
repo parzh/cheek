@@ -6,75 +6,75 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
 ***
 
 ## General
-### check.isTrue(input: any): boolean
-Checks whether the `input` is truthy.  
-@param `input` Test value
+- ### check.isTrue(input: any): boolean
+  Checks whether the `input` is truthy.  
+  @param `input` Test value
 
-#### Examples:
-```javascript
-check.isTrue(true); // true
-check.isTrue(false); // false
-check.isTrue(new Object()); // true
-```
+  #### Examples:
+  ```javascript
+  check.isTrue(true); // true
+  check.isTrue(false); // false
+  check.isTrue(new Object()); // true
+  ```
 
-### check.isFalse(input: any): boolean
-Checks whether the `input` is falsy.  
-@param `input` Test value
+- ### check.isFalse(input: any): boolean
+  Checks whether the `input` is falsy.  
+  @param `input` Test value
 
-#### Examples:
-```javascript
-check.isFalse(true); // false
-check.isFalse(false); // true
-check.isFalse(new Object()); // false
-```
+  #### Examples:
+  ```javascript
+  check.isFalse(true); // false
+  check.isFalse(false); // true
+  check.isFalse(new Object()); // false
+  ```
 
 ## Types
-### check.is(Type: Function, input: any): boolean
-Checks whether the input is an instance of provided class  
-@param `Type` Test class  
-@param `input` Test value  
+- ### check.is(Type: Function, input: any): boolean
+  Checks whether the input is an instance of provided class  
+  @param `Type` Test class  
+  @param `input` Test value  
 
-#### Examples:
-```javascript
-check.is(Number, {}); // false; see `check.isNumber()` below
-check.is(Array, []); // true; see `check.isArray()` below
-check.is(MyObject, new MyObject()); // true
-```
+  #### Examples:
+  ```javascript
+  check.is(Number, {}); // false; see `check.isNumber()` below
+  check.is(Array, []); // true; see `check.isArray()` below
+  check.is(MyObject, new MyObject()); // true
+  ```
 
-### check.isNot(Type: Function, input: any): boolean
-Returns `true` if the input is not an instance of provided class  
-@param `Type` Test class  
-@param `input` Test value  
+- ### check.isNot(Type: Function, input: any): boolean
+  Returns `true` if the input is not an instance of provided class  
+  @param `Type` Test class  
+  @param `input` Test value  
 
-#### Examples:
-```javascript
-check.isNot(Number, {}); // true
-check.isNot(Array, []); // false
-check.isNot(MyObject, new MyObject()); // false
-```
-_opposite for `check.is()`_
+  #### Examples:
+  ```javascript
+  check.isNot(Number, {}); // true
+  check.isNot(Array, []); // false
+  check.isNot(MyObject, new MyObject()); // false
+  ```
+  _opposite for `check.is()`_
 
-### check.isEither(types: Function[], input: any): boolean
-Checks whether the input is an instance of any of provided classes  
-@param `types` Array of test classes  
-@param `input` Test value  
+- ### check.isEither(types: Function[], input: any): boolean
+  Checks whether the input is an instance of any of provided classes  
+  @param `types` Array of test classes  
+  @param `input` Test value  
 
-#### Examples:
-```javascript
-check.isEither([Number, String], {}); // false
-check.isEither([RegExp, String], /test/); // true
-check.isEither([Number, RegExp, Array], 4); // true
-```
+  #### Examples:
+  ```javascript
+  check.isEither([Number, String], {}); // false
+  check.isEither([RegExp, String], /test/); // true
+  check.isEither([Number, RegExp, Array], 4); // true
+  ```
 
-### check.isNeither(types: Function[], input: any): boolean
-Returns `true` if the input is not an instance of any of provided classes  
-@param `types` Array of test classes  
-@param `input` Test value  
+- ### check.isNeither(types: Function[], input: any): boolean
+  Returns `true` if the input is not an instance of any of provided classes  
+  @param `types` Array of test classes  
+  @param `input` Test value  
 
-#### Examples:
-```javascript
-check.isNeither([Number, String], {}); // true
-check.isNeither([RegExp, String], /test/); // false
-check.isNeither([Number, RegExp, Array], 4); // false
-```
-_opposite for `check.isEither()`_
+  #### Examples:
+  ```javascript
+  check.isNeither([Number, String], {}); // true
+  check.isNeither([RegExp, String], /test/); // false
+  check.isNeither([Number, RegExp, Array], 4); // false
+  ```
+  _opposite for `check.isEither()`_

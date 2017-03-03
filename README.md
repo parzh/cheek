@@ -56,8 +56,8 @@ _opposite for `check.is()`_
 
 ### check.isEither(types: Function[], input: any): boolean
 Checks whether the input is an instance of any of provided classes  
-@param types Array of test classes  
-@param input Test value  
+@param `types` Array of test classes  
+@param `input` Test value  
 
 #### Examples:
 ```javascript
@@ -68,8 +68,8 @@ check.isEither([Number, RegExp, Array], 4); // true
 
 ### check.isNeither(types: Function[], input: any): boolean
 Returns `true` if the input is not an instance of any of provided classes  
-@param types Array of test classes  
-@param input Test value  
+@param `types` Array of test classes  
+@param `input` Test value  
 
 #### Examples:
 ```javascript

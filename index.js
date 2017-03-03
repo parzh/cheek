@@ -26,6 +26,9 @@ let modules = CHAPTERS.map(chapter => `./check-${chapter}`).map(require);
 
 for (let _module of modules)
 	for (let key in _module)
-		check[key] = _module[key];
+		if (typeof check[key] === "undefined")
+			check[key] = _module[key];
+
+		else throw new Error(`Method 'check.${key}' is already defined`);
 
 module.exports = check;

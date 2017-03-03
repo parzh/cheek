@@ -165,7 +165,7 @@ check.isEmpty = function(array) {
 	@param array Test array
 	*/
 check.isNotEmpty = function(array) {
-	return check.isArray(array) && array.every(check.isDefined);
+	return check.isArray(array) && !!array.length && array.every(check.isDefined);
 };
 
 // NUMBER

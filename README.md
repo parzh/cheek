@@ -27,13 +27,12 @@ check.isFalse(true); // false
 check.isFalse(false); // true
 check.isFalse(new Object()); // false
 ```
-_opposite for `check.isTrue()`_
 
 ## Types
 ### check.is(Type: Function, input: any): boolean
-Checks whether the input is an instance of provided class
-@param `Type` Test class
-@param `input` Test value
+Checks whether the input is an instance of provided class  
+@param `Type` Test class  
+@param `input` Test value  
 
 #### Examples:
 ```javascript
@@ -43,9 +42,9 @@ check.is(MyObject, new MyObject()); // true
 ```
 
 ### check.isNot(Type: Function, input: any): boolean
-Returns `true` if the input is not an instance of provided class
-@param `Type` Test class
-@param `input` Test value
+Returns `true` if the input is not an instance of provided class  
+@param `Type` Test class  
+@param `input` Test value  
 
 #### Examples:
 ```javascript

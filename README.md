@@ -119,7 +119,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
 - ### check.isNotNumber(input: any): boolean
   Returns `true` if the input is not a number  
 
-  _opposite for `check.isNumber()`_
+  _opposite for `check.isNumber()`_  
   _not to be confused with `check.isNaN()`_
 
 - ### check.isArray(input: any): boolean

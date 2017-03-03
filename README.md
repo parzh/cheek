@@ -79,7 +79,13 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   ```
   _opposite for `check.isEither()`_
 
-~~_8 more methods in the chapter Types_~~
-~~_2 more methods in the chapter Array_~~
-~~_24 more methods in the chapter Number_~~
-~~_5 more methods in the chapter Multiple_~~
+~~_8 more methods in the chapter Types_~~  
+
+## Array
+~~_2 more methods in the chapter Array_~~  
+
+## Number
+~~_24 more methods in the chapter Number_~~  
+
+## Multiple
+~~_5 more methods in the chapter Multiple_~~  

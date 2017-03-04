@@ -13,11 +13,6 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   check.everyMethod(methodNames, inputs);
   check.someMethod(methodNames, inputs);
   ```
-- improve performance of `check.someMethod()` and `check.someInput()` methods
-
-- add `check.isArraylike()` to the chapter Types
-
-- add `check.isPercent()` to the chapter Number
 
 - add ability to save input value for future checks  
 
@@ -25,6 +20,12 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   // should conjunction or disjunction be here?
   check.input(42).isPrimitive().isNumber().isInRange([40, 50], "inclusively"); // true
   ```
+
+- improve performance of `check.someMethod()` and `check.someInput()` methods
+
+- add `check.isArraylike()` to the chapter Types
+
+- add `check.isPercent()` to the chapter Number
 
 - add `check.isEmpty()` to the chapter String
 

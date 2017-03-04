@@ -285,9 +285,9 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 
   #### Examples:
   ```javascript
-  check.
-  check.
-  check.
+  check.everyInput("isNumber", [5, 4, -2]); // true
+  check.everyInput("isNumber", [5, 4, -2, "my text"]); // false
+  check.everyInput("isNatural", [1, 2, 3]); // true
   ```
 
 - ### check.someInput(methodName: string, inputs: any[]): boolean

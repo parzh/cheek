@@ -268,9 +268,9 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 
   #### Examples:
   ```javascript
-  check.
-  check.
-  check.
+  check.someMethod(42, ["isNumber", "isString"]); // true; same as `check.isEither([Number, String], 42)`
+  check.someMethod(42, ["isNotNatural", "isFloat"]); // false
+  check.someMethod(NaN, ["isObject", "isNull"]); // false
   ```
 
 - ### check.everyInput(methodName: string, inputs: any[]): boolean

@@ -27,11 +27,9 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 
 - add `check.isPercent()` to the chapter Number
 
-- add `check.isEmpty()` to the chapter String
+- rename `check.isEmpty()` to `check.isEmptyArray()`
 
-- consider one of the options:
-  - rename `check.isEmpty()` to `check.isEmptyArray()` considering the emergence of `check.isEmptyString()`
-  - unify behavior of `check.isEmpty()` for both arrays and strings
+- add `check.isEmptyString()` to the chapter String
 
 ***
 

@@ -250,9 +250,9 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 
   #### Examples:
   ```javascript
-  check.
-  check.
-  check.
+  check.everyMethod(-5, ["isNumber", "isFinite", "isPositive"]); // false
+  check.everyMethod(-5, ["isNumber", "isFinite", "isNegative"]); // true
+  check.everyMethod("my text", ["isString", "isPrimitive"]); // true
   ```
 
 - ### check.someMethod(input, methodNames: string[]): boolean

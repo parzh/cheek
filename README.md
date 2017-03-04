@@ -36,8 +36,6 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 ***
 
 ## General
-~~_2 more methods in the chapter General_~~
-
 - ### check.isTruthy(input): boolean
   Checks whether the `input` evaluates to `true`  
   @param `input` Test value
@@ -58,6 +56,30 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   check.isFalsy(true); // false
   check.isFalsy(false); // true
   check.isFalsy(new Object()); // false
+  ```
+
+  _reversed `check.isTruthy()`_
+
+- ### check.isTrue(input): boolean
+  Checks whether the `input` is exactly `true`  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isTrue(true); // true
+  check.isTrue(new Boolean()); // false
+  check.isTrue(null); // false
+  ```
+
+- ### check.isFalse(input): boolean
+  Checks whether the `input` is exactly `false`  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isFalse(true); // false
+  check.isFalse(new Boolean()); // true
+  check.isFalse(undefined); // false
   ```
 
   _reversed `check.isTruthy()`_

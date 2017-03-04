@@ -218,4 +218,18 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 ~~_24 more methods in the chapter Number_~~  
 
 ## Multiple
-~~_5 more methods in the chapter Multiple_~~  
+
+- ### check.bundle(inputs: any[], methodNames: string[]): boolean[][]
+  Returns a two-dimensional array of input-method verifications  
+
+- ### check.everyMethod(input, methodNames: string[]): boolean
+  Returns `true` if all of the verifications return `true`  
+
+- ### check.someMethod(input, methodNames: string[]): boolean
+  Returns `true` if any of the verifications returns `true`  
+
+- ### check.everyInput(method: string, inputs: any[]): boolean
+  Returns `true` if all input values pass verification  
+
+- ### check.someInput(method: string, inputs: any[]): boolean
+  Returns `true` if any of the input values passes verification  

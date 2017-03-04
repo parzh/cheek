@@ -359,7 +359,7 @@ check.isNotInRange = function(input, range, inclusively) {
 
 // MULTIPLE
 
-/** Returns a multidimensional array of input-method verifications
+/** Returns a two-dimensional array of input-method verifications
 	@param inputs An array of test values
 	@param methodNames An array of 'check' object methods names
 	*/

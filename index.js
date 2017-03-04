@@ -400,20 +400,20 @@ check.someMethod = function(input, methodNames) {
 
 /** Returns 'true' if all input values comply with requirement.
 	Consider the order of arguments.
-	@param method Function name without 'check.' part
+	@param methodName Function name without 'check.' part
 	@param inputs An array of test values
 	*/
-check.everyInput = function(method, inputs) {
-	return check.bundle(inputs, [method]).map(result => result[0]).every(Boolean);
+check.everyInput = function(methodName, inputs) {
+	return check.bundle(inputs, [methodName]).map(result => result[0]).every(Boolean);
 };
 
 /** Returns 'true' if any of input values complies with requirement.
 	Consider the order of arguments.
-	@param method Function name without 'check.' part
+	@param methodName Function name without 'check.' part
 	@param inputs An array of test values
 	*/
-check.someInput = function(method, inputs) {
-	return check.bundle(inputs, [method]).map(result => result[0]).some(Boolean);
+check.someInput = function(methodName, inputs) {
+	return check.bundle(inputs, [methodName]).map(result => result[0]).some(Boolean);
 };
 
 module.exports = check;

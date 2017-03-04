@@ -228,8 +228,8 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 - ### check.someMethod(input, methodNames: string[]): boolean
   Returns `true` if any of the verifications returns `true`  
 
-- ### check.everyInput(method: string, inputs: any[]): boolean
+- ### check.everyInput(methodName: string, inputs: any[]): boolean
   Returns `true` if all input values pass verification  
 
-- ### check.someInput(method: string, inputs: any[]): boolean
+- ### check.someInput(methodName: string, inputs: any[]): boolean
   Returns `true` if any of the input values passes verification  

@@ -1,7 +1,8 @@
 # check
 #### Check and validate values by criteria in JavaScript
 
-___check___ provides a single object (ideally called `check` in lowercase) which has different methods and alias for simple verification and validation of any values. I'll describe them using TypeScript style for convenience.
+___check___ provides a single object (ideally called `check` in lowercase) which has different methods and alias for simple verification and validation of any values.  
+I'll describe them using TypeScript style for convenience. Just remember that it is the JavaScript here, and arguments are actually `argument: any`.
 
 ## TODO:
 
@@ -12,7 +13,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
 ***
 
 ## General
-- ### check.isTrue(input: any): boolean
+- ### check.isTrue(input): boolean
   Checks whether the `input` is truthy.  
   @param `input` Test value
 
@@ -23,7 +24,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   check.isTrue(new Object()); // true
   ```
 
-- ### check.isFalse(input: any): boolean
+- ### check.isFalse(input): boolean
   Checks whether the `input` is falsy.  
   @param `input` Test value
 
@@ -35,7 +36,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   ```
 
 ## Types
-- ### check.is(Type: Function, input: any): boolean
+- ### check.is(Type: Function, input): boolean
   Checks whether the input is an instance of provided class  
   @param `Type` Test class  
   @param `input` Test value  
@@ -47,7 +48,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   check.is(MyObject, new MyObject()); // true
   ```
 
-- ### check.isNot(Type: Function, input: any): boolean
+- ### check.isNot(Type: Function, input): boolean
   Returns `true` if the input is not an instance of provided class  
   @param `Type` Test class  
   @param `input` Test value  
@@ -60,7 +61,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   ```
   _reversed `check.is()`_
 
-- ### check.isEither(types: Function[], input: any): boolean
+- ### check.isEither(types: Function[], input): boolean
   Checks whether the input is an instance of any of provided classes  
   @param `types` Array of test classes  
   @param `input` Test value  
@@ -72,7 +73,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   check.isEither([Number, RegExp, Array], 4); // true
   ```
 
-- ### check.isNeither(types: Function[], input: any): boolean
+- ### check.isNeither(types: Function[], input): boolean
   Returns `true` if the input is not an instance of any of provided classes  
   @param `types` Array of test classes  
   @param `input` Test value  
@@ -85,7 +86,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   ```
   _reversed `check.isEither()`_
 
-- ### check.isPrimitive(input: any): boolean
+- ### check.isPrimitive(input): boolean
   Checks whether the input is a primitive value  
   @param `input` Test value  
 
@@ -96,7 +97,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   check.isPrimitive(null); // true
   ``` 
 
-- ### check.isObject(input: any): boolean
+- ### check.isObject(input): boolean
   Returns `true` if the input is not a primitive value  
   @param `input` Test value  
 
@@ -109,7 +110,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
 
   _reversed `check.isPrimitive()`_
 
-- ### check.isString(input: any): boolean
+- ### check.isString(input): boolean
   Checks whether the input is a string  
   @param `input` Test value  
 
@@ -120,7 +121,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   check.isString(new (class extends String {})()); // true
   ``` 
 
-- ### check.isNotString(input: any): boolean
+- ### check.isNotString(input): boolean
   Returns `true` if the input is not a string  
   @param `input` Test value  
 
@@ -133,7 +134,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
 
   _reversed `check.isString()`_
 
-- ### check.isNumber(input: any): boolean
+- ### check.isNumber(input): boolean
   Checks whether the input is a number  
   @param `input` Test value  
 
@@ -144,7 +145,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   check.isNumber(NaN); // true
   ```
 
-- ### check.isNotNumber(input: any): boolean
+- ### check.isNotNumber(input): boolean
   Returns `true` if the input is not a number  
   @param `input` Test value  
 
@@ -158,7 +159,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   _reversed `check.isNumber()`_  
   _not to be confused with `check.isNaN()`_
 
-- ### check.isArray(input: any): boolean
+- ### check.isArray(input): boolean
   Checks whether the input is an array  
   @param `input` Test value  
 
@@ -176,7 +177,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   }
   ```
 
-- ### check.isNotArray(input: any): boolean
+- ### check.isNotArray(input): boolean
   Returns `true` if the input is not an array  
   @param `input` Test value  
 
@@ -191,7 +192,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
 
 
 ## Array
-- ### check.isEmpty(array: Array | any): boolean
+- ### check.isEmpty(array: any[]): boolean
   Checks whether the array is empty  
   @param `array` Test array  
 
@@ -202,7 +203,7 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
   check.isEmpty(new Object()); // false
   ```
 
-- ### check.isNotEmpty(array: Array | any): boolean
+- ### check.isNotEmpty(array: any[]): boolean
   Returns `true` if the array is not empty  
   @param `array` Test array  
 

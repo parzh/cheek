@@ -29,9 +29,10 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 
 - add `check.isEmpty()` to the chapter String
 
-- decide what to do:
-  - either rename `check.isEmpty()` to `check.isEmptyArray()` considering the emergence of `check.isEmptyString()`
-  - or add prefixes like `check.array.isEmpty()` or `check.string.isEmpty()`
+- consider one of the options:
+  - rename `check.isEmpty()` to `check.isEmptyArray()` considering the emergence of `check.isEmptyString()`
+  - add prefixes like `check.array.isEmpty()` or `check.string.isEmpty()`
+  - unify behavior of `check.isEmpty()` for both arrays and strings
 
 ***
 

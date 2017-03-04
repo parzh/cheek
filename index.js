@@ -22,14 +22,14 @@ check.isFalsy = function(input) {
 	@param input Test value
 	*/
 check.isTrue = function(input) {
-	return check.isPrimitive(input)? input === true : input.valueOf() === true;
+	return check.isBoolean(input) && input == true;
 };
 
 /** Checks whether the input is exactly 'false'
 	@param input Test value
 	*/
 check.isFalse = function(input) {
-	return !check.isTrue(input);
+	return check.isBoolean(input) && input == false;
 };
 
 // EXISTANCE

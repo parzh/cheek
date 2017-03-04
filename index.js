@@ -357,7 +357,7 @@ check.isNotInRange = function(input, range, inclusively) {
 	return !check.isInRange(input, range, inclusively);
 };
 
-// MULTIPLE
+// BUNDLE
 
 /** Returns a two-dimensional array of input-method verifications
 	@param inputs An array of test values

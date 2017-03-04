@@ -217,7 +217,7 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 ## Number
 ~~_24 more methods in the chapter Number_~~  
 
-## Multiple
+## Bundle
 
 - ### check.bundle(inputs: any[], methodNames: string[]): boolean[][]
   Returns a two-dimensional array of input-method verifications  

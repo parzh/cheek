@@ -4,18 +4,32 @@ let check = {};
 
 // GENERAL
 
-/** Checks whether the input is truthy
+/** Checks whether the input evaluates to 'true'
+	@param input Test value
+	*/
+check.isTruthy = function(input) {
+	return new Boolean(input).valueOf();
+};
+
+/** Checks whether the input evaluates to 'false'
+	@param input Test value
+	*/
+check.isFalsy = function(input) {
+	return !check.isTruthy(input);
+};
+
+/** Checks whether the input is exactly 'true'
 	@param input Test value
 	*/
 check.isTrue = function(input) {
-	return !!input;
+	return check.everyMethod(input, ["isBoolean", "isTruthy"]);
 };
 
-/** Checks whether the input is falsy
+/** Checks whether the input is exactly 'false'
 	@param input Test value
 	*/
 check.isFalse = function(input) {
-	return !input;
+	return !check.isTrue(input);
 };
 
 // EXISTANCE
@@ -150,6 +164,20 @@ check.isArray = function(input) {
 	*/
 check.isNotArray = function(input) {
 	return !check.isArray(input);
+};
+
+/** Checks whether the input is a boolean value
+	@param input Test value
+	*/
+check.isBoolean = function(input) {
+	return check.is(Boolean, input);
+};
+
+/** Returns 'true' if the input is not a boolean value
+	@param input Test value
+	*/
+check.isNotBoolean = function(input) {
+	return !check.isBoolean(input);
 };
 
 // ARRAY

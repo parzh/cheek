@@ -36,27 +36,31 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 ***
 
 ## General
-- ### check.isTrue(input): boolean
-  Checks whether the `input` is truthy.  
+~~_2 more methods in the chapter General_~~
+
+- ### check.isTruthy(input): boolean
+  Checks whether the `input` evaluates to `true`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  check.isTrue(true); // true
-  check.isTrue(false); // false
-  check.isTrue(new Object()); // true
+  check.isTruthy(true); // true
+  check.isTruthy(false); // false
+  check.isTruthy(new Object()); // true
   ```
 
-- ### check.isFalse(input): boolean
-  Checks whether the `input` is falsy.  
+- ### check.isFalsy(input): boolean
+  Checks whether the `input` evaluates to `false`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  check.isFalse(true); // false
-  check.isFalse(false); // true
-  check.isFalse(new Object()); // false
+  check.isFalsy(true); // false
+  check.isFalsy(false); // true
+  check.isFalsy(new Object()); // false
   ```
+
+  _reversed `check.isTruthy()`_
 
 ## Types
 - ### check.is(Type: Function, input): boolean
@@ -212,6 +216,30 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   ```
 
   _reversed `check.isArray()`_
+
+- ### check.isBoolean(input): boolean
+  Checks whether the input is a boolean value  
+  @param `input` Test value  
+
+  #### Examples:
+  ```javascript
+  check.isBoolean(false); // true
+  check.isBoolean(new Boolean()); // true
+  check.isBoolean(undefined); // false
+  ``` 
+
+- ### check.isNotBoolean(input): boolean
+  Returns `true` if the input is not a boolean value  
+  @param `input` Test value  
+
+  #### Examples:
+  ```javascript
+  check.isNotBoolean(false); // false
+  check.isNotBoolean(new Boolean()); // false
+  check.isNotBoolean(null); // true
+  ``` 
+
+  _reversed `check.isBoolean()`_
 
 
 ## Array

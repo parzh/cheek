@@ -68,7 +68,8 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   ```javascript
   check.isTrue(true); // true
   check.isTrue(new Boolean()); // false
-  check.isTrue(null); // false
+  check.isTrue(42); // false
+  check.isTrue(undefined); // false
   ```
 
 - ### check.isFalse(input): boolean
@@ -79,7 +80,8 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   ```javascript
   check.isFalse(true); // false
   check.isFalse(new Boolean()); // true
-  check.isFalse(undefined); // false
+  check.isFalse(42); // false
+  check.isFalse(null); // false
   ```
 
   _reversed `check.isTruthy()`_

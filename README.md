@@ -42,7 +42,7 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   #### Examples:
   ```javascript
   check.isTruthy(true); // true
-  check.isTruthy(false); // false
+  check.isTruthy("text"); // true
   check.isTruthy(new Object()); // true
   ```
 
@@ -53,8 +53,8 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   #### Examples:
   ```javascript
   check.isFalsy(true); // false
-  check.isFalsy(false); // true
-  check.isFalsy(new Object()); // false
+  check.isFalsy(""); // true
+  check.isFalsy([]); // false
   ```
 
   _reversed `check.isTruthy()`_

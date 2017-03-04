@@ -31,7 +31,6 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 
 - consider one of the options:
   - rename `check.isEmpty()` to `check.isEmptyArray()` considering the emergence of `check.isEmptyString()`
-  - add prefixes like `check.array.isEmpty()` or `check.string.isEmpty()`
   - unify behavior of `check.isEmpty()` for both arrays and strings
 
 ***

@@ -7,7 +7,13 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 ## TODO:
 
   ```javascript
-  check.input(5).isInRange(range, inclusively);
+  check.bundle(methodNames, inputs);
+  check.everyMethod(methodNames, inputs);
+  check.someMethod(methodNames, inputs);
+  ```
+
+  ```javascript
+  check.input(input)/*.isInRange(range, inclusively)*/;
   ```
 
 ***

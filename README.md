@@ -220,18 +220,29 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 ## Bundle
 
 - ### check.bundle(inputs: any[], methodNames: string[]): boolean[][]
-  Returns a two-dimensional array of input-method verifications  
+  Returns a two-dimensional array of input-method verifications.  
+  The returned array contains the same number of arrays as `inputs` does  
+  @param `inputs` An array of test values  
+  @param `methodNames` An array of 'check' object methods names  
 
 - ### check.everyMethod(input, methodNames: string[]): boolean
   Returns `true` if all of the verifications return `true`  
+  @param `input` Test value  
+  @param `methodNames` An array of 'check' object methods names  
 
 - ### check.someMethod(input, methodNames: string[]): boolean
   Returns `true` if any of the verifications returns `true`  
+  @param `input` Test value  
+  @param `methodNames` An array of 'check' object methods names  
 
 - ### check.everyInput(methodName: string, inputs: any[]): boolean
   Returns `true` if all input values pass verification.  
   Consider the order of arguments.  
+  @param `methodName` 'check.' object method name  
+  @param `inputs` An array of test values  
 
 - ### check.someInput(methodName: string, inputs: any[]): boolean
   Returns `true` if any of the input values passes verification.  
   Consider the order of arguments.  
+  @param `methodName` 'check.' object method name  
+  @param `inputs` An array of test values  

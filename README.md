@@ -3,8 +3,6 @@
 
 ___check___ provides a single object (ideally called `check` in lowercase) which has different methods and alias for simple verification and validation of any values. I'll describe them using TypeScript style for convenience.
 
-***
-
 ## TODO:
 
   ```javascript
@@ -210,8 +208,8 @@ ___check___ provides a single object (ideally called `check` in lowercase) which
 
   #### Examples:
   ```javascript
-  check.isNotEmpty(""); // false
   check.isNotEmpty([]); // false
+  check.isNotEmpty(""); // false
   check.isNotEmpty(new Object()); // false
   ```
 

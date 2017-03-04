@@ -221,7 +221,7 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 
 - ### check.bundle(inputs: any[], methodNames: string[]): boolean[][]
   Returns a two-dimensional array of input-method verifications.  
-  The returned array contains the same number of arrays as `inputs` does  
+  The returned array contains the same number of arrays as `inputs` does.  
   @param `inputs` An array of test values  
   @param `methodNames` An array of 'check' object methods names  
 

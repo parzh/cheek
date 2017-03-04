@@ -298,7 +298,7 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 
   #### Examples:
   ```javascript
-  check.
-  check.
-  check.
+  check.someInput("isNotDefined", [5, 4, null, -2]); // true
+  check.someInput("isObject", [5, 4, -2, "my text"]); // false
+  check.someInput("isNaN", [1, 2, 3]); // false
   ```

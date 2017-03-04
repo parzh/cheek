@@ -83,8 +83,6 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   check.isFalse(null); // false
   ```
 
-  _reversed `check.isTruthy()`_
-
 ## Types
 - ### check.is(Type: Function, input): boolean
   Checks whether the input is an instance of provided class  

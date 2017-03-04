@@ -14,6 +14,8 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   check.someMethod(methodNames, inputs);
   ```
 - improve performance of `check.someMethod()` and `check.someInput()` methods
+- add `check.isArraylike()` to the chapter Types
+- add `check.isPercent()` to the chapter Number
 
 - add ability to save input value for future checks  
 

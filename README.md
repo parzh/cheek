@@ -26,6 +26,12 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   check.input(42).isPrimitive().isNumber().isInRange([40, 50], "inclusively"); // true
   ```
 
+- add `check.isEmpty()` to the chapter String
+
+- decide what to do:
+  - either rename `check.isEmpty()` to `check.isEmptyArray()` considering the emergence of `check.isEmptyString()`
+  - or add prefixes like `check.array.isEmpty()` or `check.string.isEmpty()`
+
 ***
 
 ## General

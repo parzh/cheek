@@ -239,7 +239,7 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   check.bundle([null, undefined, new Object()], ["isDefined", "isPrimitive"]);
   // [ [false, true], [false, true], [true, false] ]
 
-  check.bundle([5, [3]], ["isNumber", "isInRange"]);
+  check.bundle([5, [3, 4]], ["isNumber", "isInRange", "isNatural"]);
   // SyntaxError: Not enough arguments for method 'check.isInRange' to proceed
   ```
 

@@ -334,7 +334,7 @@ check.isNatural = function(input, zero = true) {
 	@param input Test value
 	@param zero If not defined or 'true', zero is considered as natural number
 	*/
-check.isNotNatural = function(input, zero) {
+check.isNotNatural = function(input, zero = true) {
 	return !check.isNatural(input, zero);
 };
 

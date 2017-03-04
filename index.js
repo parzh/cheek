@@ -22,7 +22,7 @@ check.isFalsy = function(input) {
 	@param input Test value
 	*/
 check.isTrue = function(input) {
-	return check.everyMethod(input, ["isBoolean", "isTruthy"]);
+	return check.isPrimitive(input)? input === true : input.valueOf() === true;
 };
 
 /** Checks whether the input is exactly 'false'

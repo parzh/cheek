@@ -243,10 +243,24 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   @param `input` Test value  
   @param `methodNames` An array of 'check' object methods names  
 
+  #### Examples:
+  ```javascript
+  check.
+  check.
+  check.
+  ```
+
 - ### check.someMethod(input, methodNames: string[]): boolean
   Returns `true` if any of the verifications returns `true`  
   @param `input` Test value  
   @param `methodNames` An array of 'check' object methods names  
+
+  #### Examples:
+  ```javascript
+  check.
+  check.
+  check.
+  ```
 
 - ### check.everyInput(methodName: string, inputs: any[]): boolean
   Returns `true` if all input values pass verification.  
@@ -254,8 +268,22 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   @param `methodName` 'check.' object method name  
   @param `inputs` An array of test values  
 
+  #### Examples:
+  ```javascript
+  check.
+  check.
+  check.
+  ```
+
 - ### check.someInput(methodName: string, inputs: any[]): boolean
   Returns `true` if any of the input values passes verification.  
   Consider the order of arguments.  
   @param `methodName` 'check.' object method name  
   @param `inputs` An array of test values  
+
+  #### Examples:
+  ```javascript
+  check.
+  check.
+  check.
+  ```

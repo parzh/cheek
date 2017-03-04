@@ -6,17 +6,21 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 
 ## TODO:
 
+- swap arguments for bundle-check methods  
+
   ```javascript
   check.bundle(methodNames, inputs);
   check.everyMethod(methodNames, inputs);
   check.someMethod(methodNames, inputs);
   ```
+- improve performance of `check.someMethod()` and `check.someInput()` methods
+
+- add ability to save input value for future checks  
 
   ```javascript
-  check.input(input)/*.isInRange(range, inclusively)*/;
+  // should conjunction or disjunction be here?
+  check.input(42).isPrimitive().isNumber().isInRange([40, 50], "inclusively"); // true
   ```
-
-  improve performance of `check.someMethod`
 
 ***
 

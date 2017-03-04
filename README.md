@@ -225,6 +225,13 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   @param `inputs` An array of test values  
   @param `methodNames` An array of 'check' object methods names  
 
+  #### Examples:
+  ```javascript
+  check.bundle([5, -2], ["isInteger", "isPositive"]); // [ [true, true], [true, false] ]
+  check.bundle([null, undefined, new Object()], ["isDefined", "isPrimitive"]); // [ [false, true], [false, true], [true, false] ]
+  check.bundle([5, [3]], ["isNumber", "isInRange"]); // SyntaxError: Not enough arguments for method 'check.isInRange' to proceed
+  ```
+
 - ### check.everyMethod(input, methodNames: string[]): boolean
   Returns `true` if all of the verifications return `true`  
   @param `input` Test value  

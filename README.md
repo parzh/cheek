@@ -229,7 +229,9 @@ I'll describe them using TypeScript style for convenience. Just remember that it
   Returns `true` if any of the verifications returns `true`  
 
 - ### check.everyInput(methodName: string, inputs: any[]): boolean
-  Returns `true` if all input values pass verification  
+  Returns `true` if all input values pass verification.  
+  Consider the order of arguments.  
 
 - ### check.someInput(methodName: string, inputs: any[]): boolean
-  Returns `true` if any of the input values passes verification  
+  Returns `true` if any of the input values passes verification.  
+  Consider the order of arguments.  

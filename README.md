@@ -233,9 +233,14 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 
   #### Examples:
   ```javascript
-  check.bundle([5, -2], ["isInteger", "isPositive"]); // [ [true, true], [true, false] ]
-  check.bundle([null, undefined, new Object()], ["isDefined", "isPrimitive"]); // [ [false, true], [false, true], [true, false] ]
-  check.bundle([5, [3]], ["isNumber", "isInRange"]); // SyntaxError: Not enough arguments for method 'check.isInRange' to proceed
+  check.bundle([5, -2], ["isInteger", "isPositive"]);
+  // [ [true, true], [true, false] ]
+
+  check.bundle([null, undefined, new Object()], ["isDefined", "isPrimitive"]);
+  // [ [false, true], [false, true], [true, false] ]
+
+  check.bundle([5, [3]], ["isNumber", "isInRange"]);
+  // SyntaxError: Not enough arguments for method 'check.isInRange' to proceed
   ```
 
 - ### check.everyMethod(input, methodNames: string[]): boolean

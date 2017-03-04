@@ -6,17 +6,17 @@ I'll describe them using TypeScript style for convenience. Just remember that it
 
 ## TODO:
 
-- ```javascript
+  ```javascript
   check.bundle(methodNames, inputs);
   check.everyMethod(methodNames, inputs);
   check.someMethod(methodNames, inputs);
   ```
 
-- ```javascript
+  ```javascript
   check.input(input)/*.isInRange(range, inclusively)*/;
   ```
 
-- improve performance of `check.someMethod`
+  improve performance of `check.someMethod`
 
 ***
 

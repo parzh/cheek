@@ -56,19 +56,19 @@ check.isNotNull = function(input) {
 	return !check.isNull(input);
 };
 
+/** Checks whether the input is neither 'undefined' nor 'null'
+	@param input Test value
+	*/
+check.isDefined = function(input) {
+	return !check.isUndefined(input) && check.isNotNull(input);
+};
+
 /** Returns 'true' if the input is either 'undefined' or 'null'.
 	Not to be confused with 'check.isUndefined'.
 	@param input Test value
 	*/
 check.isNotDefined = function(input) {
-	return check.isUndefined(input) || check.isNull(input);
-};
-
-/** Checks whether the input is neither 'undefined' nor 'null'
-	@param input Test value
-	*/
-check.isDefined = function(input) {
-	return !check.isNotDefined(input);
+	return !check.isDefined(input);
 };
 
 // TYPES

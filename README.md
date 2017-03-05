@@ -32,6 +32,8 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
 
 - improve performance of `check.someMethod()` and `check.someInput()` methods
 
+- decide whether to add `NaN` to undefined values along with `undefined` and `null`
+
 ***
 
 ## General
@@ -82,6 +84,41 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   check.isFalse(42); // false
   check.isFalse(null); // false
   ```
+
+## Existance
+- ### check.isFalse(input): boolean
+  Checks whether the `input` is exactly `false`  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isFalse(true); // false
+  check.isFalse(new Boolean()); // true
+  check.isFalse(42); // false
+  check.isFalse(null); // false
+  ```
+- check.isUndefined(input): boolean
+  Checks whether the input is exactly 'undefined'
+
+  _not to be confused with `check.isNotDefined()`_
+
+- check.isNull(input): boolean
+  Checks whether the input is exactly 'null'
+
+- check.isNotNull(input): boolean
+  Returns 'true' if the input is anything but 'null'
+
+  _reversed `check.isNull()`_
+
+- check.isDefined(input): boolean
+  Checks whether the input is neither 'undefined' nor 'null'
+
+- check.isNotDefined(input): boolean
+  Returns 'true' if the input is either 'undefined' or 'null'
+
+  _reversed `check.isDefined()`_
+  _not to be confused with `check.isUndefined()`_
+
 
 ## Types
 - ### check.is(Type: Function, input): boolean

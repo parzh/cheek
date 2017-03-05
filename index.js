@@ -391,7 +391,7 @@ check.isNotInRange = function(input, range, inclusively) {
 	@param inputs An array of test values
 	@param methodNames An array of 'check' object methods names
 	*/
-check.bundle = function(inputs = [], methodNames = []) {
+check.bundle = function(inputs, methodNames) {
 
 	function getMethodByName(methodName) {
 		let method = check[methodName];

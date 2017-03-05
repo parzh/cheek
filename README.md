@@ -425,7 +425,7 @@ _24 more methods in the chapter Number_
 ## Other
 - ### check.input(input): Proxy
   Returns Proxy object that allows to perform validations directly on itself  
-  @param input Test value  
+  @param `input` Test value  
 
   #### Examples:
   ```javascript

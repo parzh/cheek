@@ -1,5 +1,5 @@
 # check
-#### Check and validate values by criteria in JavaScript
+#### Yet another value-validator is JavaScript ... Or is it?
 
 ___check___ provides a single object (ideally called `check` in lowercase) which has different methods and alias for simple verification and validation of any values.  
 I'll describe them using TypeScript style for convenience. Just remember that it is the JavaScript here, and arguments are actually `argument: any`.  
@@ -287,10 +287,9 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   ```
 
 ## Number
-~~_24 more methods in the chapter Number_~~  
+_24 more methods in the chapter Number_  
 
 ## Bundle
-
 - ### check.bundle(inputs: any[], methodNames: string[]): boolean[][]
   Returns a two-dimensional array of input-method verifications.  
   The returned array contains the same number of arrays as `inputs` does.  

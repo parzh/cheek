@@ -327,12 +327,12 @@ check.isPositive = function(input) {
 	return check.isGreaterThan(input, 0);
 };
 
-/**	Checks whether the input is greater than or equal to zero.
-	Not to be confused with 'check.isPositive'.
+/**	Returns 'true' if the input is less than or equal to zero.
+	Not to be confused with 'check.isNegative'.
 	@param input Test value
 	*/
-check.isNonNegative = function(input) {
-	return check.isGreaterThanOrEqualTo(input, 0);
+check.isNotPositive = function(input) {
+	return !check.isPositive(input);
 };
 
 /**	Checks whether the input is less than zero
@@ -342,12 +342,12 @@ check.isNegative = function(input) {
 	return check.isLessThan(input, 0);
 };
 
-/**	Returns 'true' if the input is less than or equal to zero.
-	Not to be confused with 'check.isNegative'.
+/**	Checks whether the input is greater than or equal to zero.
+	Not to be confused with 'check.isPositive'.
 	@param input Test value
 	*/
-check.isNotPositive = function(input) {
-	return check.isLessThanOrEqualTo(input, 0);
+check.isNonNegative = function(input) {
+	return !check.isNegative(input);
 };
 
 /** Checks whether the input is finite number without fractional part, and greater than [or equal to] zero

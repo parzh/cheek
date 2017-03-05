@@ -444,4 +444,35 @@ check.someInput = function(methodName, inputs) {
 	return check.bundle(inputs, [methodName]).map(result => result[0]).some(Boolean);
 };
 
+// OTHER
+
+/** Returns Proxy object that allows to perform validations directly on itself
+	@param input Test value
+	*/
+check.input = function(input) {
+	return new Proxy({}, {
+		get(obj, method) {
+			switch (method) {
+				default:
+					return (...args) => check[method](input, ...args);
+
+				case "is":
+				case "isNot":
+				case "isEither":
+				case "isNeither":
+					return (TypeOrTypes) => check[method](TypeOrTypes, input);
+
+				case "everyMethod":
+				case "someMethod":
+					return (methodNames) => check[method](input, methodNames); // TODO: Update when the function signatures are changed
+
+				case "bundle":
+				case "everyInput":
+				case "someInput":
+					throw new TypeError(`'check.${method}' requires multiple inputs and cannot be performed via 'check.input( ... )'`);
+			}
+		}
+	});
+}
+
 module.exports = check;

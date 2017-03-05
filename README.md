@@ -32,13 +32,13 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
 
 - improve performance of `check.someMethod()` and `check.someInput()` methods
 
-- decide whether to add `NaN` to undefined values along with `undefined` and `null`
+- decide whether to add `NaN` to undefined values along with `undefined` and `null` in `check.isNotDefined()`
 
 ***
 
 ## General
 - ### check.isTruthy(input): boolean
-  Checks whether the `input` evaluates to `true`  
+  Checks whether the input evaluates to `true`  
   @param `input` Test value
 
   #### Examples:
@@ -49,7 +49,7 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   ```
 
 - ### check.isFalsy(input): boolean
-  Checks whether the `input` evaluates to `false`  
+  Checks whether the input evaluates to `false`  
   @param `input` Test value
 
   #### Examples:
@@ -62,7 +62,7 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   _reversed `check.isTruthy()`_
 
 - ### check.isTrue(input): boolean
-  Checks whether the `input` is exactly `true`  
+  Checks whether the input is exactly `true`  
   @param `input` Test value
 
   #### Examples:
@@ -74,7 +74,7 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   ```
 
 - ### check.isFalse(input): boolean
-  Checks whether the `input` is exactly `false`  
+  Checks whether the input is exactly `false`  
   @param `input` Test value
 
   #### Examples:
@@ -86,35 +86,65 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   ```
 
 ## Existance
-- ### check.isFalse(input): boolean
-  Checks whether the `input` is exactly `false`  
+- check.isUndefined(input): boolean
+  Checks whether the input is exactly `undefined`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  check.isFalse(true); // false
-  check.isFalse(new Boolean()); // true
-  check.isFalse(42); // false
-  check.isFalse(null); // false
+  check.isUndefined(undefined); // true
+  check.isUndefined(); // true
+  check.isUndefined(null); // false
+  check.isUndefined(foo); // ReferenceError: foo is not defined
   ```
-- check.isUndefined(input): boolean
-  Checks whether the input is exactly 'undefined'
 
   _not to be confused with `check.isNotDefined()`_
 
 - check.isNull(input): boolean
-  Checks whether the input is exactly 'null'
+  Checks whether the input is exactly `null`  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isNull(null); // true
+  check.isNull(); // false
+  check.isNull("abc".match(/d/)); // true
+  ```
 
 - check.isNotNull(input): boolean
-  Returns 'true' if the input is anything but 'null'
+  Returns `true` if the input is anything but `null`  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isNotNull(null); // false
+  check.isNotNull(undefined); // true
+  check.isNotNull("aaa".match(/a+/)); // true
+  ```
 
   _reversed `check.isNull()`_
 
 - check.isDefined(input): boolean
-  Checks whether the input is neither 'undefined' nor 'null'
+  Checks whether the input is neither `undefined` nor `null`  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isDefined(null); // false
+  check.isDefined(undefined); // false
+  check.isDefined(""); // true
+  ```
 
 - check.isNotDefined(input): boolean
-  Returns 'true' if the input is either 'undefined' or 'null'
+  Returns `true` if the input is either `undefined` or `null`  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isNotDefined(null); // true
+  check.isNotDefined(undefined); // true
+  check.isNotDefined(bar); // ReferenceError: bar is not defined
+  ```
 
   _reversed `check.isDefined()`_
   _not to be confused with `check.isUndefined()`_
@@ -128,9 +158,9 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
 
   #### Examples:
   ```javascript
-  check.is(Number, {}); // false; see `check.isNumber()` below
-  check.is(Array, []); // true; see `check.isArray()` below
   check.is(MyObject, new MyObject()); // true
+  check.is(Number, {}); // false; see `check.isNumber()`
+  check.is(Array, []); // true; see `check.isArray()`
   ```
 
 - ### check.isNot(Type: Function, input): boolean
@@ -331,7 +361,7 @@ _24 more methods in the chapter Number_
   Returns a two-dimensional array of input-method verifications.  
   The returned array contains the same number of arrays as `inputs` does.  
   @param `inputs` An array of test values  
-  @param `methodNames` An array of 'check' object methods names  
+  @param `methodNames` An array of `check` object methods names  
 
   #### Examples:
   ```javascript
@@ -348,7 +378,7 @@ _24 more methods in the chapter Number_
 - ### check.everyMethod(input, methodNames: string[]): boolean
   Returns `true` if all of the verifications return `true`  
   @param `input` Test value  
-  @param `methodNames` An array of 'check' object methods names  
+  @param `methodNames` An array of `check` object methods names  
 
   #### Examples:
   ```javascript
@@ -360,7 +390,7 @@ _24 more methods in the chapter Number_
 - ### check.someMethod(input, methodNames: string[]): boolean
   Returns `true` if any of the verifications returns `true`  
   @param `input` Test value  
-  @param `methodNames` An array of 'check' object methods names  
+  @param `methodNames` An array of `check` object methods names  
 
   #### Examples:
   ```javascript

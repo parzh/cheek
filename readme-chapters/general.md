@@ -1,3 +1,5 @@
+[← Back to `README.md`](../README.md)
+
 ## General
 - ### check.isTruthy(input): boolean
   Checks whether the input evaluates to `true`  

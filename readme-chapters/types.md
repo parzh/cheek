@@ -1,3 +1,5 @@
+[← Back to `README.md`](../README.md)
+
 ## Types
 - ### check.is(Type: Function, input): boolean
   Checks whether the input is an instance of provided class  

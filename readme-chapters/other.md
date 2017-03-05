@@ -1,3 +1,5 @@
+[← Back to `README.md`](../README.md)
+
 ## Other
 - ### check.input(input): Proxy
   Returns Proxy object that allows to perform validations directly on itself  

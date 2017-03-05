@@ -1,3 +1,5 @@
+[← Back to `README.md`](../README.md)
+
 ## Array
 - ### check.isEmpty(array: any[]): boolean
   Checks whether the array is empty  

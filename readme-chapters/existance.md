@@ -1,3 +1,5 @@
+[← Back to `README.md`](../README.md)
+
 ## Existance
 - check.isUndefined(input): boolean
   Checks whether the input is exactly `undefined`  

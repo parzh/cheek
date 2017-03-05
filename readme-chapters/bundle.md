@@ -1,3 +1,5 @@
+[← Back to `README.md`](../README.md)
+
 ## Bundle
 - ### check.bundle(inputs: any[], methodNames: string[]): boolean[][]
   Returns a two-dimensional array of input-method verifications.  

@@ -18,9 +18,17 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
 - rename `check.isEmpty()` to `check.isEmptyArray()`
 
 - add methods:
-  - `check.isEmptyString()` to the chapter String
   - `check.isArraylike()` to the chapter Types
   - `check.isPercent()` to the chapter Number
+  - to the chapter Array:
+    - `check.contains()`
+    - `check.hasFirst()`
+    - `check.hasLast()`
+  - to the chapter String:
+    - `check.isEmptyString()`
+    - `check.containsChar()`
+    - `check.startsWith()`
+    - `check.endsWith()`
 
 - add chaining to `check.input()`  
 

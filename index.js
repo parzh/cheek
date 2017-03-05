@@ -469,7 +469,7 @@ check.input = function(input) {
 				case "bundle":
 				case "everyInput":
 				case "someInput":
-					throw new TypeError(`'check.${method}' requires multiple inputs and cannot be performed via 'check.input( ... )'`);
+					throw new TypeError(`The method 'check.${method}' requires multiple inputs and cannot be performed via 'check.input( ... )'`);
 			}
 		}
 	});

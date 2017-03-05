@@ -17,11 +17,10 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
 
 - rename `check.isEmpty()` to `check.isEmptyArray()`
 
-- add `check.isEmptyString()` to the chapter String
-
-- add `check.isArraylike()` to the chapter Types
-
-- add `check.isPercent()` to the chapter Number
+- add functionality:
+  - `check.isEmptyString()` to the chapter String
+  - `check.isArraylike()` to the chapter Types
+  - `check.isPercent()` to the chapter Number
 
 - add ability to save input value for future checks  
 

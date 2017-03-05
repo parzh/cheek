@@ -22,7 +22,7 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   - `check.isArraylike()` to the chapter Types
   - `check.isPercent()` to the chapter Number
 
-- add chaining  
+- add chaining to `check.input()`  
 
   ```javascript
   // should conjunction or disjunction be here?
@@ -436,9 +436,16 @@ _24 more methods in the chapter Number_
   input.isNot(Number); // false
   input.isEither([String, Array]); // false
   input.isNeither([String, Array]); // true
-  input.bundle(["isDefined", "isTrue"]); // TypeError: The method 'check.bundle' requires multiple inputs and cannot be performed via 'check.input( ... )'
+
+  input.bundle(["isDefined", "isTrue"]);
+  // TypeError: The method 'check.bundle' requires multiple inputs and cannot be performed via 'check.input( ... )'
+
   input.everyMethod(["isNotDefined", "isFalse"]); // false
   input.someMethod(["isUndefined", "isFalsy"]); // false
-  input.everyInput("isPositive"); // TypeError: The method 'check.everyInput' requires multiple inputs and cannot be performed via 'check.input( ... )'
-  input.someInput("isPositive"); // TypeError: The method 'check.someInput' requires multiple inputs and cannot be performed via 'check.input( ... )'
+
+  input.everyInput("isPositive");
+  // TypeError: The method 'check.everyInput' requires multiple inputs and cannot be performed via 'check.input( ... )'
+
+  input.someInput("isPositive");
+  // TypeError: The method 'check.someInput' requires multiple inputs and cannot be performed via 'check.input( ... )'
   ```

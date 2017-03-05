@@ -32,8 +32,6 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
 
 - improve performance of `check.someMethod()` and `check.someInput()` methods
 
-- decide whether to add `NaN` to undefined values along with `undefined` and `null` in `check.isNotDefined()`
-
 ***
 
 ## General

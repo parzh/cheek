@@ -324,7 +324,7 @@ check.isNotFloat = function(input) {
 	@param input Test value
 	*/
 check.isPositive = function(input) {
-	return check.isGreaterThan(input, 0);
+	return input > 0;
 };
 
 /**	Returns 'true' if the input is less than or equal to zero.
@@ -339,7 +339,7 @@ check.isNotPositive = function(input) {
 	@param input Test value
 	*/
 check.isNegative = function(input) {
-	return check.isLessThan(input, 0);
+	return input < 0;
 };
 
 /**	Checks whether the input is greater than or equal to zero.

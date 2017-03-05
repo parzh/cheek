@@ -22,7 +22,7 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   - `check.isArraylike()` to the chapter Types
   - `check.isPercent()` to the chapter Number
 
-- add ability to save input value for future checks  
+- add chaining  
 
   ```javascript
   // should conjunction or disjunction be here?
@@ -420,4 +420,25 @@ _24 more methods in the chapter Number_
   check.someInput("isNotDefined", [5, 4, null, -2]); // true
   check.someInput("isObject", [5, 4, -2, "my text"]); // false
   check.someInput("isNaN", [1, 2, 3]); // false
+  ```
+
+## Other
+- ### check.input(input): Proxy
+  Returns Proxy object that allows to perform validations directly on itself  
+  @param input Test value  
+
+  #### Examples:
+  ```javascript
+  let input = check.input(-42.5);
+
+  input.isDefined(); // true
+  input.is(Number); // true
+  input.isNot(Number); // false
+  input.isEither([String, Array]); // false
+  input.isNeither([String, Array]); // true
+  input.bundle(["isDefined", "isTrue"]); // TypeError: The method 'check.bundle' requires multiple inputs and cannot be performed via 'check.input( ... )'
+  input.everyMethod(["isNotDefined", "isFalse"]); // false
+  input.someMethod(["isUndefined", "isFalsy"]); // false
+  input.everyInput("isPositive"); // TypeError: The method 'check.everyInput' requires multiple inputs and cannot be performed via 'check.input( ... )'
+  input.someInput("isPositive"); // TypeError: The method 'check.someInput' requires multiple inputs and cannot be performed via 'check.input( ... )'
   ```

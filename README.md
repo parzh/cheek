@@ -15,14 +15,6 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   check.someMethod(methodNames, inputs);
   ```
 
-- rename `check.isEmpty()` to `check.isEmptyArray()`
-
-- add `check.isEmptyString()` to the chapter String
-
-- add `check.isArraylike()` to the chapter Types
-
-- add `check.isPercent()` to the chapter Number
-
 - add ability to save input value for future checks  
 
   ```javascript
@@ -31,6 +23,14 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
   ```
 
 - improve performance of `check.someMethod()` and `check.someInput()` methods
+
+- add `check.isArraylike()` to the chapter Types
+
+- add `check.isPercent()` to the chapter Number
+
+- rename `check.isEmpty()` to `check.isEmptyArray()`
+
+- add `check.isEmptyString()` to the chapter String
 
 ***
 

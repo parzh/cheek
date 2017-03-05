@@ -346,7 +346,7 @@ check.isNegative = function(input) {
 	Not to be confused with 'check.isPositive'.
 	@param input Test value
 	*/
-check.isNonNegative = function(input) {
+check.isNotNegative = check.isNonNegative = function(input) {
 	return !check.isNegative(input);
 };
 

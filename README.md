@@ -35,9 +35,9 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
 
 ## Chapters:
 
-- [General](../readme-chapters/general.md)
-- [Existance](../readme-chapters/existance.md)
-- [Types](../readme-chapters/types.md)
-- [Array](../readme-chapters/array.md)
-- [Number](../readme-chapters/number.md)
-- [Other](../readme-chapters/other.md)
+- [General](check/readme-chapters/general.md)
+- [Existance](check/readme-chapters/existance.md)
+- [Types](check/readme-chapters/types.md)
+- [Array](check/readme-chapters/array.md)
+- [Number](check/readme-chapters/number.md)
+- [Other](check/readme-chapters/other.md)

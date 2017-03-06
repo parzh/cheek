@@ -206,7 +206,7 @@ check.isNaN = function(input) {
 	return (Number.isNaN || isNaN)(input);
 };
 
-/** Returns 'true' if the input is not NaN
+/** Returns 'true' if the input is not 'NaN'
 	@param input Test value
 	*/
 check.isNotNaN = function(input) {

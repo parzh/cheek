@@ -271,7 +271,7 @@ check.isFinite = function(input) {
 /** Returns 'true' if the input is not a finite number
 	@param input Test value
 	*/
-check.isNotFinite = function(input) {
+check.isNotFinite = check.isInfinite = function(input) {
 	return !check.isFinite(input);
 };
 

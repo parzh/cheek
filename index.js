@@ -321,6 +321,20 @@ check.isNotNatural = function(input, zero = true) {
 	return !check.isNatural(input, zero);
 };
 
+/**	Checks whether the input is a fraction between 0 and 1 inclusively
+	@param input Test value
+	*/
+check.isPercent = function(input) {
+	return check.isInRange(input, [0, 1], "inclusively");
+};
+
+/**	Returns 'true' if the input is not a fraction between 0 and 1 inclusively
+	@param input Test value
+	*/
+check.isNotPercent = function(input) {
+	return !check.isPercent(input);
+};
+
 /**	Checks whether the input is greater than zero
 	@param input Test value
 	*/

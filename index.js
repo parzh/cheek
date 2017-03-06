@@ -356,7 +356,7 @@ check.isNotNatural = function(input, zero = true) {
 	@param range Array of two numbers: min and max value of range
 	@param inclusively If 'true', edge-matching will return 'true'
 	*/
-check.isInRange = function(input, range, inclusively) {
+check.isInRange = function(input, range, inclusively = true) {
 	inclusively = /^excl/i.test(inclusively)? false : !!inclusively;
 	return inclusively? (input >= range[0] && input <= range[1]) : (input > range[0] && input < range[1]);
 };
@@ -366,7 +366,7 @@ check.isInRange = function(input, range, inclusively) {
 	@param range Array of two numbers: min and max value of range
 	@param inclusively If 'true' edge-matching will return 'true'
 	*/
-check.isNotInRange = function(input, range, inclusively) {
+check.isNotInRange = function(input, range, inclusively = true) {
 	return !check.isInRange(input, range, inclusively);
 };
 

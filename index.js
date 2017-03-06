@@ -288,7 +288,7 @@ check.isDivisibleBy = function(numerator, denominator) {
 	@param numerator Will be divided by 'denominator'
 	@param denominator Will divide 'numerator'
 	*/
-check.isIndivisibleBy = function(numerator, denominator) {
+check.isNotDivisibleBy = check.isIndivisibleBy = function(numerator, denominator) {
 	return !check.isDivisibleBy(numerator, denominator);
 };
 

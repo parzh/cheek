@@ -30,8 +30,9 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
     - `check.startsWith(source: string, input: string)`
     - `check.endsWith(source: string, input: string)`
   - to the chapter Other:
-    - `check.every(inputs: any[])`
-    - `check.some(inputs: any[])`
+    - `check.inputs(inputs: any[])` _(analogue of `check.bundle( ... )`)_
+    - `check.every(inputs: any[])` _(analogue of `check.everyInput( ... )`)_
+    - `check.some(inputs: any[])` _(analogue of `check.someInput( ... )`)_
 
 - add chaining to `check.input()`  
 

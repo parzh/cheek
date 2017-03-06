@@ -305,6 +305,22 @@ check.isNotInteger = check.isFloat = function(input) {
 	return !check.isInteger(input);
 };
 
+/** Checks whether the input is finite number without fractional part, and greater than [or equal to] zero
+	@param input Test value
+	@param zero If not defined or 'true', zero is considered as natural number
+	*/
+check.isNatural = function(input, zero = true) {
+	return check.isInteger(input) && (zero? check.isNonNegative(input) : check.isPositive(input));
+};
+
+/** Returns 'true' if input is either infinite, or has a fractional part, or less than [or equal to] zero
+	@param input Test value
+	@param zero If not defined or 'true', zero is considered as natural number
+	*/
+check.isNotNatural = function(input, zero = true) {
+	return !check.isNatural(input, zero);
+};
+
 /**	Checks whether the input is greater than zero
 	@param input Test value
 	*/
@@ -333,22 +349,6 @@ check.isNegative = function(input) {
 	*/
 check.isNotNegative = check.isNonNegative = function(input) {
 	return !check.isNegative(input);
-};
-
-/** Checks whether the input is finite number without fractional part, and greater than [or equal to] zero
-	@param input Test value
-	@param zero If not defined or 'true', zero is considered as natural number
-	*/
-check.isNatural = function(input, zero = true) {
-	return check.isInteger(input) && (zero? check.isNonNegative(input) : check.isPositive(input));
-};
-
-/** Returns 'true' if input is either infinite, or has a fractional part, or less than [or equal to] zero
-	@param input Test value
-	@param zero If not defined or 'true', zero is considered as natural number
-	*/
-check.isNotNatural = function(input, zero = true) {
-	return !check.isNatural(input, zero);
 };
 
 /** Checks whether the input is in provided range inclusively or exclusively

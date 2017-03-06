@@ -283,8 +283,7 @@ check.isDivisibleBy = function(numerator, denominator) {
 	return !(numerator % denominator);
 };
 
-/** Returns 'true' if 'numerator' is not divisible by 'denominator'.
-	Consider method spelling: "isIndivisibleBy" instead of "isNotDivisibleBy".
+/** Returns 'true' if 'numerator' is not divisible by 'denominator'
 	@param numerator Will be divided by 'denominator'
 	@param denominator Will divide 'numerator'
 	*/
@@ -295,29 +294,15 @@ check.isNotDivisibleBy = check.isIndivisibleBy = function(numerator, denominator
 /**	Checks whether the input is an integer
 	@param input Test value
 	*/
-check.isInteger = function(input) {
+check.isInteger = check.isNotFloat = function(input) {
 	return Number.isInteger? Number.isInteger(input) : check.isDivisibleBy(input, 1);
 };
 
 /**	Returns 'true' if the input is not an integer
 	@param input Test value
 	*/
-check.isNotInteger = function(input) {
+check.isNotInteger = check.isFloat = function(input) {
 	return !check.isInteger(input);
-};
-
-/**	Checks whether the input has a fractional part
-	@param input Test value
-	*/
-check.isFloat = function(input) {
-	return check.isIndivisibleBy(input, 1);
-};
-
-/**	Returns 'true' if the input has not fractional part
-	@param input Test value
-	*/
-check.isNotFloat = function(input) {
-	return !check.isFloat(input);
 };
 
 /**	Checks whether the input is greater than zero

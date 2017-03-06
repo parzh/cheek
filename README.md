@@ -29,6 +29,8 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
     - `check.containsChar(source: string, input: string)`
     - `check.startsWith(source: string, input: string)`
     - `check.endsWith(source: string, input: string)`
+  - to the chapter Number:
+    - `check.isZero(input: number)`
   - to the chapter Other:
     - `check.inputs(inputs: any[])` _(analogue of `check.bundle( ... )`)_
     - `check.every(inputs: any[])` _(analogue of `check.everyInput( ... )`)_

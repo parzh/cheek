@@ -19,7 +19,6 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
 
 - add methods:
   - `check.isArraylike(input)` to the chapter Types
-  - `check.isPercent(input: number)` to the chapter Number
   - to the chapter Array:
     - `check.contains(array: any[], input)`
     - `check.hasFirst(array: any[], input)`

@@ -1,8 +1,6 @@
 [← Back to `README.md`](../README.md)
 
 ## Number
-_24 more methods in the chapter Number_  
-
 - ### check.isNaN(input: number): boolean
   Checks whether the input is exactly `NaN`
   @param `input` Test value

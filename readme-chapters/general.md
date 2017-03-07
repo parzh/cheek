@@ -1,50 +1,50 @@
 [← Back to `README.md`](../README.md)
 
 ## General
-- ### check.isTruthy(input): boolean
+- ### cheek.isTruthy(input): boolean
   Checks whether the input evaluates to `true`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  check.isTruthy(true); // true
-  check.isTruthy("text"); // true
-  check.isTruthy(new Object()); // true
+  cheek.isTruthy(true); // true
+  cheek.isTruthy("text"); // true
+  cheek.isTruthy(new Object()); // true
   ```
 
-- ### check.isFalsy(input): boolean
+- ### cheek.isFalsy(input): boolean
   Checks whether the input evaluates to `false`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  check.isFalsy(true); // false
-  check.isFalsy(""); // true
-  check.isFalsy([]); // false
+  cheek.isFalsy(true); // false
+  cheek.isFalsy(""); // true
+  cheek.isFalsy([]); // false
   ```
 
-  _reversed `check.isTruthy()`_
+  _reversed `cheek.isTruthy()`_
 
-- ### check.isTrue(input): boolean
+- ### cheek.isTrue(input): boolean
   Checks whether the input is exactly `true`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  check.isTrue(true); // true
-  check.isTrue(new Boolean()); // false
-  check.isTrue(42); // false
-  check.isTrue(undefined); // false
+  cheek.isTrue(true); // true
+  cheek.isTrue(new Boolean()); // false
+  cheek.isTrue(42); // false
+  cheek.isTrue(undefined); // false
   ```
 
-- ### check.isFalse(input): boolean
+- ### cheek.isFalse(input): boolean
   Checks whether the input is exactly `false`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  check.isFalse(true); // false
-  check.isFalse(new Boolean()); // true
-  check.isFalse(42); // false
-  check.isFalse(null); // false
+  cheek.isFalse(true); // false
+  cheek.isFalse(new Boolean()); // true
+  cheek.isFalse(42); // false
+  cheek.isFalse(null); // false
   ```

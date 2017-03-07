@@ -1,6 +1,6 @@
 "use strict";
 
-let check = {
+let cheek = {
 
 	// GENERAL
 
@@ -9,15 +9,15 @@ let check = {
 	},
 
 	isFalsy(input) {
-		return !check.isTruthy(input);
+		return !cheek.isTruthy(input);
 	},
 
 	isTrue(input) {
-		return check.isBoolean(input) && input == true;
+		return cheek.isBoolean(input) && input == true;
 	},
 
 	isFalse(input) {
-		return check.isBoolean(input) && input == false;
+		return cheek.isBoolean(input) && input == false;
 	},
 
 	// EXISTANCE
@@ -31,15 +31,15 @@ let check = {
 	},
 
 	isNotNull(input) {
-		return !check.isNull(input);
+		return !cheek.isNull(input);
 	},
 
 	isDefined(input) {
-		return !check.isUndefined(input) && check.isNotNull(input);
+		return !cheek.isUndefined(input) && cheek.isNotNull(input);
 	},
 
 	isNotDefined(input) {
-		return !check.isDefined(input);
+		return !cheek.isDefined(input);
 	},
 
 	// TYPES
@@ -49,69 +49,69 @@ let check = {
 	},
 
 	isNot(Type, input) {
-		return !check.is(Type, input);
+		return !cheek.is(Type, input);
 	},
 
 	isEither(types, input) {
-		return types.some(Type => check.is(Type, input));
+		return types.some(Type => cheek.is(Type, input));
 	},
 
 	isNeither(types, input) {
-		return !check.isEither(types, input);
+		return !cheek.isEither(types, input);
 	},
 
 	// ***
 
 	isPrimitive(input) {
-		return check.isNotDefined(input) || check.isNot(Object, input);
+		return cheek.isNotDefined(input) || cheek.isNot(Object, input);
 	},
 
 	isObject(input) {
-		return !check.isPrimitive(input);
+		return !cheek.isPrimitive(input);
 	},
 
 	// ***
 
 	isString(input) {
-		return check.is(String, input);
+		return cheek.is(String, input);
 	},
 
 	isNotString(input) {
-		return !check.isString(input);
+		return !cheek.isString(input);
 	},
 
 	isNumber(input) {
-		return check.is(Number, input);
+		return cheek.is(Number, input);
 	},
 
 	isNotNumber(input) {
-		return !check.isNumber(input);
+		return !cheek.isNumber(input);
 	},
 
 	isArray(input) {
-		return Array.isArray? Array.isArray(input) : check.is(Array, input);
+		return Array.isArray? Array.isArray(input) : cheek.is(Array, input);
 	},
 
 	isNotArray(input) {
-		return !check.isArray(input);
+		return !cheek.isArray(input);
 	},
 
 	isBoolean(input) {
-		return check.is(Boolean, input);
+		return cheek.is(Boolean, input);
 	},
 
 	isNotBoolean(input) {
-		return !check.isBoolean(input);
+		return !cheek.isBoolean(input);
 	},
 
 	// ARRAY
 
 	isEmpty(array) {
-		return check.isArray(array) && (!array.length || array.every(check.isNotDefined));
+		return cheek.isArray(array) && (!array.length || array.every(cheek.isNotDefined));
 	},
 
 	isNotEmpty(array) {
-		return check.isArray(array) && !!array.length && array.every(check.isDefined);
+		return cheek.isArray(array) && !!array.length && array.every(cheek.isDefined);
 	},
 
 	// NUMBER
@@ -121,7 +121,7 @@ let check = {
 	},
 
 	isNotNaN(input) {
-		return !check.isNaN(input);
+		return !cheek.isNaN(input);
 	},
 
 	isFinite(input) {
@@ -129,33 +129,33 @@ let check = {
 	},
 
 	isNotFinite(input) {
-		return !check.isFinite(input);
+		return !cheek.isFinite(input);
 	},
 
 	// ***
 
 	isInteger(input) {
-		return Number.isInteger? Number.isInteger(input) : check.isDivisibleBy(input, 1);
+		return Number.isInteger? Number.isInteger(input) : cheek.isDivisibleBy(input, 1);
 	},
 
 	isNotInteger(input) {
-		return !check.isInteger(input);
+		return !cheek.isInteger(input);
 	},
 
 	isNatural(input, zero = true) {
-		return check.isInteger(input) && (zero? check.isNonNegative(input) : check.isPositive(input));
+		return cheek.isInteger(input) && (zero? cheek.isNonNegative(input) : cheek.isPositive(input));
 	},
 
 	isNotNatural(input, zero = true) {
-		return !check.isNatural(input, zero);
+		return !cheek.isNatural(input, zero);
 	},
 
 	isPercent(input) {
-		return check.isInRange(input, [0, 1], "inclusively");
+		return cheek.isInRange(input, [0, 1], "inclusively");
 	},
 
 	isNotPercent(input) {
-		return !check.isPercent(input);
+		return !cheek.isPercent(input);
 	},
 
 	// ***
@@ -165,7 +165,7 @@ let check = {
 	},
 
 	isEqualToAny(input, operands) {
-		return operands.some(operand => check.isEqualTo(input, operand));
+		return operands.some(operand => cheek.isEqualTo(input, operand));
 	},
 
 	isGreaterThan(input, operand) {
@@ -191,7 +191,7 @@ let check = {
 	},
 
 	isNotPositive(input) {
-		return !check.isPositive(input);
+		return !cheek.isPositive(input);
 	},
 
 	isNegative(input) {
@@ -199,7 +199,7 @@ let check = {
 	},
 
 	isNotNegative(input) {
-		return !check.isNegative(input);
+		return !cheek.isNegative(input);
 	},
 
 	// ***
@@ -209,7 +209,7 @@ let check = {
 	},
 
 	isNotDivisibleBy(numerator, denominator) {
-		return !check.isDivisibleBy(numerator, denominator);
+		return !cheek.isDivisibleBy(numerator, denominator);
 	},
 
 	// ***
@@ -220,7 +220,7 @@ let check = {
 	},
 
 	isNotInRange(input, range, inclusively = true) {
-		return !check.isInRange(input, range, inclusively);
+		return !cheek.isInRange(input, range, inclusively);
 	},
 
 	// BUNDLE
@@ -228,13 +228,13 @@ let check = {
 	bundle(inputs, methodNames) {
 
 		function getMethodByName(methodName) {
-			let method = check[methodName];
+			let method = cheek[methodName];
 
 			if (!method)
-				throw new ReferenceError(`'check.${methodName}' is not a function`);
+				throw new ReferenceError(`'cheek.${methodName}' is not a function`);
 
 			else if (method.length > 1)
-				throw new SyntaxError(`Not enough arguments for method 'check.${methodName}' to proceed`);
+				throw new SyntaxError(`Not enough arguments for method 'cheek.${methodName}' to proceed`);
 
 			else return method;
 		}
@@ -245,19 +245,19 @@ let check = {
 	},
 
 	everyMethod(input, methodNames) {
-		return check.bundle([input], methodNames)[0].every(Boolean);
+		return cheek.bundle([input], methodNames)[0].every(Boolean);
 	},
 
 	someMethod(input, methodNames) {
-		return check.bundle([input], methodNames)[0].some(Boolean);
+		return cheek.bundle([input], methodNames)[0].some(Boolean);
 	},
 
 	everyInput(methodName, inputs) {
-		return check.bundle(inputs, [methodName]).map(result => result[0]).every(Boolean);
+		return cheek.bundle(inputs, [methodName]).map(result => result[0]).every(Boolean);
 	},
 
 	someInput(methodName, inputs) {
-		return check.bundle(inputs, [methodName]).map(result => result[0]).some(Boolean);
+		return cheek.bundle(inputs, [methodName]).map(result => result[0]).some(Boolean);
 	},
 
 	// OTHER
@@ -267,22 +267,22 @@ let check = {
 			get(obj, method) {
 				switch (method) {
 					default:
-						return (...args) => check[method](input, ...args);
+						return (...args) => cheek[method](input, ...args);
 
 					case "is":
 					case "isNot":
 					case "isEither":
 					case "isNeither":
-						return (TypeOrTypes) => check[method](TypeOrTypes, input);
+						return (TypeOrTypes) => cheek[method](TypeOrTypes, input);
 
 					case "everyMethod":
 					case "someMethod":
-						return (methodNames) => check[method](input, methodNames); // TODO: Update when the function signatures are changed
+						return (methodNames) => cheek[method](input, methodNames); // TODO: Update when the function signatures are changed
 
 					case "bundle":
 					case "everyInput":
 					case "someInput":
-						throw new TypeError(`The method 'check.${method}' requires multiple inputs and cannot be performed via 'check.input( ... )'`);
+						throw new TypeError(`The method 'cheek.${method}' requires multiple inputs and cannot be performed via 'cheek.input( ... )'`);
 				}
 			}
 		});
@@ -290,17 +290,17 @@ let check = {
 };
 
 // Setting alias
-check.eq = check.equals = check.isEqualTo;
-check.eqa = check.isEqualToAny;
-check.gt = check.isGreaterThan;
-check.gte = check.isGreaterThanOrEqualTo;
-check.lt = check.isLessThan;
-check.lte = check.isLessThanOrEqualTo;
+cheek.eq = cheek.equals = cheek.isEqualTo;
+cheek.eqa = cheek.isEqualToAny;
+cheek.gt = cheek.isGreaterThan;
+cheek.gte = cheek.isGreaterThanOrEqualTo;
+cheek.lt = cheek.isLessThan;
+cheek.lte = cheek.isLessThanOrEqualTo;
 
-check.isInfinite = check.isNotFinite;
-check.isIndivisibleBy = check.isNotDivisibleBy;
-check.isNotFloat = check.isInteger;
-check.isFloat = check.isNotInteger;
-check.isNonNegative = check.isNotNegative;
+cheek.isInfinite = cheek.isNotFinite;
+cheek.isIndivisibleBy = cheek.isNotDivisibleBy;
+cheek.isNotFloat = cheek.isInteger;
+cheek.isFloat = cheek.isNotInteger;
+cheek.isNonNegative = cheek.isNotNegative;
 
-module.exports = check;
+module.exports = cheek;

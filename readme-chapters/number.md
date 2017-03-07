@@ -29,6 +29,110 @@ _24 more methods in the chapter Number_
 
   _reversed `check.isNaN()`_  
 
+- ### check.isFinite(input: number): boolean
+  Checks whether the input is a finite number
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isFinite(42); // true
+  check.isFinite(NaN); // false
+  check.isFinite(new Object()); // false
+  ```
+
+- ### check.isNotFinite(input: number): boolean
+  Returns `true` if the input is not a finite number  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isNotFinite(5) // false
+  check.isNotFinite(NaN) // true
+  check.isNotFinite(new Object()) // true
+  ```
+
+  _reversed `check.isFinite()`_  
+  _alias: `check.isInfinite()`_  
+
+- ### check.isInteger(input: number): boolean
+  Checks whether the input is an integer  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isInteger(42); // true
+  check.isInteger(42.5); // false
+  check.isInteger(0); // true
+  ```
+
+  _alias: `check.isNotFloat()`_  
+
+- ### check.isNotInteger(input: number): boolean
+  Returns `true` if the input is not an integer  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isNotInteger(42); // false
+  check.isNotInteger(42.5); // true
+  check.isNotInteger(0.0); // false
+  ```
+
+  _reversed `check.isInteger()`_  
+  _alias: `check.isFloat()`_  
+
+- ### check.isNatural(input: number, zero: boolean = true): boolean
+  Checks whether the input is finite number without fractional part which is greater than (or equal to) zero  
+  @param `input` Test value
+  @param zero If undefined or `true`, zero is considered as natural number
+
+  #### Examples:
+  ```javascript
+  check.isNatural(5); // true
+  check.isNatural(42.5); // false
+  check.isNatural(-0); // true
+  check.isNatural(0, false); // false
+  ```
+
+- ### check.isNotNatural(input: number, zero: boolean = true): boolean
+  Returns `true` if input is either infinite, or has a fractional part, or less than (or equal to) zero
+  @param `input` Test value
+  @param zero If undefined or `true`, zero is considered as natural number
+
+  #### Examples:
+  ```javascript
+  check.isNotNatural(5); // false
+  check.isNotNatural(42.5); // true
+  check.isNotNatural(0); // false
+  check.isNotNatural(0, false); // true
+  ```
+
+  _reversed `check.isNatural()`_  
+
+- ### check.isPercent(input: number): boolean
+  Checks whether the input is a fraction between 0 and 1 inclusively  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isPercent(0.42); // true
+  check.isPercent(42); // false
+  check.isPercent(0.0); // true
+  ```
+
+- ### check.isNotPercent(input: number): boolean
+  Returns 'true' if the input is not a fraction between 0 and 1 inclusively  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isNotPercent(0.5); // false
+  check.isNotPercent(5); // true
+  check.isNotPercent(-0.0); // false
+  ```
+
+  _reversed `check.isPercent()`_  
+
 - ### check.isEqualTo(input: number, operand: number): boolean
   Checks whether the input is equal to the operand.  
   Values of `input` and `operand` are interchangeable.  
@@ -120,135 +224,6 @@ _24 more methods in the chapter Number_
 
   _alias: `check.lte()`_  
 
-- ### check.isFinite(input: number): boolean
-  Checks whether the input is a finite number
-  @param `input` Test value
-
-  #### Examples:
-  ```javascript
-  check.isFinite(42); // true
-  check.isFinite(NaN); // false
-  check.isFinite(new Object()); // false
-  ```
-
-- ### check.isNotFinite(input: number): boolean
-  Returns `true` if the input is not a finite number  
-  @param `input` Test value
-
-  #### Examples:
-  ```javascript
-  check.isNotFinite(5) // false
-  check.isNotFinite(NaN) // true
-  check.isNotFinite(new Object()) // true
-  ```
-
-  _reversed `check.isFinite()`_  
-  _alias: `check.isInfinite()`_  
-
-- ### check.isDivisibleBy(numerator: number, denominator: number): boolean
-  Checks whether `numerator` is divisible by `denominator`  
-  @param `input` Test value
-
-  #### Examples:
-  ```javascript
-  check.isDivisibleBy(42, 5); // false
-  check.isDivisibleBy(40, 5); // true
-  check.isDivisibleBy(0, 0); // true
-  ```
-
-- ### check.isNotDivisibleBy(numerator: number, denominator: number): boolean
-  Returns `true` if `numerator` is not divisible by `denominator`  
-  @param `input` Test value
-
-  #### Examples:
-  ```javascript
-  check.isNotDivisibleBy(42, 5); // true
-  check.isNotDivisibleBy(40, 5); // false
-  check.isNotDivisibleBy(0, 0); // false
-  ```
-
-  _reversed `check.isDivisibleBy()`_  
-  _alias: `check.isIndivisibleBy()`_  
-
-- ### check.isInteger(input: number): boolean
-  Checks whether the input is an integer  
-  @param `input` Test value
-
-  #### Examples:
-  ```javascript
-  check.isInteger(42); // true
-  check.isInteger(42.5); // false
-  check.isInteger(0); // true
-  ```
-
-  _alias: `check.isNotFloat()`_  
-
-- ### check.isNotInteger(input: number): boolean
-  Returns `true` if the input is not an integer  
-  @param `input` Test value
-
-  #### Examples:
-  ```javascript
-  check.isNotInteger(42); // false
-  check.isNotInteger(42.5); // true
-  check.isNotInteger(0.0); // false
-  ```
-
-  _reversed `check.isInteger()`_  
-  _alias: `check.isFloat()`_  
-
-- ### check.isNatural(input: number, zero: boolean = true): boolean
-  Checks whether the input is finite number without fractional part which is greater than (or equal to) zero  
-  @param `input` Test value
-  @param zero If undefined or `true`, zero is considered as natural number
-
-  #### Examples:
-  ```javascript
-  check.isNatural(5); // true
-  check.isNatural(42.5); // false
-  check.isNatural(-0); // true
-  check.isNatural(0, false); // false
-  ```
-
-- ### check.isNotNatural(input: number, zero: boolean = true): boolean
-  Returns `true` if input is either infinite, or has a fractional part, or less than (or equal to) zero
-  @param `input` Test value
-  @param zero If undefined or `true`, zero is considered as natural number
-
-  #### Examples:
-  ```javascript
-  check.isNotNatural(5); // false
-  check.isNotNatural(42.5); // true
-  check.isNotNatural(0); // false
-  check.isNotNatural(0, false); // true
-  ```
-
-  _reversed `check.isNatural()`_  
-
-- ### check.isPercent(input: number): boolean
-  Checks whether the input is a fraction between 0 and 1 inclusively  
-  @param `input` Test value
-
-  #### Examples:
-  ```javascript
-  check.isPercent(0.42); // true
-  check.isPercent(42); // false
-  check.isPercent(0.0); // true
-  ```
-
-- ### check.isNotPercent(input: number): boolean
-  Returns 'true' if the input is not a fraction between 0 and 1 inclusively  
-  @param `input` Test value
-
-  #### Examples:
-  ```javascript
-  check.isNotPercent(0.5); // false
-  check.isNotPercent(5); // true
-  check.isNotPercent(-0.0); // false
-  ```
-
-  _reversed `check.isPercent()`_  
-
 - ### check.isPositive(input: number): boolean
   Checks whether the input is greater than zero  
   @param `input` Test value
@@ -299,6 +274,31 @@ _24 more methods in the chapter Number_
   _reversed `check.isNegative()`_  
   _alias: `check.isNonNegative()`_  
   _not to be confused with `check.isPositive()`_  
+
+- ### check.isDivisibleBy(numerator: number, denominator: number): boolean
+  Checks whether `numerator` is divisible by `denominator`  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isDivisibleBy(42, 5); // false
+  check.isDivisibleBy(40, 5); // true
+  check.isDivisibleBy(0, 0); // true
+  ```
+
+- ### check.isNotDivisibleBy(numerator: number, denominator: number): boolean
+  Returns `true` if `numerator` is not divisible by `denominator`  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  check.isNotDivisibleBy(42, 5); // true
+  check.isNotDivisibleBy(40, 5); // false
+  check.isNotDivisibleBy(0, 0); // false
+  ```
+
+  _reversed `check.isDivisibleBy()`_  
+  _alias: `check.isIndivisibleBy()`_  
 
 - ### check.isInRange(input: number, range: number[], inclusively: boolean | "inclusive" | "exclusive" | "excl" = true): boolean
   Checks whether the input is in provided range  

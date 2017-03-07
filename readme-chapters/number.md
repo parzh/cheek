@@ -2,7 +2,7 @@
 
 ## Number
 - ### check.isNaN(input: number): boolean
-  Checks whether the input is exactly `NaN`
+  Checks whether the input is exactly `NaN`  
   @param `input` Test value
 
   #### Examples:
@@ -28,7 +28,7 @@
   _reversed `check.isNaN()`_  
 
 - ### check.isFinite(input: number): boolean
-  Checks whether the input is a finite number
+  Checks whether the input is a finite number  
   @param `input` Test value
 
   #### Examples:
@@ -81,7 +81,7 @@
 
 - ### check.isNatural(input: number, zero: boolean = true): boolean
   Checks whether the input is finite number without fractional part which is greater than (or equal to) zero  
-  @param `input` Test value
+  @param `input` Test value  
   @param zero If undefined or `true`, zero is considered as natural number
 
   #### Examples:
@@ -93,8 +93,8 @@
   ```
 
 - ### check.isNotNatural(input: number, zero: boolean = true): boolean
-  Returns `true` if input is either infinite, or has a fractional part, or less than (or equal to) zero
-  @param `input` Test value
+  Returns `true` if input is either infinite, or has a fractional part, or less than (or equal to) zero  
+  @param `input` Test value  
   @param zero If undefined or `true`, zero is considered as natural number
 
   #### Examples:
@@ -151,7 +151,7 @@
   _alias: `check.eq()`, `check.equals()`_  
 
 - ### check.isEqualToAny(input: number, operands: number[]): boolean
-  Checks whether the input is equal to any of the operands
+  Checks whether the input is equal to any of the operands  
   @param `input` Test value  
   @param `oparends` An array of comparison values  
 
@@ -168,7 +168,7 @@
 
 - ### check.isGreaterThan(input: number, operand: number): boolean
   Checks whether the input is greater than the operand  
-  @param `input` Test value
+  @param `input` Test value  
   @param `operand` Comparison value  
 
   #### Examples:
@@ -182,7 +182,7 @@
 
 - ### check.isGreaterThanOrEqualTo(input: number, operand: number): boolean
   Checks whether the input is greater than or equal to the operand  
-  @param `input` Test value
+  @param `input` Test value  
   @param `operand` Comparison value  
 
   #### Examples:
@@ -196,7 +196,7 @@
 
 - ### check.isLessThan(input: number, operand: number): boolean
   Checks whether the input is less than the operand  
-  @param `input` Test value
+  @param `input` Test value  
   @param `operand` Comparison value  
 
   #### Examples:
@@ -210,7 +210,7 @@
 
 - ### check.isLessThanOrEqualTo(input: number, operand: number): boolean
   Checks whether the input is less than or equal to the operand  
-  @param `input` Test value
+  @param `input` Test value  
   @param `operand` Comparison value  
 
   #### Examples:
@@ -300,8 +300,8 @@
 
 - ### check.isInRange(input: number, range: number[], inclusively: boolean | "inclusive" | "exclusive" | "excl" = true): boolean
   Checks whether the input is in provided range  
-  @param `input` Test value
-  @param `range` Array of two numbers: min and max value of range
+  @param `input` Test value  
+  @param `range` Array of two numbers: min and max value of range  
   @param `inclusively` If `true`, edge-matching will return `true`
 
   #### Examples:
@@ -313,8 +313,8 @@
 
 - ### check.isNotInRange(input: number, range: number[], inclusively: boolean | "inclusive" | "exclusive" | "excl" = true): boolean
   Returns `true` if the input is not in provided range  
-  @param `input` Test value
-  @param `range` Array of two numbers: min and max value of range
+  @param `input` Test value  
+  @param `range` Array of two numbers: min and max value of range  
   @param `inclusively` If `true`, edge-matching will return `true`
 
   #### Examples:

@@ -1,477 +1,306 @@
 "use strict";
 
-let check = {};
-
-// GENERAL
-
-/** Checks whether the input evaluates to 'true'
-	@param input Test value
-	*/
-check.isTruthy = function(input) {
-	return new Boolean(input).valueOf();
-};
-
-/** Checks whether the input evaluates to 'false'
-	@param input Test value
-	*/
-check.isFalsy = function(input) {
-	return !check.isTruthy(input);
-};
-
-/** Checks whether the input is exactly 'true'
-	@param input Test value
-	*/
-check.isTrue = function(input) {
-	return check.isBoolean(input) && input == true;
-};
-
-/** Checks whether the input is exactly 'false'
-	@param input Test value
-	*/
-check.isFalse = function(input) {
-	return check.isBoolean(input) && input == false;
-};
-
-// EXISTANCE
-
-/** Checks whether the input is exactly 'undefined'.
-	Not to be confused with 'check.isNotDefined'.
-	@param input Test value
-	*/
-check.isUndefined = function(input) {
-	return typeof input === "undefined";
-};
-
-/** Checks whether the input is exactly 'null'
-	@param input Test value
-	*/
-check.isNull = function(input) {
-	return input === null;
-};
-
-/** Returns 'true' if the input is anything but 'null'
-	@param input Test value
-	*/
-check.isNotNull = function(input) {
-	return !check.isNull(input);
-};
-
-/** Checks whether the input is neither 'undefined' nor 'null'
-	@param input Test value
-	*/
-check.isDefined = function(input) {
-	return !check.isUndefined(input) && check.isNotNull(input);
-};
-
-/** Returns 'true' if the input is either 'undefined' or 'null'.
-	Not to be confused with 'check.isUndefined'.
-	@param input Test value
-	*/
-check.isNotDefined = function(input) {
-	return !check.isDefined(input);
-};
-
-// TYPES
-
-/** Checks whether the input is an instance of provided class
-	@param Type Test class
-	@param input Test value
-	*/
-check.is = function(Type, input) {
-	return input instanceof Type || (typeof Symbol !== "undefined") && Type[Symbol.hasInstance](input) || typeof input === Type.name.toLowerCase();
-};
-
-/** Returns 'true' if the input is not an instance of provided class
-	@param Type Test class
-	@param input Test value
-	*/
-check.isNot = function(Type, input) {
-	return !check.is(Type, input);
-};
-
-/** Checks whether the input is an instance of any of provided classes
-	@param types Array of test classes
-	@param input Test value
-	*/
-check.isEither = function(types, input) {
-	return types.some(Type => check.is(Type, input));
-};
-
-/** Returns 'true' if the input is not an instance of any of provided classes
-	@param types Array of test classes
-	@param input Test value
-	*/
-check.isNeither = function(types, input) {
-	return !check.isEither(types, input);
-};
-
-// ***
-
-/** Checks whether the input is a primitive value
-	@param input Test value
-	*/
-check.isPrimitive = function(input) {
-	return check.isNotDefined(input) || check.isNot(Object, input);
-};
-
-/** Returns 'true' if the input is not a primitive value
-	@param input Test value
-	*/
-check.isObject = function(input) {
-	return !check.isPrimitive(input);
-};
-
-// ***
-
-/** Checks whether the input is a string
-	@param input Test value
-	*/
-check.isString = function(input) {
-	return check.is(String, input);
-};
-
-/** Returns 'true' if the input is not a string
-	@param input Test value
-	*/
-check.isNotString = function(input) {
-	return !check.isString(input);
-};
-
-/** Checks whether the input is a number
-	@param input Test value
-	*/
-check.isNumber = function(input) {
-	return check.is(Number, input);
-};
-
-/** Returns 'true' if the input is not a number.
-	Not to be confused with 'check.isNaN'
-	@param input Test value
-	*/
-check.isNotNumber = function(input) {
-	return !check.isNumber(input);
-};
-
-/** Checks whether the input is an array
-	@param input Test value
-	*/
-check.isArray = function(input) {
-	return Array.isArray? Array.isArray(input) : check.is(Array, input);
-};
-
-/** Returns 'true' if the input is not an array
-	@param input Test value
-	*/
-check.isNotArray = function(input) {
-	return !check.isArray(input);
-};
-
-/** Checks whether the input is a boolean value
-	@param input Test value
-	*/
-check.isBoolean = function(input) {
-	return check.is(Boolean, input);
-};
-
-/** Returns 'true' if the input is not a boolean value
-	@param input Test value
-	*/
-check.isNotBoolean = function(input) {
-	return !check.isBoolean(input);
-};
-
-// ARRAY
-
-/** Checks whether the array is empty
-	@param array Test array
-	*/
-check.isEmpty = function(array) {
-	return check.isArray(array) && (!array.length || array.every(check.isNotDefined));
-};
-
-/** Returns 'true' if the array is not empty
-	@param array Test array
-	*/
-check.isNotEmpty = function(array) {
-	return check.isArray(array) && !!array.length && array.every(check.isDefined);
-};
-
-// NUMBER
-
-/** Checks whether the input is exactly 'NaN'.
-	Not to be confused with 'check.isNotNumber'
-	@param input Test value
-	*/
-check.isNaN = function(input) {
-	return (Number.isNaN || isNaN)(input);
-};
-
-/** Returns 'true' if the input is not 'NaN'
-	@param input Test value
-	*/
-check.isNotNaN = function(input) {
-	return !check.isNaN(input);
-};
-
-/**	Checks whether the input is equal to the operand
-	@param input Test value
-	@param operand Comparison value
-	*/
-check.isEqualTo = check.eq = check.equals = function(input, operand) {
-	return input === operand;
-};
-
-/**	Checks whether the input is equal to any of the operands
-	@param input Test value
-	@param operands Bunch of comparison values
-	*/
-check.isEqualToAny = check.eqa = function(input, operands) {
-	return operands.some(operand => check.isEqualTo(input, operand));
-};
-
-/**	Checks whether the input is greater than the operand
-	@param input Test value
-	@param operand Comparison value
-	*/
-check.isGreaterThan = check.gt = function(input, operand) {
-	return input > operand;
-};
-
-/**	Checks whether the input is greater than or equal to the operand
-	@param input Test value
-	@param operand Comparison value
-	*/
-check.isGreaterThanOrEqualTo = check.gte = function(input, operand) {
-	return input >= operand;
-};
-
-/**	Checks whether the input is less than the operand
-	@param input Test value
-	@param operand Comparison value
-	*/
-check.isLessThan = check.lt = function(input, operand) {
-	return input < operand;
-};
-
-/**	Checks whether the input is less than or equal to the operand
-	@param input Test value
-	@param operand Comparison value
-	*/
-check.isLessThanOrEqualTo = check.lte = function(input, operand) {
-	return input <= operand;
-};
-
-/** Checks whether the input is a finite number
-	@param input Test value
-	*/
-check.isFinite = function(input) {
-	return Number.isFinite(input);
-};
-
-/** Returns 'true' if the input is not a finite number
-	@param input Test value
-	*/
-check.isNotFinite = check.isInfinite = function(input) {
-	return !check.isFinite(input);
-};
-
-/** Checks whether 'numerator' is divisible by 'denominator'
-	@param numerator Will be divided by 'denominator'
-	@param denominator Will divide 'numerator'
-	*/
-check.isDivisibleBy = function(numerator, denominator) {
-	return !(numerator % denominator);
-};
-
-/** Returns 'true' if 'numerator' is not divisible by 'denominator'
-	@param numerator Will be divided by 'denominator'
-	@param denominator Will divide 'numerator'
-	*/
-check.isNotDivisibleBy = check.isIndivisibleBy = function(numerator, denominator) {
-	return !check.isDivisibleBy(numerator, denominator);
-};
-
-/**	Checks whether the input is an integer
-	@param input Test value
-	*/
-check.isInteger = check.isNotFloat = function(input) {
-	return Number.isInteger? Number.isInteger(input) : check.isDivisibleBy(input, 1);
-};
-
-/**	Returns 'true' if the input is not an integer
-	@param input Test value
-	*/
-check.isNotInteger = check.isFloat = function(input) {
-	return !check.isInteger(input);
-};
-
-/** Checks whether the input is finite number without fractional part, and greater than [or equal to] zero
-	@param input Test value
-	@param zero If not defined or 'true', zero is considered as natural number
-	*/
-check.isNatural = function(input, zero = true) {
-	return check.isInteger(input) && (zero? check.isNonNegative(input) : check.isPositive(input));
-};
-
-/** Returns 'true' if input is either infinite, or has a fractional part, or less than [or equal to] zero
-	@param input Test value
-	@param zero If not defined or 'true', zero is considered as natural number
-	*/
-check.isNotNatural = function(input, zero = true) {
-	return !check.isNatural(input, zero);
-};
-
-/**	Checks whether the input is a fraction between 0 and 1 inclusively
-	@param input Test value
-	*/
-check.isPercent = function(input) {
-	return check.isInRange(input, [0, 1], "inclusively");
-};
-
-/**	Returns 'true' if the input is not a fraction between 0 and 1 inclusively
-	@param input Test value
-	*/
-check.isNotPercent = function(input) {
-	return !check.isPercent(input);
-};
-
-/**	Checks whether the input is greater than zero
-	@param input Test value
-	*/
-check.isPositive = function(input) {
-	return input > 0;
-};
-
-/**	Returns 'true' if the input is less than or equal to zero.
-	Not to be confused with 'check.isNegative'.
-	@param input Test value
-	*/
-check.isNotPositive = function(input) {
-	return !check.isPositive(input);
-};
-
-/**	Checks whether the input is less than zero
-	@param input Test value
-	*/
-check.isNegative = function(input) {
-	return input < 0;
-};
-
-/**	Checks whether the input is greater than or equal to zero.
-	Not to be confused with 'check.isPositive'.
-	@param input Test value
-	*/
-check.isNotNegative = check.isNonNegative = function(input) {
-	return !check.isNegative(input);
-};
-
-/** Checks whether the input is in provided range inclusively or exclusively
-	@param input Test value
-	@param range Array of two numbers: min and max value of range
-	@param inclusively If 'true', edge-matching will return 'true'
-	*/
-check.isInRange = function(input, range, inclusively = true) {
-	inclusively = /^excl/i.test(inclusively)? false : !!inclusively;
-	return inclusively? (input >= range[0] && input <= range[1]) : (input > range[0] && input < range[1]);
-};
-
-/** Returns 'true' if the input is not in provided range inclusively or exclusively
-	@param input Test value
-	@param range Array of two numbers: min and max value of range
-	@param inclusively If 'true' edge-matching will return 'true'
-	*/
-check.isNotInRange = function(input, range, inclusively = true) {
-	return !check.isInRange(input, range, inclusively);
-};
-
-// BUNDLE
-
-/** Returns a two-dimensional array of input-method verifications
-	@param inputs An array of test values
-	@param methodNames An array of 'check' object methods names
-	*/
-check.bundle = function(inputs, methodNames) {
-
-	function getMethodByName(methodName) {
-		let method = check[methodName];
-
-		if (!method)
-			throw new ReferenceError(`'check.${methodName}' is not a function`);
-
-		else if (method.length > 1)
-			throw new SyntaxError(`Not enough arguments for method 'check.${methodName}' to proceed`);
-
-		else return method;
-	}
-
-	let methods = methodNames.map(getMethodByName);
-
-	return inputs.map(input => methods.map(method => method(input)));
-};
-
-/** Returns 'true' if all of the verifications return 'true'
-	@param input Test value
-	@param methodNames An array of 'check' object methods names
-	*/
-check.everyMethod = function(input, methodNames) {
-	return check.bundle([input], methodNames)[0].every(Boolean);
-};
-
-/** Returns 'true' if any of provided verifications returns 'true'
-	@param input Test value
-	@param methodNames An array of 'check' object methods names
-	*/
-check.someMethod = function(input, methodNames) {
-	return check.bundle([input], methodNames)[0].some(Boolean);
-};
-
-/** Returns 'true' if all input values comply with requirement.
-	Consider the order of arguments.
-	@param methodName Function name without 'check.' part
-	@param inputs An array of test values
-	*/
-check.everyInput = function(methodName, inputs) {
-	return check.bundle(inputs, [methodName]).map(result => result[0]).every(Boolean);
-};
-
-/** Returns 'true' if any of input values complies with requirement.
-	Consider the order of arguments.
-	@param methodName Function name without 'check.' part
-	@param inputs An array of test values
-	*/
-check.someInput = function(methodName, inputs) {
-	return check.bundle(inputs, [methodName]).map(result => result[0]).some(Boolean);
-};
-
-// OTHER
-
-/** Returns Proxy object that allows to perform validations directly on itself
-	@param input Test value
-	*/
-check.input = function(input) {
-	return new Proxy({}, {
-		get(obj, method) {
-			switch (method) {
-				default:
-					return (...args) => check[method](input, ...args);
-
-				case "is":
-				case "isNot":
-				case "isEither":
-				case "isNeither":
-					return (TypeOrTypes) => check[method](TypeOrTypes, input);
-
-				case "everyMethod":
-				case "someMethod":
-					return (methodNames) => check[method](input, methodNames); // TODO: Update when the function signatures are changed
-
-				case "bundle":
-				case "everyInput":
-				case "someInput":
-					throw new TypeError(`The method 'check.${method}' requires multiple inputs and cannot be performed via 'check.input( ... )'`);
-			}
+let check = {
+
+	// GENERAL
+
+	isTruthy(input) {
+		return new Boolean(input).valueOf();
+	},
+
+	isFalsy(input) {
+		return !check.isTruthy(input);
+	},
+
+	isTrue(input) {
+		return check.isBoolean(input) && input == true;
+	},
+
+	isFalse(input) {
+		return check.isBoolean(input) && input == false;
+	},
+
+	// EXISTANCE
+
+	isUndefined(input) {
+		return typeof input === "undefined";
+	},
+
+	isNull(input) {
+		return input === null;
+	},
+
+	isNotNull(input) {
+		return !check.isNull(input);
+	},
+
+	isDefined(input) {
+		return !check.isUndefined(input) && check.isNotNull(input);
+	},
+
+	isNotDefined(input) {
+		return !check.isDefined(input);
+	},
+
+	// TYPES
+
+	is(Type, input) {
+		return input instanceof Type || (typeof Symbol !== "undefined") && Type[Symbol.hasInstance](input) || typeof input === Type.name.toLowerCase();
+	},
+
+	isNot(Type, input) {
+		return !check.is(Type, input);
+	},
+
+	isEither(types, input) {
+		return types.some(Type => check.is(Type, input));
+	},
+
+	isNeither(types, input) {
+		return !check.isEither(types, input);
+	},
+
+	// ***
+
+	isPrimitive(input) {
+		return check.isNotDefined(input) || check.isNot(Object, input);
+	},
+
+	isObject(input) {
+		return !check.isPrimitive(input);
+	},
+
+	// ***
+
+	isString(input) {
+		return check.is(String, input);
+	},
+
+	isNotString(input) {
+		return !check.isString(input);
+	},
+
+	isNumber(input) {
+		return check.is(Number, input);
+	},
+
+	isNotNumber(input) {
+		return !check.isNumber(input);
+	},
+
+	isArray(input) {
+		return Array.isArray? Array.isArray(input) : check.is(Array, input);
+	},
+
+	isNotArray(input) {
+		return !check.isArray(input);
+	},
+
+	isBoolean(input) {
+		return check.is(Boolean, input);
+	},
+
+	isNotBoolean(input) {
+		return !check.isBoolean(input);
+	},
+
+	// ARRAY
+
+	isEmpty(array) {
+		return check.isArray(array) && (!array.length || array.every(check.isNotDefined));
+	},
+
+	isNotEmpty(array) {
+		return check.isArray(array) && !!array.length && array.every(check.isDefined);
+	},
+
+	// NUMBER
+
+	isNaN(input) {
+		return (Number.isNaN || isNaN)(input);
+	},
+
+	isNotNaN(input) {
+		return !check.isNaN(input);
+	},
+
+	isFinite(input) {
+		return Number.isFinite(input);
+	},
+
+	isNotFinite(input) {
+		return !check.isFinite(input);
+	},
+
+	// ***
+
+	isInteger(input) {
+		return Number.isInteger? Number.isInteger(input) : check.isDivisibleBy(input, 1);
+	},
+
+	isNotInteger(input) {
+		return !check.isInteger(input);
+	},
+
+	isNatural(input, zero = true) {
+		return check.isInteger(input) && (zero? check.isNonNegative(input) : check.isPositive(input));
+	},
+
+	isNotNatural(input, zero = true) {
+		return !check.isNatural(input, zero);
+	},
+
+	isPercent(input) {
+		return check.isInRange(input, [0, 1], "inclusively");
+	},
+
+	isNotPercent(input) {
+		return !check.isPercent(input);
+	},
+
+	// ***
+
+	isEqualTo(input, operand) {
+		return input === operand;
+	},
+
+	isEqualToAny(input, operands) {
+		return operands.some(operand => check.isEqualTo(input, operand));
+	},
+
+	isGreaterThan(input, operand) {
+		return input > operand;
+	},
+
+	isGreaterThanOrEqualTo(input, operand) {
+		return input >= operand;
+	},
+
+	isLessThan(input, operand) {
+		return input < operand;
+	},
+
+	isLessThanOrEqualTo(input, operand) {
+		return input <= operand;
+	},
+
+	// ***
+
+	isPositive(input) {
+		return input > 0;
+	},
+
+	isNotPositive(input) {
+		return !check.isPositive(input);
+	},
+
+	isNegative(input) {
+		return input < 0;
+	},
+
+	isNotNegative(input) {
+		return !check.isNegative(input);
+	},
+
+	// ***
+
+	isDivisibleBy(numerator, denominator) {
+		return !(numerator % denominator);
+	},
+
+	isNotDivisibleBy(numerator, denominator) {
+		return !check.isDivisibleBy(numerator, denominator);
+	},
+
+	// ***
+
+	isInRange(input, range, inclusively = true) {
+		inclusively = /^excl/i.test(inclusively)? false : !!inclusively;
+		return inclusively? (input >= range[0] && input <= range[1]) : (input > range[0] && input < range[1]);
+	},
+
+	isNotInRange(input, range, inclusively = true) {
+		return !check.isInRange(input, range, inclusively);
+	},
+
+	// BUNDLE
+
+	bundle(inputs, methodNames) {
+
+		function getMethodByName(methodName) {
+			let method = check[methodName];
+
+			if (!method)
+				throw new ReferenceError(`'check.${methodName}' is not a function`);
+
+			else if (method.length > 1)
+				throw new SyntaxError(`Not enough arguments for method 'check.${methodName}' to proceed`);
+
+			else return method;
 		}
-	});
-}
+
+		let methods = methodNames.map(getMethodByName);
+
+		return inputs.map(input => methods.map(method => method(input)));
+	},
+
+	everyMethod(input, methodNames) {
+		return check.bundle([input], methodNames)[0].every(Boolean);
+	},
+
+	someMethod(input, methodNames) {
+		return check.bundle([input], methodNames)[0].some(Boolean);
+	},
+
+	everyInput(methodName, inputs) {
+		return check.bundle(inputs, [methodName]).map(result => result[0]).every(Boolean);
+	},
+
+	someInput(methodName, inputs) {
+		return check.bundle(inputs, [methodName]).map(result => result[0]).some(Boolean);
+	},
+
+	// OTHER
+
+	input(input) {
+		return new Proxy({}, {
+			get(obj, method) {
+				switch (method) {
+					default:
+						return (...args) => check[method](input, ...args);
+
+					case "is":
+					case "isNot":
+					case "isEither":
+					case "isNeither":
+						return (TypeOrTypes) => check[method](TypeOrTypes, input);
+
+					case "everyMethod":
+					case "someMethod":
+						return (methodNames) => check[method](input, methodNames); // TODO: Update when the function signatures are changed
+
+					case "bundle":
+					case "everyInput":
+					case "someInput":
+						throw new TypeError(`The method 'check.${method}' requires multiple inputs and cannot be performed via 'check.input( ... )'`);
+				}
+			}
+		});
+	}
+};
+
+// Setting alias
+check.eq = check.equals = check.isEqualTo;
+check.eqa = check.isEqualToAny;
+check.gt = check.isGreaterThan;
+check.gte = check.isGreaterThanOrEqualTo;
+check.lt = check.isLessThan;
+check.lte = check.isLessThanOrEqualTo;
+
+check.isInfinite = check.isNotFinite;
+check.isIndivisibleBy = check.isNotDivisibleBy;
+check.isNotFloat = check.isInteger;
+check.isFloat = check.isNotInteger;
+check.isNonNegative = check.isNotNegative;
 
 module.exports = check;

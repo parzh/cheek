@@ -7,44 +7,7 @@ Consider also that the library is baby-aged. Changes that occur may be pretty dr
 
 ## TODO:
 
-- swap arguments for bundle-check methods  
-
-  ```javascript
-  check.bundle(methodNames, inputs);
-  check.everyMethod(methodNames, inputs);
-  check.someMethod(methodNames, inputs);
-  ```
-
-- rename `check.isEmpty()` to `check.isEmptyArray()`
-
-- add methods:
-  - `check.isArraylike(input)` to the chapter Types
-  - to the chapter Array:
-    - `check.contains(array: any[], input)`
-    - `check.hasFirst(array: any[], input)`
-    - `check.hasLast(array: any[], input)`
-  - to the chapter String:
-    - `check.isEmptyString(input: string)`
-    - `check.containsChar(source: string, input: string)`
-    - `check.startsWith(source: string, input: string)`
-    - `check.endsWith(source: string, input: string)`
-  - to the chapter Number:
-    - `check.isZero(input: number)`
-  - to the chapter Other:
-    - `check.inputs(inputs: any[])` _(analogue of `check.bundle( ... )`)_
-    - `check.every(inputs: any[])` _(analogue of `check.everyInput( ... )`)_
-    - `check.some(inputs: any[])` _(analogue of `check.someInput( ... )`)_
-
-- add chaining to `check.input()`  
-
-  ```javascript
-  // should conjunction or disjunction be here?
-  check.input(42).isPrimitive().isNumber().isInRange([40, 50], "inclusively"); // true
-  ```
-
-- improve performance of `check.someMethod()` and `check.someInput()` methods
-
-***
+See [issues](https://github.com/parzh/check/issues).
 
 ## Chapters:
 

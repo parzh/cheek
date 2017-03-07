@@ -80,9 +80,9 @@
   _alias: `check.isFloat()`_  
 
 - ### check.isNatural(input: number, zero: boolean = true): boolean
-  Checks whether the input is finite number without fractional part which is greater than (or equal to) zero  
+  Checks whether the input is a natural number  
   @param `input` Test value  
-  @param zero If undefined or `true`, zero is considered as natural number
+  @param `zero` If undefined or `true`, zero is considered as natural number
 
   #### Examples:
   ```javascript
@@ -93,9 +93,9 @@
   ```
 
 - ### check.isNotNatural(input: number, zero: boolean = true): boolean
-  Returns `true` if input is either infinite, or has a fractional part, or less than (or equal to) zero  
+  Returns `true` if input not a natural number  
   @param `input` Test value  
-  @param zero If undefined or `true`, zero is considered as natural number
+  @param `zero` If undefined or `true`, zero **is** considered as natural number
 
   #### Examples:
   ```javascript

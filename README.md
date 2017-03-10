@@ -1,7 +1,7 @@
 # cheek
 #### Yet another value-validator in JavaScript ... Or is it?
 
-*___cheek___* (formerly *__check__*) provides an object (ideally called `cheek` in lowercase) which has various easey-to-use methods to verify and validate any value.  
+*___cheek___* (formerly *__check__*) provides an object (ideally called `cheek` in lowercase) which has various easy-to-use methods to verify and validate any value.  
 I'll describe them using TypeScript style for convenience. Just remember that it is the JavaScript here, and arguments are actually `argument: … | any`.  
 Consider also that the library is baby-aged. Changes that occur may be pretty dramatic.
 

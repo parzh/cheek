@@ -106,12 +106,60 @@ let cheek = {
 
 	// ARRAY
 
-	isEmpty(array) {
-		return cheek.isArray(array) && (!array.length || array.every(cheek.isNotDefined));
+	isEmptyArray(input) {
+		return cheek.isArray(input) && (!input.length || input.every(cheek.isNotDefined));
 	},
 
-	isNotEmpty(array) {
-		return cheek.isArray(array) && !!array.length && array.every(cheek.isDefined);
+	isNotEmptyArray(input) {
+		return cheek.isArray(input) && !!input.length && input.every(cheek.isDefined);
+	},
+
+	contains(array, element) {
+		return cheek.isArray(array) && !!~array.indexOf(element);
+	},
+
+	lacks(array, element) {
+		return cheek.isArray(array) && !~array.indexOf(element);
+	},
+	
+	isFirstIn(array, input) {
+		return cheek.isArray(array) && array[0] === input;
+	},
+	
+	isNotFirstIn(array, input) {
+		return cheek.isArray(array) && array[0] !== input;
+	},
+	
+	isLastIn(array, input) {
+		return cheek.isArray(array) && array[array.length - 1] === input;
+	},
+	
+	isNotLastIn(array, input) {
+		return cheek.isArray(array) && array[array.length - 1] !== input;
+	},
+
+	// STRING
+
+	isEmptyString(input) {
+		return cheek.isString(source) && !source.length;
+	},
+
+	isNotEmptyString(input) {
+		return cheek.isString(source) && !!source.length;
+	},
+
+	includes(source, substr) {
+		return cheek.isString(source) && !!~source.indexOf(substr);
+	},
+
+	/* no opposed method for '.includes()' */
+
+	startsWith(source, substr) {
+		return cheek.isString(source) && (source.startsWith? source.startsWith(substr) : !source.indexOf(substr));
+	},
+
+	endsWith(source, substr) {
+		return cheek.isString(source) && (source.startsWith? source.endsWith(substr) : source.lastIndexOf(substr) === source.length - substr.length);
 	},
 
 	// NUMBER

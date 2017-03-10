@@ -15,5 +15,6 @@ See [issues](https://github.com/parzh/cheek/issues).
 - [Existance](readme-chapters/existance.md)
 - [Types](readme-chapters/types.md)
 - [Array](readme-chapters/array.md)
+- [String](readme-chapters/string.md)
 - [Number](readme-chapters/number.md)
 - [Other](readme-chapters/other.md)

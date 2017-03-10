@@ -155,11 +155,11 @@ let cheek = {
 	/* no opposed method for '.includes()' */
 
 	startsWith(source, substr) {
-		return cheek.isString(source) && (source.startsWith? source.startsWith(substr) : !source.indexOf(substr));
+		return cheek.isString(source) && !source.indexOf(substr);
 	},
 
 	endsWith(source, substr) {
-		return cheek.isString(source) && (source.startsWith? source.endsWith(substr) : source.lastIndexOf(substr) === source.length - substr.length);
+		return cheek.isString(source) && (source.lastIndexOf(substr) === source.length - substr.length);
 	},
 
 	// NUMBER
@@ -173,7 +173,7 @@ let cheek = {
 	},
 
 	isFinite(input) {
-		return Number.isFinite(input);
+		return (Number.isFinite || isFinite)(input);
 	},
 
 	isNotFinite(input) {
@@ -183,7 +183,7 @@ let cheek = {
 	// ***
 
 	isInteger(input) {
-		return Number.isInteger? Number.isInteger(input) : cheek.isDivisibleBy(input, 1);
+		return cheek.isDivisibleBy(input, 1);
 	},
 
 	isNotInteger(input) {
@@ -248,6 +248,14 @@ let cheek = {
 
 	isNotNegative(input) {
 		return !cheek.isNegative(input);
+	},
+
+	isZero(input) {
+		return cheek.isNumber(input) && input == 0;
+	},
+
+	isNotZero(input) {
+		return !cheek.isZero(input);
 	},
 
 	// ***
@@ -345,6 +353,7 @@ cheek.gte = cheek.isGreaterThanOrEqualTo;
 cheek.lt = cheek.isLessThan;
 cheek.lte = cheek.isLessThanOrEqualTo;
 
+cheek.isNonZero = cheek.isNotZero;
 cheek.isInfinite = cheek.isNotFinite;
 cheek.isIndivisibleBy = cheek.isNotDivisibleBy;
 cheek.isNotFloat = cheek.isInteger;

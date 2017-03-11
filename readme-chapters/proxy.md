@@ -43,7 +43,7 @@ Each one of these methods returns Proxy object that allows to perform validation
   inputs.bundle(["isPrimitive", "isNumber"]);
   // [ [true, true], [true, true], [false, false], [true, false] ]
 
-  inputs.everyMethod(["isPrimitive", "isNumber"]); // false
+  inputs.everyInput("isPrimitive"); // false
 
   inputs.isNotDefined();
   // TypeError: The method 'cheek.isNotDefined' requires a single input. Use 'cheek.input( ... ).isNotDefined' instead

@@ -320,7 +320,7 @@
   Checks whether the input is in provided range  
   @param `input` Test value  
   @param `range` Array of two numbers: min and max value of range  
-  @param `inclusively` If `true`, edge-matching will return `true`
+  @param `inclusively` If undefined or `true`, edge-matching will return `true`
 
   #### Examples:
   ```javascript
@@ -333,7 +333,7 @@
   Returns `true` if the input is not in provided range  
   @param `input` Test value  
   @param `range` Array of two numbers: min and max value of range  
-  @param `inclusively` If `true`, edge-matching will return `true`
+  @param `inclusively` If undefined or `true`, edge-matching will return `false`
 
   #### Examples:
   ```javascript

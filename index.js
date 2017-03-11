@@ -307,18 +307,18 @@ let cheek = {
 
 	// BUNDLE
 
-	bundle(inputs, methodNames) {
+	bundle(methodNames, inputs) {
 		let methods = methodNames.map(methodName => getLongEnoughMethodByName({ methodName }));
 
 		return inputs.map(input => methods.map(method => method(input)));
 	},
 
-	everyMethod(input, methodNames) {
-		return cheek.bundle([input], methodNames)[0].every(Boolean);
+	everyMethod(methodNames, input) {
+		return cheek.bundle(methodNames, [input])[0].every(Boolean);
 	},
 
-	someMethod(input, methodNames) {
-		return cheek.bundle([input], methodNames)[0].some(Boolean);
+	someMethod(methodNames, input) {
+		return cheek.bundle(methodNames, [input])[0].some(Boolean);
 	},
 
 	everyInput(methodName, inputs) {
@@ -345,11 +345,9 @@ let cheek = {
 					case "isNot":
 					case "isEither":
 					case "isNeither":
-						return (TypeOrTypes) => cheek[methodName](TypeOrTypes, input);
-
 					case "everyMethod":
 					case "someMethod":
-						return (methodNames) => cheek[methodName](input, methodNames); // TODO: Update when the function signatures are changed
+						return (additional) => cheek[methodName](additional, input);
 
 					case "bundle":
 					case "everyInput":
@@ -372,11 +370,9 @@ let cheek = {
 						throw new TypeError(`The method 'cheek.${methodName}' requires a single input. Use 'cheek.input( ... ).${methodName}' instead`);
 
 					case "bundle":
-						return (methodNames) => cheek.bundle(inputs, methodNames);
-
 					case "everyInput":
 					case "someInput":
-						return (cheekMethodName) => cheek[methodName](cheekMethodName, inputs);
+						return (methodNameOrNames) => cheek[methodName](methodNameOrNames, inputs);
 				}
 			}
 		});

@@ -1,11 +1,11 @@
 [← Back to `README.md`](../README.md)
 
 ## Bundle
-- ### cheek.bundle(inputs: any[], methodNames: string[]): boolean[][]
+- ### cheek.bundle(methodNames: string[], inputs: any[]): boolean[][]
   Returns a two-dimensional array of input-method verifications.  
   The returned array contains the same number of arrays as `inputs` does.  
-  @param `inputs` An array of test values  
   @param `methodNames` An array of `cheek` object methods names  
+  @param `inputs` An array of test values  
 
   #### Examples:
   ```javascript
@@ -19,10 +19,10 @@
   // SyntaxError: Not enough arguments for method 'cheek.isInRange' to proceed
   ```
 
-- ### cheek.everyMethod(input, methodNames: string[]): boolean
+- ### cheek.everyMethod(methodNames: string[], input): boolean
   Returns `true` if all of the verifications return `true`  
-  @param `input` Test value  
   @param `methodNames` An array of `cheek` object methods names  
+  @param `input` Test value  
 
   #### Examples:
   ```javascript
@@ -31,7 +31,7 @@
   cheek.everyMethod("my text", ["isString", "isPrimitive"]); // true
   ```
 
-- ### cheek.someMethod(input, methodNames: string[]): boolean
+- ### cheek.someMethod(methodNames: string[], input): boolean
   Returns `true` if any of the verifications returns `true`  
   @param `input` Test value  
   @param `methodNames` An array of `cheek` object methods names  
@@ -44,8 +44,7 @@
   ```
 
 - ### cheek.everyInput(methodName: string, inputs: any[]): boolean
-  Returns `true` if all input values pass verification.  
-  Consider the order of arguments.  
+  Returns `true` if all input values pass verification  
   @param `methodName` 'cheek.' object method name  
   @param `inputs` An array of test values  
 
@@ -57,8 +56,7 @@
   ```
 
 - ### cheek.someInput(methodName: string, inputs: any[]): boolean
-  Returns `true` if any of the input values passes verification.  
-  Consider the order of arguments.  
+  Returns `true` if any of the input values passes verification  
   @param `methodName` 'cheek.' object method name  
   @param `inputs` An array of test values  
 

@@ -20,7 +20,7 @@
   ```javascript
   cheek.isNotEmptyArray([1, 2, 3]); // true
   cheek.isNotEmptyArray(""); // false
-  cheek.isNotEmptyArray([new Object()]); // false
+  cheek.isNotEmptyArray([new Object()]); // true
   ```
 
 - ### cheek.contains(array: any[], element: any): boolean

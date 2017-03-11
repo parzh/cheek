@@ -1,5 +1,14 @@
 "use strict";
 
+function getMethodByName(methodName) {
+	let method = cheek[methodName];
+
+	if (!method)
+		throw new ReferenceError(`'cheek.${methodName}' is not a function`);
+
+	else return method;
+}
+
 let cheek = {
 
 	// GENERAL
@@ -282,20 +291,16 @@ let cheek = {
 	// BUNDLE
 
 	bundle(inputs, methodNames) {
+		function getVerifiedMethodByName(methodName) {
+			let method = getMethodByName(methodName);
 
-		function getMethodByName(methodName) {
-			let method = cheek[methodName];
-
-			if (!method)
-				throw new ReferenceError(`'cheek.${methodName}' is not a function`);
-
-			else if (method.length > 1)
+			if (method.length > 1)
 				throw new SyntaxError(`Not enough arguments for method 'cheek.${methodName}' to proceed`);
 
 			else return method;
 		}
 
-		let methods = methodNames.map(getMethodByName);
+		let methods = methodNames.map(getVerifiedMethodByName);
 
 		return inputs.map(input => methods.map(method => method(input)));
 	},
@@ -323,7 +328,7 @@ let cheek = {
 			get(obj, method) {
 				switch (method) {
 					default:
-						return (...args) => cheek[method](input, ...args);
+						return (...args) => getMethodByName(method)(input, ...args);
 
 					case "is":
 					case "isNot":
@@ -338,8 +343,42 @@ let cheek = {
 					case "bundle":
 					case "everyInput":
 					case "someInput":
-						throw new TypeError(`The method 'cheek.${method}' requires multiple inputs and cannot be performed via 'cheek.input( ... )'`);
+						throw new TypeError(`The method 'cheek.${method}' requires multiple inputs. Use 'cheek.inputs( ... ).${method}' instead`);
 				}
+			}
+		});
+	},
+
+	inputs(inputs) {
+		return new Proxy({}, {
+			get(obj, method) {
+				switch (method) {
+					default:
+						throw new TypeError(`The method 'cheek.${method}' requires a single input. Use 'cheek.input( ... ).${method}' instead`);
+
+					case "bundle":
+						return (methodNames) => cheek.bundle(inputs, methodNames);
+
+					case "everyInput":
+					case "someInput":
+						return (methodName) => cheek[method](methodName, inputs);
+				}
+			}
+		});
+	},
+
+	every(inputs) {
+		return new Proxy({}, {
+			get(obj, method) {
+				return () => cheek.everyInput(method, inputs);
+			}
+		});
+	},
+
+	some(inputs) {
+		return new Proxy({}, {
+			get(obj, method) {
+				return () => cheek.someInput(method, inputs);
 			}
 		});
 	}
@@ -359,5 +398,7 @@ cheek.isIndivisibleBy = cheek.isNotDivisibleBy;
 cheek.isNotFloat = cheek.isInteger;
 cheek.isFloat = cheek.isNotInteger;
 cheek.isNonNegative = cheek.isNotNegative;
+cheek.each = cheek.every;
+cheek.any = cheek.some;
 
 module.exports = cheek;

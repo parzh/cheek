@@ -167,11 +167,11 @@ let cheek = {
 	// STRING
 
 	isEmptyString(input) {
-		return cheek.isString(source) && !source.length;
+		return cheek.isString(input) && !input.length;
 	},
 
 	isNotEmptyString(input) {
-		return cheek.isString(source) && !!source.length;
+		return cheek.isString(input) && !!input.length;
 	},
 
 	includes(source, substr) {

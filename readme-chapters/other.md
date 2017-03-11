@@ -19,16 +19,16 @@ Each one of these methods returns Proxy object that allows to perform validation
   input.isNeither([String, Array]); // true
 
   input.bundle(["isDefined", "isTrue"]);
-  // TypeError: "The method 'cheek.bundle' requires multiple inputs. Use 'cheek.inputs( ... ).bundle' instead"
+  // TypeError: The method 'cheek.bundle' requires multiple inputs. Use 'cheek.inputs( ... ).bundle' instead
 
   input.everyMethod(["isNotDefined", "isFalse"]); // false
   input.someMethod(["isUndefined", "isFalsy"]); // false
 
   input.everyInput("isPositive");
-  // TypeError: "The method 'cheek.everyInput' requires multiple inputs. Use 'cheek.inputs( ... ).everyInput' instead"
+  // TypeError: The method 'cheek.everyInput' requires multiple inputs. Use 'cheek.inputs( ... ).everyInput' instead
 
   input.someInput("isPositive");
-  // TypeError: "The method 'cheek.someInput' requires multiple inputs. Use 'cheek.inputs( ... ).someInput' instead"
+  // TypeError: The method 'cheek.someInput' requires multiple inputs. Use 'cheek.inputs( ... ).someInput' instead
   ```
 
 - ### cheek.inputs(inputs: any[]): Proxy
@@ -46,7 +46,7 @@ Each one of these methods returns Proxy object that allows to perform validation
   inputs.everyMethod(["isPrimitive", "isNumber"]); // false
 
   inputs.isNotDefined();
-  // TypeError: "The method 'cheek.isNotDefined' requires a single input. Use 'cheek.input( ... ).isNotDefined' instead"
+  // TypeError: The method 'cheek.isNotDefined' requires a single input. Use 'cheek.input( ... ).isNotDefined' instead
   ``` 
 
 - ### cheek.every(inputs: any[]): Proxy

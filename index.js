@@ -329,7 +329,7 @@ let cheek = {
 		return cheek.bundle([methodName], inputs).map(result => result[0]).some(Boolean);
 	},
 
-	// OTHER
+	// PROXY
 
 	input(input) {
 		return new Proxy(prepareProxyBase(), {

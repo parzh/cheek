@@ -2,7 +2,7 @@
 
 Each one of these methods returns Proxy object that allows to perform validations directly on itself.
 
-## Other
+## Proxy
 - ### cheek.input(input): Proxy
   Prepares single input for further validation.  
   Does not allow to perform validations for multiple inputs.  

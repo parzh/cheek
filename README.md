@@ -18,4 +18,4 @@ See [issues](https://github.com/parzh/cheek/issues).
 - [String](readme-chapters/string.md)
 - [Number](readme-chapters/number.md)
 - [Bundle](readme-chapters/bundle.md)
-- [Other](readme-chapters/other.md)
+- [Proxy](readme-chapters/proxy.md)

@@ -1,7 +1,7 @@
 [← Back to `README.md`](../README.md)
 
 ## Existance
-- cheek.isUndefined(input): boolean
+- ### cheek.isUndefined(input): boolean
   Checks whether the input is exactly `undefined`  
   @param `input` Test value
 
@@ -15,7 +15,7 @@
 
   _not to be confused with `cheek.isNotDefined()`_
 
-- cheek.isNull(input): boolean
+- ### cheek.isNull(input): boolean
   Checks whether the input is exactly `null`  
   @param `input` Test value
 
@@ -26,7 +26,7 @@
   cheek.isNull("abc".match(/d/)); // true
   ```
 
-- cheek.isNotNull(input): boolean
+- ### cheek.isNotNull(input): boolean
   Returns `true` if the input is anything but `null`  
   @param `input` Test value
 
@@ -39,7 +39,7 @@
 
   _reversed `cheek.isNull()`_
 
-- cheek.isDefined(input): boolean
+- ### cheek.isDefined(input): boolean
   Checks whether the input is neither `undefined` nor `null`  
   @param `input` Test value
 
@@ -50,7 +50,7 @@
   cheek.isDefined(""); // true
   ```
 
-- cheek.isNotDefined(input): boolean
+- ### cheek.isNotDefined(input): boolean
   Returns `true` if the input is either `undefined` or `null`  
   @param `input` Test value
 

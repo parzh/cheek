@@ -20,9 +20,9 @@
 
   #### Examples:
   ```javascript
+  cheek.isNot(MyObject, new MyObject()); // false
   cheek.isNot(Number, {}); // true
   cheek.isNot(Array, []); // false
-  cheek.isNot(MyObject, new MyObject()); // false
   ```
   _reversed `cheek.is()`_
 
@@ -137,8 +137,8 @@
 
   ```javascript
   function(...args) {
-    let cheekArguments = cheek.isArray(arguments); // false
-    let cheekArgs = cheek.isArray(args); // true
+    cheek.isArray(arguments); // false
+    cheek.isArray(args); // true
   }
   ```
 

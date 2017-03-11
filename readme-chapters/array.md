@@ -30,9 +30,14 @@
 
   #### Examples:
   ```javascript
-  cheek.contains(); // 
-  cheek.contains(); // 
-  cheek.contains(); // 
+  let myFive = new Number(5);
+
+  cheek.contains([3, 4, 5], 5); // true
+  cheek.contains([3, 4, 5], new Number(5)); // false
+  cheek.contains([3, 4, new Number(5)], new Number(5)); // false
+  cheek.contains([3, 4, myFive], myFive); // true
+
+  cheek.contains([3, , 5], undefined); // false
   ```
 
 - ### cheek.lacks(array: any[], element: any): boolean
@@ -42,9 +47,9 @@
 
   #### Examples:
   ```javascript
-  cheek.lacks(); // 
-  cheek.lacks(); // 
-  cheek.lacks(); // 
+  cheek.lacks([3, 4, 5], 6); // true
+  cheek.lacks([3, 4, 5], 5); // false
+  cheek.lacks([3, undefined, 5], undefined); // false
   ```
 
 - ### cheek.isFirstIn(array: any[], input: any): boolean
@@ -54,9 +59,8 @@
 
   #### Examples:
   ```javascript
-  cheek.isFirstIn(); // 
-  cheek.isFirstIn(); // 
-  cheek.isFirstIn(); // 
+  cheek.isFirstIn([1, 2, 3], 1); // true
+  cheek.isFirstIn([1, 2, 3], 2); // false
   ```
 
 - ### cheek.isNotFirstIn(array: any[], input: any): boolean
@@ -66,9 +70,8 @@
 
   #### Examples:
   ```javascript
-  cheek.isNotFirstIn(); // 
-  cheek.isNotFirstIn(); // 
-  cheek.isNotFirstIn(); // 
+  cheek.isNotFirstIn([1, 2, 3], 1); // false
+  cheek.isNotFirstIn([1, 2, 3], 2); // true
   ```
 
 - ### cheek.isLastIn(array: any[], input: any): boolean
@@ -78,9 +81,8 @@
 
   #### Examples:
   ```javascript
-  cheek.isLastIn(); // 
-  cheek.isLastIn(); // 
-  cheek.isLastIn(); // 
+  cheek.isLastIn([1, 2, 3], 3); // true
+  cheek.isLastIn([1, 2, 3], 2); // false
   ```
 
 - ### cheek.isNotLastIn(array: any[], input: any): boolean
@@ -90,7 +92,6 @@
 
   #### Examples:
   ```javascript
-  cheek.isNotLastIn(); // 
-  cheek.isNotLastIn(); // 
-  cheek.isNotLastIn(); // 
+  cheek.isNotLastIn([1, 2, 3], 3); // false
+  cheek.isNotLastIn([1, 2, 3], 2); // true
   ```

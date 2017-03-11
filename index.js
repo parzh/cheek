@@ -1,5 +1,27 @@
 "use strict";
 
+function getMethodByName(methodName) {
+	let method = cheek[methodName];
+
+	if (!method)
+		throw new ReferenceError(`'cheek.${methodName}' is not a function`);
+
+	else return method;
+}
+
+function getLongEnoughMethodByName({ methodName, argsLength = 1 }) {
+	let method = getMethodByName(methodName);
+
+	if (method.length > argsLength)
+		throw new SyntaxError(`Not enough arguments for method 'cheek.${methodName}' to proceed`);
+
+	else return method;
+}
+
+function prepareProxyBase() {
+	return new Object();
+}
+
 let cheek = {
 
 	// GENERAL
@@ -155,11 +177,11 @@ let cheek = {
 	/* no opposed method for '.includes()' */
 
 	startsWith(source, substr) {
-		return cheek.isString(source) && (source.startsWith? source.startsWith(substr) : !source.indexOf(substr));
+		return cheek.isString(source) && !source.indexOf(substr);
 	},
 
 	endsWith(source, substr) {
-		return cheek.isString(source) && (source.startsWith? source.endsWith(substr) : source.lastIndexOf(substr) === source.length - substr.length);
+		return cheek.isString(source) && (source.lastIndexOf(substr) === source.length - substr.length);
 	},
 
 	// NUMBER
@@ -173,7 +195,7 @@ let cheek = {
 	},
 
 	isFinite(input) {
-		return Number.isFinite(input);
+		return (Number.isFinite || isFinite)(input);
 	},
 
 	isNotFinite(input) {
@@ -183,7 +205,7 @@ let cheek = {
 	// ***
 
 	isInteger(input) {
-		return Number.isInteger? Number.isInteger(input) : cheek.isDivisibleBy(input, 1);
+		return cheek.isDivisibleBy(input, 1);
 	},
 
 	isNotInteger(input) {
@@ -250,6 +272,14 @@ let cheek = {
 		return !cheek.isNegative(input);
 	},
 
+	isZero(input) {
+		return cheek.isNumber(input) && input == 0;
+	},
+
+	isNotZero(input) {
+		return !cheek.isZero(input);
+	},
+
 	// ***
 
 	isDivisibleBy(numerator, denominator) {
@@ -274,20 +304,7 @@ let cheek = {
 	// BUNDLE
 
 	bundle(inputs, methodNames) {
-
-		function getMethodByName(methodName) {
-			let method = cheek[methodName];
-
-			if (!method)
-				throw new ReferenceError(`'cheek.${methodName}' is not a function`);
-
-			else if (method.length > 1)
-				throw new SyntaxError(`Not enough arguments for method 'cheek.${methodName}' to proceed`);
-
-			else return method;
-		}
-
-		let methods = methodNames.map(getMethodByName);
+		let methods = methodNames.map(methodName => getLongEnoughMethodByName({ methodName }));
 
 		return inputs.map(input => methods.map(method => method(input)));
 	},
@@ -311,27 +328,85 @@ let cheek = {
 	// OTHER
 
 	input(input) {
-		return new Proxy({}, {
-			get(obj, method) {
-				switch (method) {
+		return new Proxy(prepareProxyBase(), {
+			get(obj, methodName) {
+				if (obj[methodName])
+					return obj[methodName];
+
+				else switch (methodName) {
 					default:
-						return (...args) => cheek[method](input, ...args);
+						return (...args) => getLongEnoughMethodByName({ methodName, argsLength: args.length + 1 })(input, ...args);
 
 					case "is":
 					case "isNot":
 					case "isEither":
 					case "isNeither":
-						return (TypeOrTypes) => cheek[method](TypeOrTypes, input);
+						return (TypeOrTypes) => cheek[methodName](TypeOrTypes, input);
 
 					case "everyMethod":
 					case "someMethod":
-						return (methodNames) => cheek[method](input, methodNames); // TODO: Update when the function signatures are changed
+						return (methodNames) => cheek[methodName](input, methodNames); // TODO: Update when the function signatures are changed
 
 					case "bundle":
 					case "everyInput":
 					case "someInput":
-						throw new TypeError(`The method 'cheek.${method}' requires multiple inputs and cannot be performed via 'cheek.input( ... )'`);
+						throw new TypeError(`The method 'cheek.${methodName}' requires multiple inputs. Use 'cheek.inputs( ... ).${methodName}' instead`);
 				}
+			}
+		});
+	},
+
+	inputs(inputs) {
+		return new Proxy(prepareProxyBase(), {
+			get(obj, methodName) {
+				if (obj[methodName])
+					return obj[methodName];
+
+				else switch (methodName) {
+					default:
+						getMethodByName(methodName); // verify the presence of a method at the first place
+						throw new TypeError(`The method 'cheek.${methodName}' requires a single input. Use 'cheek.input( ... ).${methodName}' instead`);
+
+					case "bundle":
+						return (methodNames) => cheek.bundle(inputs, methodNames);
+
+					case "everyInput":
+					case "someInput":
+						return (cheekMethodName) => cheek[methodName](cheekMethodName, inputs);
+				}
+			}
+		});
+	},
+
+	every(inputs) {
+		return new Proxy(prepareProxyBase(), {
+			get(obj, methodName) {
+				if (obj[methodName])
+					return obj[methodName];
+
+				else return (...args) => inputs.map(input => cheek.input(input)[methodName](...args)).every(Boolean);
+			}
+		});
+	},
+
+	some(inputs) {
+		return new Proxy(prepareProxyBase(), {
+			get(obj, methodName) {
+				if (obj[methodName])
+					return obj[methodName];
+
+				else return (...args) => inputs.map(input => cheek.input(input)[methodName](...args)).some(Boolean);
+			}
+		});
+	},
+
+	none(inputs) {
+		return new Proxy(prepareProxyBase(), {
+			get(obj, methodName) {
+				if (obj[methodName])
+					return obj[methodName];
+
+				else return (...args) => !cheek.some(inputs)[methodName](...args);
 			}
 		});
 	}
@@ -345,10 +420,15 @@ cheek.gte = cheek.isGreaterThanOrEqualTo;
 cheek.lt = cheek.isLessThan;
 cheek.lte = cheek.isLessThanOrEqualTo;
 
+cheek.isNonZero = cheek.isNotZero;
 cheek.isInfinite = cheek.isNotFinite;
 cheek.isIndivisibleBy = cheek.isNotDivisibleBy;
 cheek.isNotFloat = cheek.isInteger;
 cheek.isFloat = cheek.isNotInteger;
 cheek.isNonNegative = cheek.isNotNegative;
+
+cheek.each = cheek.every;
+cheek.any = cheek.some;
+cheek.neither = cheek.none;
 
 module.exports = cheek;

@@ -273,16 +273,30 @@
   _alias: `cheek.isNonNegative()`_  
   _not to be confused with `cheek.isPositive()`_  
 
-- ### cheek.isDivisibleBy(numerator: number, denominator: number): boolean
-  Checks whether `numerator` is divisible by `denominator`  
+- ### cheek.isZero(input: number): boolean
+  Checks whether the input is equal to zero  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isDivisibleBy(42, 5); // false
-  cheek.isDivisibleBy(40, 5); // true
-  cheek.isDivisibleBy(0, 0); // true
+  cheek.isZero(0); // true
+  cheek.isZero(new Number()); // true
+  cheek.isZero(null); // false
   ```
+
+- ### cheek.isNotZero(input: number): boolean
+  Returns `true` if the input is unequal to zero  
+  @param `input` Test value
+
+  #### Examples:
+  ```javascript
+  cheek.isNotZero(0); // false
+  cheek.isNotZero(new Number()); // false
+  cheek.isNotZero(null); // true
+  ```
+
+  _reversed `cheek.isZero()`_  
+  _alias: `cheek.isNonZero()`_  
 
 - ### cheek.isNotDivisibleBy(numerator: number, denominator: number): boolean
   Returns `true` if `numerator` is not divisible by `denominator`  

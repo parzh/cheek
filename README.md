@@ -17,4 +17,5 @@ See [issues](https://github.com/parzh/cheek/issues).
 - [Array](readme-chapters/array.md)
 - [String](readme-chapters/string.md)
 - [Number](readme-chapters/number.md)
+- [Bundle](readme-chapters/bundle.md)
 - [Other](readme-chapters/other.md)

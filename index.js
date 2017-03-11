@@ -137,7 +137,7 @@ let cheek = {
 	},
 
 	isNotEmptyArray(input) {
-		return cheek.isArray(input) && !!input.length && input.every(cheek.isDefined);
+		return !cheek.isEmptyArray(input);
 	},
 
 	contains(array, element) {
@@ -171,7 +171,7 @@ let cheek = {
 	},
 
 	isNotEmptyString(input) {
-		return cheek.isString(input) && !!input.length;
+		return !cheek.isEmptyString(input);
 	},
 
 	includes(source, substr) {

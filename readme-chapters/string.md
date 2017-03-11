@@ -23,6 +23,8 @@
   cheek.isNotEmptyString([]); // true
   ```
 
+  _reversed `cheek.isEmptyString()`_  
+
 - ### cheek.includes(source, substr): boolean
   Checks whether the source string includes substring  
   @param `source` Test string  

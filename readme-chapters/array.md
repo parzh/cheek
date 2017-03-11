@@ -23,6 +23,8 @@
   cheek.isNotEmptyArray([new Object()]); // true
   ```
 
+  _reversed `cheek.isEmptyArray()`_  
+
 - ### cheek.contains(array: any[], element: any): boolean
   Checks whether the array contains the element  
   @param `array` Test array  

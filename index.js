@@ -426,6 +426,8 @@ cheek.isIndivisibleBy = cheek.isNotDivisibleBy;
 cheek.isNotFloat = cheek.isInteger;
 cheek.isFloat = cheek.isNotInteger;
 cheek.isNonNegative = cheek.isNotNegative;
+cheek.pos = cheek.isPositive;
+cheek.neg = cheek.isNegative;
 
 cheek.each = cheek.every;
 cheek.any = cheek.some;

@@ -119,7 +119,7 @@
   ```
 
 - ### cheek.isNotPercent(input: number): boolean
-  Returns 'true' if the input is not a fraction between 0 and 1 inclusively  
+  Returns `true` if the input is not a fraction between 0 and 1 inclusively  
   @param `input` Test value
 
   #### Examples:
@@ -233,6 +233,8 @@
   cheek.isPositive(-5); // false
   ```
 
+  _alias: `cheek.pos()`_  
+
 - ### cheek.isNotPositive(input: number): boolean
   Returns `true` if the input is less than or equal to zero  
   @param `input` Test value
@@ -257,6 +259,8 @@
   cheek.isNegative(0); // false
   cheek.isNegative(5); // false
   ```
+
+  _alias: `cheek.neg()`_  
 
 - ### cheek.isNotNegative(input: number): boolean
   Checks whether the input is greater than or equal to zero  

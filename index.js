@@ -114,6 +114,10 @@ let cheek = {
 		return Array.isArray? Array.isArray(input) : cheek.is(Array, input);
 	},
 
+	isArraylike(input) {
+		return cheek.isArray(input) || (cheek.isDefined(input) && ((typeof Symbol !== "undefined") && (Symbol.iterator in input)) || ("length" in input));
+	},
+
 	isNotArray(input) {
 		return !cheek.isArray(input);
 	},

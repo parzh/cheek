@@ -142,6 +142,24 @@
   }
   ```
 
+- ### cheek.isArraylike(input): boolean
+  Checks whether the input is array-like object  
+  @param `input` Test value  
+
+  #### Examples:
+  ```javascript
+  cheek.isArraylike({ 0: 0, 1: 1 }); // false
+  cheek.isArraylike({ 0: 0, 1: 1, length: 2 }); // true
+  cheek.isArraylike(new (class extends Array {})()); // true
+  ```
+
+  ```javascript
+  function(...args) {
+    cheek.isArraylike(arguments); // true
+    cheek.isArraylike(args); // true
+  }
+  ```
+
 - ### cheek.isNotArray(input): boolean
   Returns `true` if the input is not an array  
   @param `input` Test value  

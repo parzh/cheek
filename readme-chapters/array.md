@@ -2,7 +2,7 @@
 
 ## Array
 - ### cheek.isEmptyArray(input: any[]): boolean
-  Checks whether the array is empty  
+  Checks whether the input is an empty array  
   @param `input` Test array  
 
   #### Examples:
@@ -13,7 +13,7 @@
   ```
 
 - ### cheek.isNotEmptyArray(input: any[]): boolean
-  Returns `true` if the array is not empty  
+  Returns `true` if the input is not an empty array  
   @param `input` Test array  
 
   #### Examples:

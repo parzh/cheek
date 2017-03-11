@@ -9,13 +9,13 @@
 
   #### Examples:
   ```javascript
-  cheek.bundle([5, -2], ["isInteger", "isPositive"]);
+  cheek.bundle(["isInteger", "isPositive"], [5, -2]);
   // [ [true, true], [true, false] ]
 
-  cheek.bundle([null, undefined, new Object()], ["isDefined", "isPrimitive"]);
+  cheek.bundle(["isDefined", "isPrimitive"], [null, undefined, new Object()]);
   // [ [false, true], [false, true], [true, false] ]
 
-  cheek.bundle([5, [3, 4]], ["isNumber", "isInRange", "isNatural"]);
+  cheek.bundle(["isNumber", "isInRange", "isNatural"], [5, [3, 4]]);
   // SyntaxError: Not enough arguments for method 'cheek.isInRange' to proceed
   ```
 
@@ -26,9 +26,9 @@
 
   #### Examples:
   ```javascript
-  cheek.everyMethod(-5, ["isNumber", "isFinite", "isPositive"]); // false
-  cheek.everyMethod(-5, ["isNumber", "isFinite", "isNegative"]); // true
-  cheek.everyMethod("my text", ["isString", "isPrimitive"]); // true
+  cheek.everyMethod(["isNumber", "isFinite", "isPositive"], -5); // false
+  cheek.everyMethod(["isNumber", "isFinite", "isNegative"], -5); // true
+  cheek.everyMethod(["isString", "isPrimitive"], "my text"); // true
   ```
 
 - ### cheek.someMethod(methodNames: string[], input): boolean
@@ -38,9 +38,9 @@
 
   #### Examples:
   ```javascript
-  cheek.someMethod(42, ["isNumber", "isString"]); // true; same as `cheek.isEither([Number, String], 42)`
-  cheek.someMethod(42, ["isNotNatural", "isFloat"]); // false
-  cheek.someMethod(NaN, ["isObject", "isNull"]); // false
+  cheek.someMethod(["isNumber", "isString"], 42); // true; same as `cheek.isEither([Number, String], 42)`
+  cheek.someMethod(["isNotNatural", "isFloat"], 42); // false
+  cheek.someMethod(["isObject", "isNull"], NaN); // false
   ```
 
 - ### cheek.everyInput(methodName: string, inputs: any[]): boolean

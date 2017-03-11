@@ -215,9 +215,9 @@
 
   #### Examples:
   ```javascript
-  cheek.isLessThan(5, 42); // true
-  cheek.isLessThan(5, 5); // true
-  cheek.isLessThan(NaN, NaN); // false
+  cheek.isLessThanOrEqualTo(5, 42); // true
+  cheek.isLessThanOrEqualTo(5, 5); // true
+  cheek.isLessThanOrEqualTo(NaN, NaN); // false
   ```
 
   _alias: `cheek.lte()`_  

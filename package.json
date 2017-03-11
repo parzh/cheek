@@ -13,7 +13,8 @@
   "keywords": [
     "check",
     "checkjs",
-    "cheeky"
+    "cheeky",
+    "readable"
   ],
   "author": "Dmitry Parzhitsky <parzhitsky@gmail.com>",
   "license": "MIT",

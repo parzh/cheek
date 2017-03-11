@@ -19,7 +19,7 @@
   #### Examples:
   ```javascript
   cheek.isNotEmptyArray([1, 2, 3]); // true
-  cheek.isNotEmptyArray(""); // false
+  cheek.isNotEmptyArray(""); // true
   cheek.isNotEmptyArray([new Object()]); // true
   ```
 

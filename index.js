@@ -322,11 +322,11 @@ let cheek = {
 	},
 
 	everyInput(methodName, inputs) {
-		return cheek.bundle(inputs, [methodName]).map(result => result[0]).every(Boolean);
+		return cheek.bundle([methodName], inputs).map(result => result[0]).every(Boolean);
 	},
 
 	someInput(methodName, inputs) {
-		return cheek.bundle(inputs, [methodName]).map(result => result[0]).some(Boolean);
+		return cheek.bundle([methodName], inputs).map(result => result[0]).some(Boolean);
 	},
 
 	// OTHER

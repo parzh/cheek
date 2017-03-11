@@ -95,3 +95,5 @@
   cheek.isNotLastIn([1, 2, 3], 3); // false
   cheek.isNotLastIn([1, 2, 3], 2); // true
   ```
+
+[← Back to `README.md`](../README.md)

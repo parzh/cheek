@@ -48,3 +48,5 @@
   cheek.isFalse(42); // false
   cheek.isFalse(null); // false
   ```
+
+[← Back to `README.md`](../README.md)

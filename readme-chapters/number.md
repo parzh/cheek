@@ -343,3 +343,5 @@
   ```
 
   _reversed `cheek.isInRange()`_  
+
+[← Back to `README.md`](../README.md)

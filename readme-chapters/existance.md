@@ -63,3 +63,5 @@
 
   _reversed `cheek.isDefined()`_  
   _not to be confused with `cheek.isUndefined()`_
+
+[← Back to `README.md`](../README.md)

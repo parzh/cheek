@@ -68,3 +68,5 @@
   cheek.someInput("isObject", [5, 4, -2, "my text"]); // false
   cheek.someInput("isNaN", [1, 2, 3]); // false
   ```
+
+[← Back to `README.md`](../README.md)

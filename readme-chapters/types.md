@@ -178,3 +178,5 @@
   ``` 
 
   _reversed `cheek.isBoolean()`_
+
+[← Back to `README.md`](../README.md)

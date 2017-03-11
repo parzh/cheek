@@ -1,8 +1,11 @@
 [← Back to `README.md`](../README.md)
 
+Each one of these methods returns Proxy object that allows to perform validations directly on itself.
+
 ## Other
 - ### cheek.input(input): Proxy
-  Returns Proxy object that allows to perform validations directly on itself  
+  Prepares single input for further validation.  
+  Does not allow to perform validations for multiple inputs.  
   @param `input` Test value  
 
   #### Examples:
@@ -29,47 +32,69 @@
   ```
 
 - ### cheek.inputs(inputs: any[]): Proxy
-  Returns Proxy object that allows to perform validations directly on itself  
+  Prepares a bunch of inputs for further validation.  
+  Does not allow to perform validations for single inputs.  
   @param `inputs` An array of test values  
 
   #### Examples:
   ```javascript
-  let _inputs = cheek.inputs([42, 42.6, new Object(), null]);
+  let inputs = cheek.inputs([42, 42.6, new Object(), null]);
 
-  _inputs.bundle(["isPrimitive", "isNumber"]);
+  inputs.bundle(["isPrimitive", "isNumber"]);
   // [ [true, true], [true, true], [false, false], [true, false] ]
+
+  inputs.everyMethod(["isPrimitive", "isNumber"]); // false
+
+  inputs.isNotDefined();
+  // TypeError: "The method 'cheek.isNotDefined' requires a single input. Use 'cheek.input( ... ).isNotDefined' instead"
   ``` 
 
 - ### cheek.every(inputs: any[]): Proxy
-  Returns Proxy object that allows to perform validations directly on itself  
+  Checks whether all input values pass verification.  
+  "Boosted" option for `cheek.everyInput()`.  
   @param `inputs` An array of test values  
 
   #### Examples:
   ```javascript
-  let _every = cheek.every([42, 42.6, new Object(), "text"]);
+  let every = cheek.every([42, 42.6, new Object(), "text"]);
 
-  _every.isPrimitive(); // false
-  _every.isNumber(); // false
-  _every.isDefined(); // true
+  every.isPrimitive(); // false
+  every.isNumber(); // false
+  every.isDefined(); // true
+
+  cheek.every([1, 2, -3, 4]).isInRange([-2, 2]); // false
   ``` 
 
   _alias: `cheek.each()`_  
 
 - ### cheek.some(inputs: any[]): Proxy
-  Returns Proxy object that allows to perform validations directly on itself  
+  Checks whether any of the input values passes verification.  
+  "Boosted" option for `cheek.someInput()`.  
   @param `inputs` An array of test values  
 
   #### Examples:
   ```javascript
-  let _some = cheek.some([42, 42.6, new Object(), null]);
-
+  let some = cheek.some([42, 42.6, new Object(), null]);
   
-  _some.isNotDefined(); // true
-  _some.isNotInRange(); // SyntaxError: Not enough arguments for method 'cheek.isNotInRange' to proceed
-
-  _some.isInRange([10, 39], "exclusive");
-  // SyntaxError: Not enough arguments for method 'cheek.isInRange' to proceed
-  /* It is a bug */
+  some.isNotDefined(); // true
+  some.isNotInRange(); // SyntaxError: Not enough arguments for method 'cheek.isNotInRange' to proceed
+  some.isInRange([10, 39], "exclusive"); // false
   ``` 
 
   _alias: `cheek.any()`_  
+
+- ### cheek.none(inputs: any[]): Proxy
+  Checks whether none of the input values passes verification  
+  @param `inputs` An array of test values  
+
+  #### Examples:
+  ```javascript
+  let none = cheek.none([42, 42.6, new Object(), null]);
+
+  none.isDefined(); // false
+  none.isString([]); // true
+  none.isInRange([10, 39], "exclusive"); // true
+  ``` 
+
+  _reversed `cheek.some()`_  
+  _alias: `cheek.neither()`_  

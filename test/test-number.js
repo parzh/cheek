@@ -3,7 +3,7 @@ let cheek = require("./../index.js");
 
 describe("Number", function() {
 	describe("isNaN(input)", function() {
-		it("checks whether the input is exactly `nan", function() {
+		it("checks whether the input is exactly `NaN`", function() {
 			assert.equal(cheek.isNaN(NaN), true);
 			assert.equal(cheek.isNaN(), false);
 			assert.equal(cheek.isNaN(0 / 0), true);
@@ -11,7 +11,7 @@ describe("Number", function() {
 	});
 
 	describe("isNotNaN(input)", function() {
-		it("returns `true` if the input is not `nan", function() {
+		it("returns `true` if the input is not `NaN`", function() {
 			assert.equal(cheek.isNotNaN(NaN), false);
 			assert.equal(cheek.isNotNaN(null), true);
 			assert.equal(cheek.isNotNaN(0 / 0), false);
@@ -50,7 +50,7 @@ describe("Number", function() {
 		});
 	});
 
-	describe("isNatural(input, zero: boolean = true)", function() {
+	describe("isNatural(input, zero)", function() {
 		it("checks whether the input is a natural number", function() {
 			assert.equal(cheek.isNatural(5), true);
 			assert.equal(cheek.isNatural(42.5), false);
@@ -59,7 +59,7 @@ describe("Number", function() {
 		});
 	});
 
-	describe("isNotNatural(input, zero: boolean = true)", function() {
+	describe("isNotNatural(input, zero)", function() {
 		it("returns `true` if input not a natural number", function() {
 			assert.equal(cheek.isNotNatural(5), false);
 			assert.equal(cheek.isNotNatural(42.5), true);
@@ -183,8 +183,16 @@ describe("Number", function() {
 		});
 	});
 
+	describe("isDivisibleBy(numerator, denominator)", function() {
+		it("cheks whether `numerator` is divisible by `denominator`", function() {
+			assert.equal(cheek.isDivisibleBy(42, 5), false);
+			assert.equal(cheek.isDivisibleBy(40, 5), true);
+			assert.equal(cheek.isDivisibleBy(0, 0), true);
+		});
+	});
+
 	describe("isNotDivisibleBy(numerator, denominator)", function() {
-		it("returns `true` if `numerator` is not divisible by `denominator", function() {
+		it("returns `true` if `numerator` is not divisible by `denominator`", function() {
 			assert.equal(cheek.isNotDivisibleBy(42, 5), true);
 			assert.equal(cheek.isNotDivisibleBy(40, 5), false);
 			assert.equal(cheek.isNotDivisibleBy(0, 0), false);

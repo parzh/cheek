@@ -98,5 +98,6 @@ Each one of these methods returns Proxy object that allows to perform validation
 
   _reversed `cheek.some()`_  
   _alias: `cheek.neither()`_  
+  _not to be confused with `cheek.isNeither()`_  
 
 [← Back to `README.md`](../README.md)

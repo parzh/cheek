@@ -302,9 +302,22 @@
   _reversed `cheek.isZero()`_  
   _alias: `cheek.isNonZero()`_  
 
+- ### cheek.isDivisibleBy(numerator: number, denominator: number): boolean
+  Cheks whether `numerator` is divisible by `denominator`  
+  @param `numerator` This number will be divided by `denominator`  
+  @param `denominator` This number will divide `numerator`  
+
+  #### Examples:
+  ```javascript
+  cheek.isDivisibleBy(42, 5); // false
+  cheek.isDivisibleBy(40, 5); // true
+  cheek.isDivisibleBy(0, 0); // true
+  ```
+
 - ### cheek.isNotDivisibleBy(numerator: number, denominator: number): boolean
   Returns `true` if `numerator` is not divisible by `denominator`  
-  @param `input` Test value
+  @param `numerator` This number will be divided by the `denominator`  
+  @param `denominator` This number will divide the `numerator`  
 
   #### Examples:
   ```javascript

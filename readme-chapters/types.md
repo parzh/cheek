@@ -50,6 +50,7 @@
   cheek.isNeither([Number, RegExp, Array], 4); // false
   ```
   _reversed `cheek.isEither()`_
+  _not to be confused with `cheek.neither()`_  
 
 - ### cheek.isPrimitive(input): boolean
   Checks whether the input is a primitive value  

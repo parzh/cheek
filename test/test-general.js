@@ -4,35 +4,35 @@ let cheek = require("./../index.js");
 describe("General", function() {
 	describe("isTruthy(input)", function() {
 		it("checks whether the input evaluates to `true`", function() {
-			assert.equal(cheek.isTruthy(true), true);
-			assert.equal(cheek.isTruthy("text"), true);
-			assert.equal(cheek.isTruthy(new Object()), true);
+			assert(cheek.isTruthy(true));
+			assert(cheek.isTruthy("text"));
+			assert(cheek.isTruthy(new Object()));
 		});
 	});
 
 	describe("isFalsy(input)", function() {
 		it("checks whether the input evaluates to `false`", function() {
-			assert.equal(cheek.isFalsy(true), false);
-			assert.equal(cheek.isFalsy(""), true);
-			assert.equal(cheek.isFalsy([]), false);
+			assert(!cheek.isFalsy(true));
+			assert(cheek.isFalsy(""));
+			assert(!cheek.isFalsy([]));
 		});
 	});
 
 	describe("isTrue(input)", function() {
 		it("checks whether the input is exactly `true`", function() {
-			assert.equal(cheek.isTrue(true), true);
-			assert.equal(cheek.isTrue(new Boolean()), false);
-			assert.equal(cheek.isTrue(42), false);
-			assert.equal(cheek.isTrue(undefined), false);
+			assert(cheek.isTrue(true));
+			assert(!cheek.isTrue(new Boolean()));
+			assert(!cheek.isTrue(42));
+			assert(!cheek.isTrue(undefined));
 		});
 	});
 
 	describe("isFalse(input)", function() {
 		it("checks whether the input is exactly `false`", function() {
-			assert.equal(cheek.isFalse(true), false);
-			assert.equal(cheek.isFalse(new Boolean()), true);
-			assert.equal(cheek.isFalse(42), false);
-			assert.equal(cheek.isFalse(null), false);
+			assert(!cheek.isFalse(true));
+			assert(cheek.isFalse(new Boolean()));
+			assert(!cheek.isFalse(42));
+			assert(!cheek.isFalse(null));
 		});
 	});
 });

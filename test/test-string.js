@@ -4,41 +4,41 @@ let cheek = require("./../index.js");
 describe("String", function() {
 	describe("isEmptyString(input)", function() {
 		it("checks whether the input is an empty string", function() {
-			assert.equal(cheek.isEmptyString(""), true);
-			assert.equal(cheek.isEmptyString("text"), false);
-			assert.equal(cheek.isEmptyString([]), false);
+			assert(cheek.isEmptyString(""));
+			assert(!cheek.isEmptyString("text"));
+			assert(!cheek.isEmptyString([]));
 		});
 	});
 
 	describe("isNotEmptyString(input)", function() {
 		it("returns `true` if the input is not an empty string", function() {
-			assert.equal(cheek.isNotEmptyString(""), false);
-			assert.equal(cheek.isNotEmptyString("text"), true);
-			assert.equal(cheek.isNotEmptyString([]), true);
+			assert(!cheek.isNotEmptyString(""));
+			assert(cheek.isNotEmptyString("text"));
+			assert(cheek.isNotEmptyString([]));
 		});
 	});
 
 	describe("includes(source, substr)", function() {
 		it("checks whether the source string includes substring", function() {
-			assert.equal(cheek.includes("Hello", "ell"), true);
-			assert.equal(cheek.includes("World", "ell"), false);
-			assert.equal(cheek.includes("", ""), true);
+			assert(cheek.includes("Hello", "ell"));
+			assert(!cheek.includes("World", "ell"));
+			assert(cheek.includes("", ""));
 		});
 	});
 
 	describe("startsWith(source, substr)", function() {
 		it("checks whether the source string starts with substring", function() {
-			assert.equal(cheek.startsWith("Hello", "Hell"), true);
-			assert.equal(cheek.startsWith("Hello", "ell"), false);
-			assert.equal(cheek.startsWith("", ""), true);
+			assert(cheek.startsWith("Hello", "Hell"));
+			assert(!cheek.startsWith("Hello", "ell"));
+			assert(cheek.startsWith("", ""));
 		});
 	});
 
 	describe("endsWith(source, substr)", function() {
 		it("checks whether the source string ends with substring", function() {
-			assert.equal(cheek.endsWith("World", "rld"), true);
-			assert.equal(cheek.endsWith("World", "orl"), false);
-			assert.equal(cheek.endsWith("", ""), true);
+			assert(cheek.endsWith("World", "rld"));
+			assert(!cheek.endsWith("World", "orl"));
+			assert(cheek.endsWith("", ""));
 		});
 	});
 });

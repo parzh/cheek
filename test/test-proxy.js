@@ -43,7 +43,7 @@ describe("Proxy", function() {
 
 			assert.equal(every.isPrimitive(), false);
 			assert.equal(every.isNumber(), false);
-			assert.equal(cheek.every([1, 2, -3, 4]).isInRange([-4, 4]), true);
+			assert(cheek.every([1, 2, -3, 4]).isInRange([-4, 4]));
 		});
 	});
 

@@ -1,13 +1,32 @@
 # cheek
-#### Yet another value-validator in JavaScript ... Or is it?
 
-*__cheek__* (formerly *__check__*) provides an object (ideally called `cheek` in lowercase) which has various easy-to-use methods to verify and validate any value. It provides an opportunity to create conditions that are easy for people to read.  
-I'll describe them using TypeScript style for convenience. Just remember that it is the JavaScript here, and arguments are actually `argument: … | any`.  
-Consider also that the library is baby-aged. Changes that occur may be pretty dramatic.
+*__cheek__* (formerly *__check__*) is a library of various validation methods.
 
-## TODO:
+```JavaScript
+cheek.isArray(["Hello", "world"]); // true
+cheek.is(MyObject, new MyObject()); // true
+```
 
-See [issues](https://github.com/parzh/cheek/issues).
+It allows you to keep your code clean and increases its readability
+
+```JavaScript
+let every = cheek.every([8, 11, -5, 32]);
+
+if (every.isInRange([5, 20], "exclusively")) // false
+  // you shall not pass!
+```
+
+while doing its work pretty well.
+
+```JavaScript
+cheek.bundle(["isDefined", "isPositive", "isEmptyString"], [null, 15, ""]);
+/*  [
+ *   [false, false, false],
+ *   [true, true, false],
+ *   [true, false, true]
+ *  ]
+ */
+```
 
 ## Chapters:
 
@@ -19,3 +38,7 @@ See [issues](https://github.com/parzh/cheek/issues).
 - [Number](readme-chapters/number.md)
 - [Bundle](readme-chapters/bundle.md)
 - [Proxy](readme-chapters/proxy.md)
+
+## TODO:
+
+See [issues](https://github.com/parzh/cheek/issues).

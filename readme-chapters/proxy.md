@@ -31,6 +31,8 @@ Each one of these methods returns Proxy object that allows to perform validation
   // TypeError: The method 'cheek.someInput' requires multiple inputs. Use 'cheek.inputs( ... ).someInput' instead
   ```
 
+  _alias: `cheek()`_  
+
 - ### cheek.inputs(inputs: any[]): Proxy
   Prepares a bunch of inputs for further validation.  
   Does not allow to perform validations for single inputs.  

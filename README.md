@@ -35,6 +35,15 @@ for (let input of inputs)
 
 if (cheek.any(inputs).is(InvalidObject))
 	throw new Error("The input is invalid");
+
+// ***
+
+if (this.profile.person.age < 5 || this.profile.person.age > 42)
+	throw new RangeError("The age is not in range");
+
+if (cheek.isNotInRange(this.profile.person.age, [5, 42]))
+	throw new RangeError("The age is not in range");
+
 ```
 
 ## Chapters:

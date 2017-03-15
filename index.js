@@ -1,10 +1,10 @@
 "use strict";
 
 function getMethodByName(methodName) {
-	let method = cheek[methodName];
+	let method = check[methodName];
 
 	if (!method)
-		throw new ReferenceError(`'cheek.${methodName}' is not a function`);
+		throw new ReferenceError(`'check.${methodName}' is not a function`);
 
 	else return method;
 }
@@ -13,7 +13,7 @@ function getLongEnoughMethodByName({ methodName, argsLength = 1 }) {
 	let method = getMethodByName(methodName);
 
 	if (method.length > argsLength)
-		throw new SyntaxError(`Not enough arguments for method 'cheek.${methodName}' to proceed`);
+		throw new SyntaxError(`Not enough arguments for method 'check.${methodName}' to proceed`);
 
 	else return method;
 }
@@ -24,316 +24,316 @@ function prepareProxyBase() {
 
 // ***
 
-let cheek = input => cheek.input(input);
+let check = input => check.input(input);
 
 // GENERAL
 
-cheek.isTruthy = function(input) {
+check.isTruthy = function(input) {
 	return new Boolean(input).valueOf();
 },
 
-cheek.isFalsy = function(input) {
-	return !cheek.isTruthy(input);
+check.isFalsy = function(input) {
+	return !check.isTruthy(input);
 },
 
-cheek.isTrue = function(input) {
-	return cheek.isBoolean(input) && input == true;
+check.isTrue = function(input) {
+	return check.isBoolean(input) && input == true;
 },
 
-cheek.isFalse = function(input) {
-	return cheek.isBoolean(input) && input == false;
+check.isFalse = function(input) {
+	return check.isBoolean(input) && input == false;
 },
 
 // EXISTANCE
 
-cheek.isUndefined = function(input) {
+check.isUndefined = function(input) {
 	return typeof input === "undefined";
 },
 
-cheek.isNull = function(input) {
+check.isNull = function(input) {
 	return input === null;
 },
 
-cheek.isNotNull = function(input) {
-	return !cheek.isNull(input);
+check.isNotNull = function(input) {
+	return !check.isNull(input);
 },
 
-cheek.isDefined = function(input) {
-	return !cheek.isUndefined(input) && cheek.isNotNull(input);
+check.isDefined = function(input) {
+	return !check.isUndefined(input) && check.isNotNull(input);
 },
 
-cheek.isNotDefined = function(input) {
-	return !cheek.isDefined(input);
+check.isNotDefined = function(input) {
+	return !check.isDefined(input);
 },
 
 // TYPES
 
-cheek.is = function(Type, input) {
+check.is = function(Type, input) {
 	return input instanceof Type || (typeof Symbol !== "undefined") && Type[Symbol.hasInstance](input) || typeof input === Type.name.toLowerCase();
 },
 
-cheek.isNot = function(Type, input) {
-	return !cheek.is(Type, input);
+check.isNot = function(Type, input) {
+	return !check.is(Type, input);
 },
 
-cheek.isEither = function(types, input) {
-	return types.some(Type => cheek.is(Type, input));
+check.isEither = function(types, input) {
+	return types.some(Type => check.is(Type, input));
 },
 
-cheek.isNeither = function(types, input) {
-	return !cheek.isEither(types, input);
-},
-
-// ***
-
-cheek.isPrimitive = function(input) {
-	return cheek.isNotDefined(input) || cheek.isNot(Object, input);
-},
-
-cheek.isObject = function(input) {
-	return !cheek.isPrimitive(input);
+check.isNeither = function(types, input) {
+	return !check.isEither(types, input);
 },
 
 // ***
 
-cheek.isString = function(input) {
-	return cheek.is(String, input);
+check.isPrimitive = function(input) {
+	return check.isNotDefined(input) || check.isNot(Object, input);
 },
 
-cheek.isNotString = function(input) {
-	return !cheek.isString(input);
+check.isObject = function(input) {
+	return !check.isPrimitive(input);
 },
 
-cheek.isNumber = function(input) {
-	return cheek.is(Number, input);
+// ***
+
+check.isString = function(input) {
+	return check.is(String, input);
 },
 
-cheek.isNotNumber = function(input) {
-	return !cheek.isNumber(input);
+check.isNotString = function(input) {
+	return !check.isString(input);
 },
 
-cheek.isArray = function(input) {
-	return Array.isArray? Array.isArray(input) : cheek.is(Array, input);
+check.isNumber = function(input) {
+	return check.is(Number, input);
 },
 
-cheek.isArraylike = function(input) {
-	return cheek.isArray(input) || (cheek.isDefined(input) && ((typeof Symbol !== "undefined") && (Symbol.iterator in input)) || ("length" in input));
+check.isNotNumber = function(input) {
+	return !check.isNumber(input);
 },
 
-cheek.isNotArray = function(input) {
-	return !cheek.isArray(input);
+check.isArray = function(input) {
+	return Array.isArray? Array.isArray(input) : check.is(Array, input);
 },
 
-cheek.isBoolean = function(input) {
-	return cheek.is(Boolean, input);
+check.isArraylike = function(input) {
+	return check.isArray(input) || (check.isDefined(input) && ((typeof Symbol !== "undefined") && (Symbol.iterator in input)) || ("length" in input));
 },
 
-cheek.isNotBoolean = function(input) {
-	return !cheek.isBoolean(input);
+check.isNotArray = function(input) {
+	return !check.isArray(input);
+},
+
+check.isBoolean = function(input) {
+	return check.is(Boolean, input);
+},
+
+check.isNotBoolean = function(input) {
+	return !check.isBoolean(input);
 },
 
 // ARRAY
 
-cheek.isEmptyArray = function(input) {
-	return cheek.isArray(input) && (!input.length || input.every(cheek.isNotDefined));
+check.isEmptyArray = function(input) {
+	return check.isArray(input) && (!input.length || input.every(check.isNotDefined));
 },
 
-cheek.isNotEmptyArray = function(input) {
-	return !cheek.isEmptyArray(input);
+check.isNotEmptyArray = function(input) {
+	return !check.isEmptyArray(input);
 },
 
-cheek.contains = function(array, element) {
-	return cheek.isArray(array) && !!~array.indexOf(element);
+check.contains = function(array, element) {
+	return check.isArray(array) && !!~array.indexOf(element);
 },
 
-cheek.lacks = function(array, element) {
-	return cheek.isArray(array) && !~array.indexOf(element);
+check.lacks = function(array, element) {
+	return check.isArray(array) && !~array.indexOf(element);
 },
 	
-cheek.isFirstIn = function(array, input) {
-	return cheek.isArray(array) && array[0] === input;
+check.isFirstIn = function(array, input) {
+	return check.isArray(array) && array[0] === input;
 },
 	
-cheek.isNotFirstIn = function(array, input) {
-	return cheek.isArray(array) && array[0] !== input;
+check.isNotFirstIn = function(array, input) {
+	return check.isArray(array) && array[0] !== input;
 },
 
-cheek.isLastIn = function(array, input) {
-	return cheek.isArray(array) && array[array.length - 1] === input;
+check.isLastIn = function(array, input) {
+	return check.isArray(array) && array[array.length - 1] === input;
 },
 	
-cheek.isNotLastIn = function(array, input) {
-	return cheek.isArray(array) && array[array.length - 1] !== input;
+check.isNotLastIn = function(array, input) {
+	return check.isArray(array) && array[array.length - 1] !== input;
 },
 
 // STRING
 
-cheek.isEmptyString = function(input) {
-	return cheek.isString(input) && !input.length;
+check.isEmptyString = function(input) {
+	return check.isString(input) && !input.length;
 },
 
-cheek.isNotEmptyString = function(input) {
-	return !cheek.isEmptyString(input);
+check.isNotEmptyString = function(input) {
+	return !check.isEmptyString(input);
 },
 
-cheek.includes = function(source, substr) {
-	return cheek.isString(source) && !!~source.indexOf(substr);
+check.includes = function(source, substr) {
+	return check.isString(source) && !!~source.indexOf(substr);
 },
 
 	/* no opposed method for '.includes()' */
 
-cheek.startsWith = function(source, substr) {
-	return cheek.isString(source) && !source.indexOf(substr);
+check.startsWith = function(source, substr) {
+	return check.isString(source) && !source.indexOf(substr);
 },
 
-cheek.endsWith = function(source, substr) {
-	return cheek.isString(source) && (source.lastIndexOf(substr) === source.length - substr.length);
+check.endsWith = function(source, substr) {
+	return check.isString(source) && (source.lastIndexOf(substr) === source.length - substr.length);
 },
 
 // NUMBER
 
-cheek.isNaN = function(input) {
+check.isNaN = function(input) {
 	return (Number.isNaN || isNaN)(input);
 },
 
-cheek.isNotNaN = function(input) {
-	return !cheek.isNaN(input);
+check.isNotNaN = function(input) {
+	return !check.isNaN(input);
 },
 
-cheek.isFinite = function(input) {
+check.isFinite = function(input) {
 	return (Number.isFinite || isFinite)(input);
 },
 
-cheek.isNotFinite = function(input) {
-	return !cheek.isFinite(input);
+check.isNotFinite = function(input) {
+	return !check.isFinite(input);
 },
 
 // ***
 
-cheek.isInteger = function(input) {
-	return cheek.isDivisibleBy(input, 1);
+check.isInteger = function(input) {
+	return check.isDivisibleBy(input, 1);
 },
 
-cheek.isNotInteger = function(input) {
-	return !cheek.isInteger(input);
+check.isNotInteger = function(input) {
+	return !check.isInteger(input);
 },
 
-cheek.isNatural = function(input, zero = true) {
-	return cheek.isInteger(input) && (zero? cheek.isNonNegative(input) : cheek.isPositive(input));
+check.isNatural = function(input, zero = true) {
+	return check.isInteger(input) && (zero? check.isNonNegative(input) : check.isPositive(input));
 },
 
-cheek.isNotNatural = function(input, zero = true) {
-	return !cheek.isNatural(input, zero);
+check.isNotNatural = function(input, zero = true) {
+	return !check.isNatural(input, zero);
 },
 
-cheek.isPercent = function(input) {
-	return cheek.isInRange(input, [0, 1], "inclusively");
+check.isPercent = function(input) {
+	return check.isInRange(input, [0, 1], "inclusively");
 },
 
-cheek.isNotPercent = function(input) {
-	return !cheek.isPercent(input);
+check.isNotPercent = function(input) {
+	return !check.isPercent(input);
 },
 
 // ***
 
-cheek.isEqualTo = function(input, operand) {
+check.isEqualTo = function(input, operand) {
 	return input === operand;
 },
 
-cheek.isEqualToAny = function(input, operands) {
-	return operands.some(operand => cheek.isEqualTo(input, operand));
+check.isEqualToAny = function(input, operands) {
+	return operands.some(operand => check.isEqualTo(input, operand));
 },
 
-cheek.isGreaterThan = function(input, operand) {
+check.isGreaterThan = function(input, operand) {
 	return input > operand;
 },
 
-cheek.isGreaterThanOrEqualTo = function(input, operand) {
+check.isGreaterThanOrEqualTo = function(input, operand) {
 	return input >= operand;
 },
 
-cheek.isLessThan = function(input, operand) {
+check.isLessThan = function(input, operand) {
 	return input < operand;
 },
 
-cheek.isLessThanOrEqualTo = function(input, operand) {
+check.isLessThanOrEqualTo = function(input, operand) {
 	return input <= operand;
 },
 
 // ***
 
-cheek.isPositive = function(input) {
+check.isPositive = function(input) {
 	return input > 0;
 },
 
-cheek.isNotPositive = function(input) {
-	return !cheek.isPositive(input);
+check.isNotPositive = function(input) {
+	return !check.isPositive(input);
 },
 
-cheek.isNegative = function(input) {
+check.isNegative = function(input) {
 	return input < 0;
 },
 
-cheek.isNotNegative = function(input) {
-	return !cheek.isNegative(input);
+check.isNotNegative = function(input) {
+	return !check.isNegative(input);
 },
 
-cheek.isZero = function(input) {
-	return cheek.isNumber(input) && input == 0;
+check.isZero = function(input) {
+	return check.isNumber(input) && input == 0;
 },
 
-cheek.isNotZero = function(input) {
-	return !cheek.isZero(input);
+check.isNotZero = function(input) {
+	return !check.isZero(input);
 },
 
 // ***
 
-cheek.isDivisibleBy = function(numerator, denominator) {
+check.isDivisibleBy = function(numerator, denominator) {
 	return !(numerator % denominator);
 },
 
-cheek.isNotDivisibleBy = function(numerator, denominator) {
-	return !cheek.isDivisibleBy(numerator, denominator);
+check.isNotDivisibleBy = function(numerator, denominator) {
+	return !check.isDivisibleBy(numerator, denominator);
 },
 
 // ***
 
-cheek.isInRange = function(input, range, inclusively = true) {
+check.isInRange = function(input, range, inclusively = true) {
 	inclusively = /^excl/i.test(inclusively)? false : !!inclusively;
 	return inclusively? (input >= range[0] && input <= range[1]) : (input > range[0] && input < range[1]);
 },
 
-cheek.isNotInRange = function(input, range, inclusively = true) {
-	return !cheek.isInRange(input, range, inclusively);
+check.isNotInRange = function(input, range, inclusively = true) {
+	return !check.isInRange(input, range, inclusively);
 },
 
 // BUNDLE
 
-cheek.bundle = function(methodNames, inputs) {
+check.bundle = function(methodNames, inputs) {
 	let methods = methodNames.map(methodName => getLongEnoughMethodByName({ methodName }));
 
 	return inputs.map(input => methods.map(method => method(input)));
 },
 
-cheek.everyMethod = function(methodNames, input) {
-	return cheek.bundle(methodNames, [input])[0].every(Boolean);
+check.everyMethod = function(methodNames, input) {
+	return check.bundle(methodNames, [input])[0].every(Boolean);
 },
 
-cheek.someMethod = function(methodNames, input) {
-	return cheek.bundle(methodNames, [input])[0].some(Boolean);
+check.someMethod = function(methodNames, input) {
+	return check.bundle(methodNames, [input])[0].some(Boolean);
 },
 
-cheek.everyInput = function(methodName, inputs) {
-	return cheek.bundle([methodName], inputs).map(result => result[0]).every(Boolean);
+check.everyInput = function(methodName, inputs) {
+	return check.bundle([methodName], inputs).map(result => result[0]).every(Boolean);
 },
 
-cheek.someInput = function(methodName, inputs) {
-	return cheek.bundle([methodName], inputs).map(result => result[0]).some(Boolean);
+check.someInput = function(methodName, inputs) {
+	return check.bundle([methodName], inputs).map(result => result[0]).some(Boolean);
 },
 
 // PROXY
 
-cheek.input = function(input) {
+check.input = function(input) {
 	return new Proxy(prepareProxyBase(), {
 		get(obj, methodName) {
 			if (obj[methodName])
@@ -349,18 +349,18 @@ cheek.input = function(input) {
 				case "isNeither":
 				case "everyMethod":
 				case "someMethod":
-					return (additional) => cheek[methodName](additional, input);
+					return (additional) => check[methodName](additional, input);
 
 				case "bundle":
 				case "everyInput":
 				case "someInput":
-					throw new TypeError(`The method 'cheek.${methodName}' requires multiple inputs. Use 'cheek.inputs( ... ).${methodName}' instead`);
+					throw new TypeError(`The method 'check.${methodName}' requires multiple inputs. Use 'check.inputs( ... ).${methodName}' instead`);
 			}
 		}
 	});
 },
 
-cheek.inputs = function(inputs) {
+check.inputs = function(inputs) {
 	return new Proxy(prepareProxyBase(), {
 		get(obj, methodName) {
 			if (obj[methodName])
@@ -369,69 +369,69 @@ cheek.inputs = function(inputs) {
 			else switch (methodName) {
 				default:
 					getMethodByName(methodName); // verify the presence of a method at the first place
-					throw new TypeError(`The method 'cheek.${methodName}' requires a single input. Use 'cheek.input( ... ).${methodName}' instead`);
+					throw new TypeError(`The method 'check.${methodName}' requires a single input. Use 'check.input( ... ).${methodName}' instead`);
 
 				case "bundle":
 				case "everyInput":
 				case "someInput":
-					return (methodNameOrNames) => cheek[methodName](methodNameOrNames, inputs);
+					return (methodNameOrNames) => check[methodName](methodNameOrNames, inputs);
 			}
 		}
 	});
 },
 
-cheek.every = function(inputs) {
+check.every = function(inputs) {
 	return new Proxy(prepareProxyBase(), {
 		get(obj, methodName) {
 			if (obj[methodName])
 				return obj[methodName];
 
-			else return (...args) => inputs.map(input => cheek.input(input)[methodName](...args)).every(Boolean);
+			else return (...args) => inputs.map(input => check.input(input)[methodName](...args)).every(Boolean);
 		}
 	});
 },
 
-cheek.some = function(inputs) {
+check.some = function(inputs) {
 	return new Proxy(prepareProxyBase(), {
 		get(obj, methodName) {
 			if (obj[methodName])
 				return obj[methodName];
 
-			else return (...args) => inputs.map(input => cheek.input(input)[methodName](...args)).some(Boolean);
+			else return (...args) => inputs.map(input => check.input(input)[methodName](...args)).some(Boolean);
 		}
 	});
 },
 
-cheek.none = function(inputs) {
+check.none = function(inputs) {
 	return new Proxy(prepareProxyBase(), {
 		get(obj, methodName) {
 			if (obj[methodName])
 				return obj[methodName];
 
-			else return (...args) => !cheek.some(inputs)[methodName](...args);
+			else return (...args) => !check.some(inputs)[methodName](...args);
 		}
 	});
 }
 
 // Setting alias
-cheek.eq = cheek.equals = cheek.isEqualTo;
-cheek.eqa = cheek.isEqualToAny;
-cheek.gt = cheek.isGreaterThan;
-cheek.gte = cheek.isGreaterThanOrEqualTo;
-cheek.lt = cheek.isLessThan;
-cheek.lte = cheek.isLessThanOrEqualTo;
+check.eq = check.equals = check.isEqualTo;
+check.eqa = check.isEqualToAny;
+check.gt = check.isGreaterThan;
+check.gte = check.isGreaterThanOrEqualTo;
+check.lt = check.isLessThan;
+check.lte = check.isLessThanOrEqualTo;
 
-cheek.isNonZero = cheek.isNotZero;
-cheek.isInfinite = cheek.isNotFinite;
-cheek.isIndivisibleBy = cheek.isNotDivisibleBy;
-cheek.isNotFloat = cheek.isInteger;
-cheek.isFloat = cheek.isNotInteger;
-cheek.isNonNegative = cheek.isNotNegative;
-cheek.pos = cheek.isPositive;
-cheek.neg = cheek.isNegative;
+check.isNonZero = check.isNotZero;
+check.isInfinite = check.isNotFinite;
+check.isIndivisibleBy = check.isNotDivisibleBy;
+check.isNotFloat = check.isInteger;
+check.isFloat = check.isNotInteger;
+check.isNonNegative = check.isNotNegative;
+check.pos = check.isPositive;
+check.neg = check.isNegative;
 
-cheek.each = cheek.every;
-cheek.any = cheek.some;
-cheek.neither = cheek.none;
+check.each = check.every;
+check.any = check.some;
+check.neither = check.none;
 
-module.exports = cheek;
+module.exports = check;

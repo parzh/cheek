@@ -1,67 +1,67 @@
 [← Back to `README.md`](../README.md)
 
 ## Existance
-- ### cheek.isUndefined(input): boolean
+- ### check.isUndefined(input): boolean
   Checks whether the input is exactly `undefined`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isUndefined(undefined); // true
-  cheek.isUndefined(); // true
-  cheek.isUndefined(null); // false
-  cheek.isUndefined(foo); // ReferenceError: foo is not defined
+  check.isUndefined(undefined); // true
+  check.isUndefined(); // true
+  check.isUndefined(null); // false
+  check.isUndefined(foo); // ReferenceError: foo is not defined
   ```
 
-  _not to be confused with `cheek.isNotDefined()`_
+  _not to be confused with `check.isNotDefined()`_
 
-- ### cheek.isNull(input): boolean
+- ### check.isNull(input): boolean
   Checks whether the input is exactly `null`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNull(null); // true
-  cheek.isNull(); // false
-  cheek.isNull("abc".match(/d/)); // true
+  check.isNull(null); // true
+  check.isNull(); // false
+  check.isNull("abc".match(/d/)); // true
   ```
 
-- ### cheek.isNotNull(input): boolean
+- ### check.isNotNull(input): boolean
   Returns `true` if the input is anything but `null`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNotNull(null); // false
-  cheek.isNotNull(undefined); // true
-  cheek.isNotNull("aaa".match(/a+/)); // true
+  check.isNotNull(null); // false
+  check.isNotNull(undefined); // true
+  check.isNotNull("aaa".match(/a+/)); // true
   ```
 
-  _reversed `cheek.isNull()`_
+  _reversed `check.isNull()`_
 
-- ### cheek.isDefined(input): boolean
+- ### check.isDefined(input): boolean
   Checks whether the input is neither `undefined` nor `null`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isDefined(null); // false
-  cheek.isDefined(undefined); // false
-  cheek.isDefined(""); // true
+  check.isDefined(null); // false
+  check.isDefined(undefined); // false
+  check.isDefined(""); // true
   ```
 
-- ### cheek.isNotDefined(input): boolean
+- ### check.isNotDefined(input): boolean
   Returns `true` if the input is either `undefined` or `null`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNotDefined(null); // true
-  cheek.isNotDefined(undefined); // true
-  cheek.isNotDefined(bar); // ReferenceError: bar is not defined
+  check.isNotDefined(null); // true
+  check.isNotDefined(undefined); // true
+  check.isNotDefined(bar); // ReferenceError: bar is not defined
   ```
 
-  _reversed `cheek.isDefined()`_  
-  _not to be confused with `cheek.isUndefined()`_
+  _reversed `check.isDefined()`_  
+  _not to be confused with `check.isUndefined()`_
 
 [← Back to `README.md`](../README.md)

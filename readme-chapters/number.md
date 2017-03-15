@@ -1,137 +1,137 @@
 [← Back to `README.md`](../README.md)
 
 ## Number
-- ### cheek.isNaN(input: number): boolean
+- ### check.isNaN(input: number): boolean
   Checks whether the input is exactly `NaN`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNaN(NaN); // true
-  cheek.isNaN(); // false
-  cheek.isNaN(0 / 0); // true
+  check.isNaN(NaN); // true
+  check.isNaN(); // false
+  check.isNaN(0 / 0); // true
   ```
 
-  _not to be confused with `cheek.isNotNumber()`_  
+  _not to be confused with `check.isNotNumber()`_  
 
-- ### cheek.isNotNaN(input: number): boolean
+- ### check.isNotNaN(input: number): boolean
   Returns `true` if the input is not `NaN`  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNotNaN(NaN); // false
-  cheek.isNotNaN(null); // true
-  cheek.isNotNaN(0 / 0); // false
+  check.isNotNaN(NaN); // false
+  check.isNotNaN(null); // true
+  check.isNotNaN(0 / 0); // false
   ```
 
-  _reversed `cheek.isNaN()`_  
+  _reversed `check.isNaN()`_  
 
-- ### cheek.isFinite(input: number): boolean
+- ### check.isFinite(input: number): boolean
   Checks whether the input is a finite number  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isFinite(42); // true
-  cheek.isFinite(NaN); // false
-  cheek.isFinite(new Object()); // false
+  check.isFinite(42); // true
+  check.isFinite(NaN); // false
+  check.isFinite(new Object()); // false
   ```
 
-- ### cheek.isNotFinite(input: number): boolean
+- ### check.isNotFinite(input: number): boolean
   Returns `true` if the input is not a finite number  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNotFinite(5) // false
-  cheek.isNotFinite(NaN) // true
-  cheek.isNotFinite(new Object()) // true
+  check.isNotFinite(5) // false
+  check.isNotFinite(NaN) // true
+  check.isNotFinite(new Object()) // true
   ```
 
-  _reversed `cheek.isFinite()`_  
-  _alias: `cheek.isInfinite()`_  
+  _reversed `check.isFinite()`_  
+  _alias: `check.isInfinite()`_  
 
-- ### cheek.isInteger(input: number): boolean
+- ### check.isInteger(input: number): boolean
   Checks whether the input is an integer  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isInteger(42); // true
-  cheek.isInteger(42.5); // false
-  cheek.isInteger(0); // true
+  check.isInteger(42); // true
+  check.isInteger(42.5); // false
+  check.isInteger(0); // true
   ```
 
-  _alias: `cheek.isNotFloat()`_  
+  _alias: `check.isNotFloat()`_  
 
-- ### cheek.isNotInteger(input: number): boolean
+- ### check.isNotInteger(input: number): boolean
   Returns `true` if the input is not an integer  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNotInteger(42); // false
-  cheek.isNotInteger(42.5); // true
-  cheek.isNotInteger(0.0); // false
+  check.isNotInteger(42); // false
+  check.isNotInteger(42.5); // true
+  check.isNotInteger(0.0); // false
   ```
 
-  _reversed `cheek.isInteger()`_  
-  _alias: `cheek.isFloat()`_  
+  _reversed `check.isInteger()`_  
+  _alias: `check.isFloat()`_  
 
-- ### cheek.isNatural(input: number, zero: boolean = true): boolean
+- ### check.isNatural(input: number, zero: boolean = true): boolean
   Checks whether the input is a natural number  
   @param `input` Test value  
   @param `zero` If undefined or `true`, zero is considered as natural number
 
   #### Examples:
   ```javascript
-  cheek.isNatural(5); // true
-  cheek.isNatural(42.5); // false
-  cheek.isNatural(-0); // true
-  cheek.isNatural(0, false); // false
+  check.isNatural(5); // true
+  check.isNatural(42.5); // false
+  check.isNatural(-0); // true
+  check.isNatural(0, false); // false
   ```
 
-- ### cheek.isNotNatural(input: number, zero: boolean = true): boolean
+- ### check.isNotNatural(input: number, zero: boolean = true): boolean
   Returns `true` if input not a natural number  
   @param `input` Test value  
   @param `zero` If undefined or `true`, zero **is** considered as natural number
 
   #### Examples:
   ```javascript
-  cheek.isNotNatural(5); // false
-  cheek.isNotNatural(42.5); // true
-  cheek.isNotNatural(0); // false
-  cheek.isNotNatural(0, false); // true
+  check.isNotNatural(5); // false
+  check.isNotNatural(42.5); // true
+  check.isNotNatural(0); // false
+  check.isNotNatural(0, false); // true
   ```
 
-  _reversed `cheek.isNatural()`_  
+  _reversed `check.isNatural()`_  
 
-- ### cheek.isPercent(input: number): boolean
+- ### check.isPercent(input: number): boolean
   Checks whether the input is a fraction between 0 and 1 inclusively  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isPercent(0.42); // true
-  cheek.isPercent(42); // false
-  cheek.isPercent(0.0); // true
+  check.isPercent(0.42); // true
+  check.isPercent(42); // false
+  check.isPercent(0.0); // true
   ```
 
-- ### cheek.isNotPercent(input: number): boolean
+- ### check.isNotPercent(input: number): boolean
   Returns `true` if the input is not a fraction between 0 and 1 inclusively  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNotPercent(0.5); // false
-  cheek.isNotPercent(5); // true
-  cheek.isNotPercent(-0.0); // false
+  check.isNotPercent(0.5); // false
+  check.isNotPercent(5); // true
+  check.isNotPercent(-0.0); // false
   ```
 
-  _reversed `cheek.isPercent()`_  
+  _reversed `check.isPercent()`_  
 
-- ### cheek.isEqualTo(input: number, operand: number): boolean
+- ### check.isEqualTo(input: number, operand: number): boolean
   Checks whether the input is equal to the operand.  
   Values of `input` and `operand` are interchangeable.  
   @param `input` Test value  
@@ -139,197 +139,197 @@
 
   #### Examples:
   ```javascript
-  cheek.isEqualTo(42, 42); // true
-  cheek.isEqualTo(42, 5); // false
-  cheek.isEqualTo(NaN, NaN); // false
+  check.isEqualTo(42, 42); // true
+  check.isEqualTo(42, 5); // false
+  check.isEqualTo(NaN, NaN); // false
 
   // bad usage
-  cheek.isEqualTo("text", "text"); // true
-  cheek.isEqualTo(new Object(), new Object()); // false
+  check.isEqualTo("text", "text"); // true
+  check.isEqualTo(new Object(), new Object()); // false
   ```
 
-  _alias: `cheek.eq()`, `cheek.equals()`_  
+  _alias: `check.eq()`, `check.equals()`_  
 
-- ### cheek.isEqualToAny(input: number, operands: number[]): boolean
+- ### check.isEqualToAny(input: number, operands: number[]): boolean
   Checks whether the input is equal to any of the operands  
   @param `input` Test value  
   @param `oparends` An array of comparison values  
 
   #### Examples:
   ```javascript
-  cheek.isEqualToAny(5, [1, 2, 3, 4, 5]); // true
-  cheek.isEqualToAny(5, [3, 14, 15, 9, 26]); // false
+  check.isEqualToAny(5, [1, 2, 3, 4, 5]); // true
+  check.isEqualToAny(5, [3, 14, 15, 9, 26]); // false
 
   let arr = new Array(10).fill(0).map((el, pos) => pos);
-  cheek.isEqualToAny(5, arr); // true
+  check.isEqualToAny(5, arr); // true
   ```
 
-  _alias: `cheek.eqa()`_  
+  _alias: `check.eqa()`_  
 
-- ### cheek.isGreaterThan(input: number, operand: number): boolean
+- ### check.isGreaterThan(input: number, operand: number): boolean
   Checks whether the input is greater than the operand  
   @param `input` Test value  
   @param `operand` Comparison value  
 
   #### Examples:
   ```javascript
-  cheek.isGreaterThan(42, 5); // true
-  cheek.isGreaterThan(5, 42); // false
-  cheek.isGreaterThan(NaN, NaN); // false
+  check.isGreaterThan(42, 5); // true
+  check.isGreaterThan(5, 42); // false
+  check.isGreaterThan(NaN, NaN); // false
   ```
 
-  _alias: `cheek.gt()`_  
+  _alias: `check.gt()`_  
 
-- ### cheek.isGreaterThanOrEqualTo(input: number, operand: number): boolean
+- ### check.isGreaterThanOrEqualTo(input: number, operand: number): boolean
   Checks whether the input is greater than or equal to the operand  
   @param `input` Test value  
   @param `operand` Comparison value  
 
   #### Examples:
   ```javascript
-  cheek.isGreaterThanOrEqualTo(42, 5); // true
-  cheek.isGreaterThanOrEqualTo(42, 42); // true
-  cheek.isGreaterThanOrEqualTo(NaN, NaN); // false
+  check.isGreaterThanOrEqualTo(42, 5); // true
+  check.isGreaterThanOrEqualTo(42, 42); // true
+  check.isGreaterThanOrEqualTo(NaN, NaN); // false
   ```
 
-  _alias: `cheek.gte()`_  
+  _alias: `check.gte()`_  
 
-- ### cheek.isLessThan(input: number, operand: number): boolean
+- ### check.isLessThan(input: number, operand: number): boolean
   Checks whether the input is less than the operand  
   @param `input` Test value  
   @param `operand` Comparison value  
 
   #### Examples:
   ```javascript
-  cheek.isLessThan(5, 42); // true
-  cheek.isLessThan(42, 5); // false
-  cheek.isLessThan(NaN, NaN); // false
+  check.isLessThan(5, 42); // true
+  check.isLessThan(42, 5); // false
+  check.isLessThan(NaN, NaN); // false
   ```
 
-  _alias: `cheek.lt()`_  
+  _alias: `check.lt()`_  
 
-- ### cheek.isLessThanOrEqualTo(input: number, operand: number): boolean
+- ### check.isLessThanOrEqualTo(input: number, operand: number): boolean
   Checks whether the input is less than or equal to the operand  
   @param `input` Test value  
   @param `operand` Comparison value  
 
   #### Examples:
   ```javascript
-  cheek.isLessThanOrEqualTo(5, 42); // true
-  cheek.isLessThanOrEqualTo(5, 5); // true
-  cheek.isLessThanOrEqualTo(NaN, NaN); // false
+  check.isLessThanOrEqualTo(5, 42); // true
+  check.isLessThanOrEqualTo(5, 5); // true
+  check.isLessThanOrEqualTo(NaN, NaN); // false
   ```
 
-  _alias: `cheek.lte()`_  
+  _alias: `check.lte()`_  
 
-- ### cheek.isPositive(input: number): boolean
+- ### check.isPositive(input: number): boolean
   Checks whether the input is greater than zero  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isPositive(5); // true
-  cheek.isPositive(0); // false
-  cheek.isPositive(-5); // false
+  check.isPositive(5); // true
+  check.isPositive(0); // false
+  check.isPositive(-5); // false
   ```
 
-  _alias: `cheek.pos()`_  
+  _alias: `check.pos()`_  
 
-- ### cheek.isNotPositive(input: number): boolean
+- ### check.isNotPositive(input: number): boolean
   Returns `true` if the input is less than or equal to zero  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNotPositive(5); // false
-  cheek.isNotPositive(0); // true
-  cheek.isNotPositive(-5); // true
+  check.isNotPositive(5); // false
+  check.isNotPositive(0); // true
+  check.isNotPositive(-5); // true
   ```
 
-  _reversed `cheek.isPositive()`_  
-  _not to be confused with `cheek.isNegative()`_  
+  _reversed `check.isPositive()`_  
+  _not to be confused with `check.isNegative()`_  
 
-- ### cheek.isNegative(input: number): boolean
+- ### check.isNegative(input: number): boolean
   Checks whether the input is less than zero  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNegative(-5); // true
-  cheek.isNegative(0); // false
-  cheek.isNegative(5); // false
+  check.isNegative(-5); // true
+  check.isNegative(0); // false
+  check.isNegative(5); // false
   ```
 
-  _alias: `cheek.neg()`_  
+  _alias: `check.neg()`_  
 
-- ### cheek.isNotNegative(input: number): boolean
+- ### check.isNotNegative(input: number): boolean
   Checks whether the input is greater than or equal to zero  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNotNegative(-5); // false
-  cheek.isNotNegative(0); // true
-  cheek.isNotNegative(5); // true
+  check.isNotNegative(-5); // false
+  check.isNotNegative(0); // true
+  check.isNotNegative(5); // true
   ```
 
-  _reversed `cheek.isNegative()`_  
-  _alias: `cheek.isNonNegative()`_  
-  _not to be confused with `cheek.isPositive()`_  
+  _reversed `check.isNegative()`_  
+  _alias: `check.isNonNegative()`_  
+  _not to be confused with `check.isPositive()`_  
 
-- ### cheek.isZero(input: number): boolean
+- ### check.isZero(input: number): boolean
   Checks whether the input is equal to zero  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isZero(0); // true
-  cheek.isZero(new Number()); // true
-  cheek.isZero(null); // false
+  check.isZero(0); // true
+  check.isZero(new Number()); // true
+  check.isZero(null); // false
   ```
 
-- ### cheek.isNotZero(input: number): boolean
+- ### check.isNotZero(input: number): boolean
   Returns `true` if the input is unequal to zero  
   @param `input` Test value
 
   #### Examples:
   ```javascript
-  cheek.isNotZero(0); // false
-  cheek.isNotZero(new Number()); // false
-  cheek.isNotZero(null); // true
+  check.isNotZero(0); // false
+  check.isNotZero(new Number()); // false
+  check.isNotZero(null); // true
   ```
 
-  _reversed `cheek.isZero()`_  
-  _alias: `cheek.isNonZero()`_  
+  _reversed `check.isZero()`_  
+  _alias: `check.isNonZero()`_  
 
-- ### cheek.isDivisibleBy(numerator: number, denominator: number): boolean
+- ### check.isDivisibleBy(numerator: number, denominator: number): boolean
   Cheks whether `numerator` is divisible by `denominator`  
   @param `numerator` This number will be divided by `denominator`  
   @param `denominator` This number will divide `numerator`  
 
   #### Examples:
   ```javascript
-  cheek.isDivisibleBy(42, 5); // false
-  cheek.isDivisibleBy(40, 5); // true
-  cheek.isDivisibleBy(0, 0); // true
+  check.isDivisibleBy(42, 5); // false
+  check.isDivisibleBy(40, 5); // true
+  check.isDivisibleBy(0, 0); // true
   ```
 
-- ### cheek.isNotDivisibleBy(numerator: number, denominator: number): boolean
+- ### check.isNotDivisibleBy(numerator: number, denominator: number): boolean
   Returns `true` if `numerator` is not divisible by `denominator`  
   @param `numerator` This number will be divided by the `denominator`  
   @param `denominator` This number will divide the `numerator`  
 
   #### Examples:
   ```javascript
-  cheek.isNotDivisibleBy(42, 5); // true
-  cheek.isNotDivisibleBy(40, 5); // false
-  cheek.isNotDivisibleBy(0, 0); // false
+  check.isNotDivisibleBy(42, 5); // true
+  check.isNotDivisibleBy(40, 5); // false
+  check.isNotDivisibleBy(0, 0); // false
   ```
 
-  _reversed `cheek.isDivisibleBy()`_  
-  _alias: `cheek.isIndivisibleBy()`_  
+  _reversed `check.isDivisibleBy()`_  
+  _alias: `check.isIndivisibleBy()`_  
 
-- ### cheek.isInRange(input: number, range: number[], inclusively: boolean | "inclusive" | "exclusive" | "excl" = true): boolean
+- ### check.isInRange(input: number, range: number[], inclusively: boolean | "inclusive" | "exclusive" | "excl" = true): boolean
   Checks whether the input is in provided range  
   @param `input` Test value  
   @param `range` Array of two numbers: min and max value of range  
@@ -337,12 +337,12 @@
 
   #### Examples:
   ```javascript
-  cheek.isInRange(15, [5, 42]); // true
-  cheek.isInRange(5, [5, 42]); // true
-  cheek.isInRange(5, [5, 42], "exclusively"); // false
+  check.isInRange(15, [5, 42]); // true
+  check.isInRange(5, [5, 42]); // true
+  check.isInRange(5, [5, 42], "exclusively"); // false
   ```
 
-- ### cheek.isNotInRange(input: number, range: number[], inclusively: boolean | "inclusive" | "exclusive" | "excl" = true): boolean
+- ### check.isNotInRange(input: number, range: number[], inclusively: boolean | "inclusive" | "exclusive" | "excl" = true): boolean
   Returns `true` if the input is not in provided range  
   @param `input` Test value  
   @param `range` Array of two numbers: min and max value of range  
@@ -350,11 +350,11 @@
 
   #### Examples:
   ```javascript
-  cheek.isNotInRange(15, [5, 42]); // false
-  cheek.isNotInRange(5, [5, 42], "inclusively"); // false
-  cheek.isNotInRange(5, [5, 42], "excl"); // true
+  check.isNotInRange(15, [5, 42]); // false
+  check.isNotInRange(5, [5, 42], "inclusively"); // false
+  check.isNotInRange(5, [5, 42], "excl"); // true
   ```
 
-  _reversed `cheek.isInRange()`_  
+  _reversed `check.isInRange()`_  
 
 [← Back to `README.md`](../README.md)

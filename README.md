@@ -1,12 +1,12 @@
-# cheek
+# check
 
-*__cheek__* (formerly *__check__*) is a library of various validation methods.
+*__check__* (or *__checkjs__*) is a library of various validation methods.
 
 ```javascript
-cheek.isArray(["Hello", "world"]); // true
-cheek.is(MyObject, new MyObject()); // true
+check.isArray(["Hello", "world"]); // true
+check.is(MyObject, new MyObject()); // true
 
-cheek.bundle(["isDefined", "isPositive", "isEmptyString"], [null, 15, ""]);
+check.bundle(["isDefined", "isPositive", "isEmptyString"], [null, 15, ""]);
 /*  [
  *     [ false, false, false ],
  *     [ true, true, false ],
@@ -18,7 +18,7 @@ cheek.bundle(["isDefined", "isPositive", "isEmptyString"], [null, 15, ""]);
 It allows you to keep your code clean and *vastly* increases its readability.
 
 ```javascript
-let every = cheek.every([8, 11, -5, 32]);
+let every = check.every([8, 11, -5, 32]);
 
 if (every.isInRange([-20, 20], "exclusively")) // false
   // you shall not pass!
@@ -33,7 +33,7 @@ for (let input of inputs)
 	if (input instanceof InvalidObject)
 		throw new Error("The input is invalid");
 
-if (cheek.any(inputs).is(InvalidObject))
+if (check.any(inputs).is(InvalidObject))
 	throw new Error("The input is invalid");
 
 // ***
@@ -41,10 +41,14 @@ if (cheek.any(inputs).is(InvalidObject))
 if (this.profile.person.age < 5 || this.profile.person.age > 42)
 	throw new RangeError("The age is not in range");
 
-if (cheek.isNotInRange(this.profile.person.age, [5, 42]))
+if (check(this.profile.person.age).isNotInRange([5, 42]))
 	throw new RangeError("The age is not in range");
 
 ```
+
+## Install:
+
+	npm install checkjs
 
 ## Chapters:
 
@@ -59,4 +63,4 @@ if (cheek.isNotInRange(this.profile.person.age, [5, 42]))
 
 ## TODO:
 
-See [issues](https://github.com/parzh/cheek/issues).
+See [issues](https://github.com/parzh/check/issues).

@@ -1,12 +1,12 @@
 let assert = require("assert");
-let cheek = require("./../index.js");
+let check = require("./../index.js");
 
 const INPUTS = [42, 42.6, new Object(), null];
 
 describe("Proxy", function() {
 	describe("input(input)", function() {
 		it("prepares single input for further validation", function() {
-			let input = cheek.input(-42.5);
+			let input = check.input(-42.5);
 
 			assert.equal(input.isDefined(), true);
 			assert.equal(input.is(Number), true);
@@ -25,7 +25,7 @@ describe("Proxy", function() {
 
 	describe("inputs(inputs)", function() {
 		it("prepares a bunch of inputs for further validation", function() {
-			let inputs = cheek.inputs(INPUTS);
+			let inputs = check.inputs(INPUTS);
 
 			assert.deepEqual(
 				inputs.bundle(["isPrimitive", "isNumber"]),
@@ -39,17 +39,17 @@ describe("Proxy", function() {
 
 	describe("every(inputs)", function() {
 		it("checks whether all input values pass verification", function() {
-			let every = cheek.every(INPUTS);
+			let every = check.every(INPUTS);
 
 			assert.equal(every.isPrimitive(), false);
 			assert.equal(every.isNumber(), false);
-			assert(cheek.every([1, 2, -3, 4]).isInRange([-4, 4]));
+			assert(check.every([1, 2, -3, 4]).isInRange([-4, 4]));
 		});
 	});
 
 	describe("some(inputs)", function() {
 		it("checks whether any of the input values passes verification", function() {
-			let some = cheek.some(INPUTS);
+			let some = check.some(INPUTS);
 			
 			assert.equal(some.isNotDefined(), true);
 			assert.throws(() => some.isNotInRange(), SyntaxError);
@@ -59,7 +59,7 @@ describe("Proxy", function() {
 	});
 	describe("none(inputs)", function() {
 		it("checks whether none of the input values passes verification", function() {
-			let none = cheek.none(INPUTS);
+			let none = check.none(INPUTS);
 
 			assert.equal(none.isDefined(), false);
 			assert.equal(none.isString([]), true);

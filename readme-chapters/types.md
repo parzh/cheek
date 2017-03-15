@@ -1,201 +1,201 @@
 [← Back to `README.md`](../README.md)
 
 ## Types
-- ### cheek.is(Type: Function, input): boolean
+- ### check.is(Type: Function, input): boolean
   Checks whether the input is an instance of provided class  
   @param `Type` Test class  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.is(MyObject, new MyObject()); // true
-  cheek.is(Number, {}); // false; see `cheek.isNumber()`
-  cheek.is(Array, []); // true; see `cheek.isArray()`
+  check.is(MyObject, new MyObject()); // true
+  check.is(Number, {}); // false; see `check.isNumber()`
+  check.is(Array, []); // true; see `check.isArray()`
   ```
 
-- ### cheek.isNot(Type: Function, input): boolean
+- ### check.isNot(Type: Function, input): boolean
   Returns `true` if the input is not an instance of provided class  
   @param `Type` Test class  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isNot(MyObject, new MyObject()); // false
-  cheek.isNot(Number, {}); // true
-  cheek.isNot(Array, []); // false
+  check.isNot(MyObject, new MyObject()); // false
+  check.isNot(Number, {}); // true
+  check.isNot(Array, []); // false
   ```
-  _reversed `cheek.is()`_
+  _reversed `check.is()`_
 
-- ### cheek.isEither(types: Function[], input): boolean
+- ### check.isEither(types: Function[], input): boolean
   Checks whether the input is an instance of any of provided classes  
   @param `types` Array of test classes  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isEither([Number, String], {}); // false
-  cheek.isEither([RegExp, String], /test/); // true
-  cheek.isEither([Number, RegExp, Array], 4); // true
+  check.isEither([Number, String], {}); // false
+  check.isEither([RegExp, String], /test/); // true
+  check.isEither([Number, RegExp, Array], 4); // true
   ```
 
-- ### cheek.isNeither(types: Function[], input): boolean
+- ### check.isNeither(types: Function[], input): boolean
   Returns `true` if the input is not an instance of any of provided classes  
   @param `types` Array of test classes  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isNeither([Number, String], {}); // true
-  cheek.isNeither([RegExp, String], /test/); // false
-  cheek.isNeither([Number, RegExp, Array], 4); // false
+  check.isNeither([Number, String], {}); // true
+  check.isNeither([RegExp, String], /test/); // false
+  check.isNeither([Number, RegExp, Array], 4); // false
   ```
-  _reversed `cheek.isEither()`_
-  _not to be confused with `cheek.neither()`_  
+  _reversed `check.isEither()`_
+  _not to be confused with `check.neither()`_  
 
-- ### cheek.isPrimitive(input): boolean
+- ### check.isPrimitive(input): boolean
   Checks whether the input is a primitive value  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isPrimitive(42); // true
-  cheek.isPrimitive(new Array()); // false
-  cheek.isPrimitive(null); // true
+  check.isPrimitive(42); // true
+  check.isPrimitive(new Array()); // false
+  check.isPrimitive(null); // true
   ``` 
 
-- ### cheek.isObject(input): boolean
+- ### check.isObject(input): boolean
   Returns `true` if the input is not a primitive value  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isObject(42); // false
-  cheek.isObject(new Array()); // true
-  cheek.isObject(null); // false
+  check.isObject(42); // false
+  check.isObject(new Array()); // true
+  check.isObject(null); // false
   ``` 
 
-  _reversed `cheek.isPrimitive()`_
+  _reversed `check.isPrimitive()`_
 
-- ### cheek.isString(input): boolean
+- ### check.isString(input): boolean
   Checks whether the input is a string  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isString(""); // true
-  cheek.isString(new String()); // true
-  cheek.isString(new (class extends String {})()); // true
+  check.isString(""); // true
+  check.isString(new String()); // true
+  check.isString(new (class extends String {})()); // true
   ``` 
 
-- ### cheek.isNotString(input): boolean
+- ### check.isNotString(input): boolean
   Returns `true` if the input is not a string  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isNotString(""); // false
-  cheek.isNotString(new String()); // false
-  cheek.isNotString(new (class {})()); // true
+  check.isNotString(""); // false
+  check.isNotString(new String()); // false
+  check.isNotString(new (class {})()); // true
   ``` 
 
-  _reversed `cheek.isString()`_
+  _reversed `check.isString()`_
 
-- ### cheek.isNumber(input): boolean
+- ### check.isNumber(input): boolean
   Checks whether the input is a number  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isNumber(5); // true
-  cheek.isNumber(new Number()); // true
-  cheek.isNumber(NaN); // true
+  check.isNumber(5); // true
+  check.isNumber(new Number()); // true
+  check.isNumber(NaN); // true
   ```
 
-- ### cheek.isNotNumber(input): boolean
+- ### check.isNotNumber(input): boolean
   Returns `true` if the input is not a number  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isNotNumber(undefined); // true
-  cheek.isNotNumber(new Number()); // false
-  cheek.isNotNumber(NaN); // false
+  check.isNotNumber(undefined); // true
+  check.isNotNumber(new Number()); // false
+  check.isNotNumber(NaN); // false
   ```
 
-  _reversed `cheek.isNumber()`_  
-  _not to be confused with `cheek.isNaN()`_
+  _reversed `check.isNumber()`_  
+  _not to be confused with `check.isNaN()`_
 
-- ### cheek.isArray(input): boolean
+- ### check.isArray(input): boolean
   Checks whether the input is an array  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isArray({}); // false
-  cheek.isArray([]); // true
-  cheek.isArray(new (class extends Array {})()); // true
+  check.isArray({}); // false
+  check.isArray([]); // true
+  check.isArray(new (class extends Array {})()); // true
   ```
 
   ```javascript
   function(...args) {
-    cheek.isArray(arguments); // false
-    cheek.isArray(args); // true
+    check.isArray(arguments); // false
+    check.isArray(args); // true
   }
   ```
 
-- ### cheek.isArraylike(input): boolean
+- ### check.isArraylike(input): boolean
   Checks whether the input is array-like object  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isArraylike({ 0: 0, 1: 1 }); // false
-  cheek.isArraylike({ 0: 0, 1: 1, length: 2 }); // true
-  cheek.isArraylike(new (class extends Array {})()); // true
+  check.isArraylike({ 0: 0, 1: 1 }); // false
+  check.isArraylike({ 0: 0, 1: 1, length: 2 }); // true
+  check.isArraylike(new (class extends Array {})()); // true
   ```
 
   ```javascript
   function(...args) {
-    cheek.isArraylike(arguments); // true
-    cheek.isArraylike(args); // true
+    check.isArraylike(arguments); // true
+    check.isArraylike(args); // true
   }
   ```
 
-- ### cheek.isNotArray(input): boolean
+- ### check.isNotArray(input): boolean
   Returns `true` if the input is not an array  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isNotArray({}); // true
-  cheek.isNotArray([]); // false
-  cheek.isNotArray(new (class {})()); // true
+  check.isNotArray({}); // true
+  check.isNotArray([]); // false
+  check.isNotArray(new (class {})()); // true
   ```
 
-  _reversed `cheek.isArray()`_
+  _reversed `check.isArray()`_
 
-- ### cheek.isBoolean(input): boolean
+- ### check.isBoolean(input): boolean
   Checks whether the input is a boolean value  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isBoolean(false); // true
-  cheek.isBoolean(new Boolean()); // true
-  cheek.isBoolean(undefined); // false
+  check.isBoolean(false); // true
+  check.isBoolean(new Boolean()); // true
+  check.isBoolean(undefined); // false
   ``` 
 
-- ### cheek.isNotBoolean(input): boolean
+- ### check.isNotBoolean(input): boolean
   Returns `true` if the input is not a boolean value  
   @param `input` Test value  
 
   #### Examples:
   ```javascript
-  cheek.isNotBoolean(false); // false
-  cheek.isNotBoolean(new Boolean()); // false
-  cheek.isNotBoolean(null); // true
+  check.isNotBoolean(false); // false
+  check.isNotBoolean(new Boolean()); // false
+  check.isNotBoolean(null); // true
   ``` 
 
-  _reversed `cheek.isBoolean()`_
+  _reversed `check.isBoolean()`_
 
 [← Back to `README.md`](../README.md)

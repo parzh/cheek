@@ -1,6 +1,6 @@
 {
   "name": "cheek",
-  "version": "3.0.3-beta.0",
+  "version": "3.1.0-0",
   "description": "Yet another value-validator in JavaScript ... Or is it?",
   "main": "index.js",
   "scripts": {

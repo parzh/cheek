@@ -44,6 +44,10 @@ check.isFalse = function(input) {
 	return check.isBoolean(input) && input == false;
 },
 
+check.and = function(input, operand) {
+	return !!input && !!operand;
+}
+
 // EXISTANCE
 
 check.isUndefined = function(input) {

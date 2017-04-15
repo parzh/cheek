@@ -35,4 +35,13 @@ describe("General", function() {
 			assert(!check.isFalse(null));
 		});
 	});
+
+	describe("check.and(input, operand)", function() {
+		it("returns `true` if both agruments are truthy", function() {
+			assert(check.and(true, true));
+			assert(!check.and(42, ""));
+			assert(!check.and(0, "text"));
+			assert(!check.and("", null));
+		});
+	});
 });

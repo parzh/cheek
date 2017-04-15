@@ -49,4 +49,17 @@
   check.isFalse(null); // false
   ```
 
+- ### check.and(input, operand): boolean
+  Returns `true` if both agruments are truthy  
+  @param `input` Test value  
+  @param `operand` Comparison value  
+
+  #### Examples:
+  ```javascript
+  check.and(true, true); // true
+  check.and(42, 0); // false
+  check.and(0, "text"); // false
+  check.and(0, null); // false
+  ```
+
 [← Back to `README.md`](../README.md)

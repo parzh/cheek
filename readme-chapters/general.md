@@ -73,9 +73,9 @@
   check.nand(42, ""); // true
   check.nand(0, "text"); // true
   check.nand("", null); // true
+  ```
 
   _reversed `check.and()`_  
-  ```
 
 - ### check.or(input, operand): boolean
   Returns `true` if at least one of agruments is truthy  
@@ -101,9 +101,9 @@
   check.nor(42, ""); // false
   check.nor(0, "text"); // false
   check.nor("", null); // true
+  ```
 
   _reversed `check.or()`_  
-  ```
 
 - ### check.xor(input, operand): boolean
   Returns `true` if agruments are not equal  

@@ -62,6 +62,21 @@
   check.and(0, null); // false
   ```
 
+- ### check.nand(input, operand): boolean
+  Returns `false` if both agruments are truthy  
+  @param `input` Test value  
+  @param `operand` Comparison value  
+
+  #### Examples:
+  ```javascript
+  check.nand(true, true); // false
+  check.nand(42, 0); // true
+  check.nand(0, "text"); // true
+  check.nand(0, null); // true
+
+  _reversed `check.and()`_  
+  ```
+
 - ### check.or(input, operand): boolean
   Returns `true` if at least one of agruments is truthy  
   @param `input` Test value  

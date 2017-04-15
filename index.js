@@ -48,6 +48,10 @@ check.and = function(input, operand) {
 	return !!input && !!operand;
 }
 
+check.nand = function(input, operand) {
+	return !check.and(input, operand);
+}
+
 check.or = function(input, operand) {
 	return !!input || !!operand;
 }

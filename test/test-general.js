@@ -45,6 +45,15 @@ describe("General", function() {
 		});
 	});
 
+	describe("check.nand(input, operand)", function() {
+		it("returns `false` if both agruments are truthy", function() {
+			assert(!check.nand(true, true));
+			assert(check.nand(42, ""));
+			assert(check.nand(0, "text"));
+			assert(check.nand("", null));
+		});
+	});
+
 	describe("check.or(input, operand)", function() {
 		it("returns `true` if at least one of agruments is truthy", function() {
 			assert(check.or(true, true));

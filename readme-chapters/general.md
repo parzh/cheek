@@ -62,4 +62,17 @@
   check.and(0, null); // false
   ```
 
+- ### check.or(input, operand): boolean
+  Returns `true` if at least one of agruments is truthy  
+  @param `input` Test value  
+  @param `operand` Comparison value  
+
+  #### Examples:
+  ```javascript
+  check.or(true, true); // true
+  check.or(42, 0); // true
+  check.or(0, "text"); // true
+  check.or(0, null); // false
+  ```
+
 [← Back to `README.md`](../README.md)

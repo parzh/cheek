@@ -48,6 +48,10 @@ check.and = function(input, operand) {
 	return !!input && !!operand;
 }
 
+check.or = function(input, operand) {
+	return !!input || !!operand;
+}
+
 // EXISTANCE
 
 check.isUndefined = function(input) {

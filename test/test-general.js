@@ -44,4 +44,13 @@ describe("General", function() {
 			assert(!check.and("", null));
 		});
 	});
+
+	describe("check.or(input, operand)", function() {
+		it("returns `true` if at least one of agruments is truthy", function() {
+			assert(check.or(true, true));
+			assert(check.or(42, ""));
+			assert(check.or(0, "text"));
+			assert(!check.or("", null));
+		});
+	});
 });

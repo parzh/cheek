@@ -54,6 +54,15 @@ describe("General", function() {
 		});
 	});
 
+	describe("check.nor(input, operand)", function() {
+		it("returns `true` if both agruments are falsy", function() {
+			assert(!check.nor(true, true));
+			assert(!check.nor(42, ""));
+			assert(!check.nor(0, "text"));
+			assert(check.nor("", null));
+		});
+	});
+
 	describe("check.xor(input, operand)", function() {
 		it("returns `true` if agruments are not equal", function() {
 			assert(!check.xor(true, true));

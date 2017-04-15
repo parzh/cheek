@@ -52,6 +52,10 @@ check.or = function(input, operand) {
 	return !!input || !!operand;
 }
 
+check.nor = function(input, operand) {
+	return !check.or(input, operand);
+}
+
 check.xor = function(input, operand) {
 	return !!(!!input ^ !!operand);
 }

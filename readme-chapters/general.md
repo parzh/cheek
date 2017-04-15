@@ -75,6 +75,21 @@
   check.or(0, null); // false
   ```
 
+- ### check.nor(input, operand): boolean
+  Returns `true` if both agruments are falsy  
+  @param `input` Test value  
+  @param `operand` Comparison value  
+
+  #### Examples:
+  ```javascript
+  check.nor(true, true); // false
+  check.nor(42, 0); // false
+  check.nor(0, "text"); // false
+  check.nor(0, null); // true
+
+  _reversed `check.or()`_  
+  ```
+
 - ### check.xor(input, operand): boolean
   Returns `true` if agruments are not equal  
   @param `input` Test value  

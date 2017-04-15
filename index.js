@@ -52,6 +52,10 @@ check.or = function(input, operand) {
 	return !!input || !!operand;
 }
 
+check.xor = function(input, operand) {
+	return !!(!!input ^ !!operand);
+}
+
 // EXISTANCE
 
 check.isUndefined = function(input) {

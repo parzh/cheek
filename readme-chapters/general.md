@@ -75,4 +75,17 @@
   check.or(0, null); // false
   ```
 
+- ### check.xor(input, operand): boolean
+  Returns `true` if agruments are not equal  
+  @param `input` Test value  
+  @param `operand` Comparison value  
+
+  #### Examples:
+  ```javascript
+  check.xor(true, true); // false
+  check.xor(42, 0); // true
+  check.xor(0, "text"); // true
+  check.xor(0, null); // false
+  ```
+
 [← Back to `README.md`](../README.md)

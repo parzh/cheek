@@ -57,9 +57,9 @@
   #### Examples:
   ```javascript
   check.and(true, true); // true
-  check.and(42, 0); // false
+  check.and(42, ""); // false
   check.and(0, "text"); // false
-  check.and(0, null); // false
+  check.and("", null); // false
   ```
 
 - ### check.nand(input, operand): boolean
@@ -70,9 +70,9 @@
   #### Examples:
   ```javascript
   check.nand(true, true); // false
-  check.nand(42, 0); // true
+  check.nand(42, ""); // true
   check.nand(0, "text"); // true
-  check.nand(0, null); // true
+  check.nand("", null); // true
 
   _reversed `check.and()`_  
   ```
@@ -85,9 +85,9 @@
   #### Examples:
   ```javascript
   check.or(true, true); // true
-  check.or(42, 0); // true
+  check.or(42, ""); // true
   check.or(0, "text"); // true
-  check.or(0, null); // false
+  check.or("", null); // false
   ```
 
 - ### check.nor(input, operand): boolean
@@ -98,9 +98,9 @@
   #### Examples:
   ```javascript
   check.nor(true, true); // false
-  check.nor(42, 0); // false
+  check.nor(42, ""); // false
   check.nor(0, "text"); // false
-  check.nor(0, null); // true
+  check.nor("", null); // true
 
   _reversed `check.or()`_  
   ```
@@ -113,9 +113,9 @@
   #### Examples:
   ```javascript
   check.xor(true, true); // false
-  check.xor(42, 0); // true
+  check.xor(42, ""); // true
   check.xor(0, "text"); // true
-  check.xor(0, null); // false
+  check.xor("", null); // false
   ```
 
 [← Back to `README.md`](../README.md)

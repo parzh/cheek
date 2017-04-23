@@ -137,6 +137,7 @@ check.isArray = function(input) {
 },
 
 check.isArraylike = function(input) {
+	return check.isArray(input) || (check.isDefined(input) && (check.isIterable(input) || ("length" in input)));
 },
 
 check.isIterable = function(input) {

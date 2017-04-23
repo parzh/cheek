@@ -137,7 +137,10 @@ check.isArray = function(input) {
 },
 
 check.isArraylike = function(input) {
-	return check.isArray(input) || (check.isDefined(input) && ((typeof Symbol !== "undefined") && (Symbol.iterator in input) || ("length" in input)));
+},
+
+check.isIterable = function(input) {
+	return (typeof Symbol !== "undefined") && check.is(Function, input[Symbol.iterator]);
 },
 
 check.isNotArray = function(input) {

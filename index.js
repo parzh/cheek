@@ -46,23 +46,23 @@ check.isFalse = function(input) {
 
 check.and = function(input, operand) {
 	return !!input && !!operand;
-}
+};
 
 check.nand = function(input, operand) {
 	return !check.and(input, operand);
-}
+};
 
 check.or = function(input, operand) {
 	return !!(+!!input | +!!operand);
-}
+};
 
 check.nor = function(input, operand) {
 	return !check.or(input, operand);
-}
+};
 
 check.xor = function(input, operand) {
 	return !!(+!!input ^ +!!operand);
-}
+};
 
 // EXISTANCE
 
@@ -439,7 +439,7 @@ check.none = function(inputs) {
 			else return (...args) => !check.some(inputs)[methodName](...args);
 		}
 	});
-}
+};
 
 // Setting alias
 check.hasFirst = check.isFirstIn;

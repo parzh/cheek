@@ -442,12 +442,6 @@ check.none = function(inputs) {
 }
 
 // Setting alias
-check.eq = check.equals = check.isEqualTo;
-check.eqa = check.isEqualToAny;
-check.gt = check.isGreaterThan;
-check.gte = check.isGreaterThanOrEqualTo;
-check.lt = check.isLessThan;
-check.lte = check.isLessThanOrEqualTo;
 
 check.isNonZero = check.isNotZero;
 check.isInfinite = check.isNotFinite;
@@ -455,6 +449,13 @@ check.isIndivisibleBy = check.isNotDivisibleBy;
 check.isNotFloat = check.isInteger;
 check.isFloat = check.isNotInteger;
 check.isNonNegative = check.isNotNegative;
+
+check.eq = check.equals = check.isEqualTo;
+check.eqa = check.isEqualToAny;
+check.gt = check.isGreaterThan;
+check.gte = check.isGreaterThanOrEqualTo;
+check.lt = check.isLessThan;
+check.lte = check.isLessThanOrEqualTo;
 check.pos = check.isPositive;
 check.neg = check.isNegative;
 

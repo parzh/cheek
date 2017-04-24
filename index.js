@@ -144,6 +144,10 @@ check.isIterable = function(input) {
 	return (typeof Symbol !== "undefined") && check.is(Function, input[Symbol.iterator]);
 },
 
+check.isNotIterable = function(input) {
+	return !check.isIterable(input);
+},
+
 check.isNotArray = function(input) {
 	return !check.isArray(input);
 },

@@ -108,6 +108,14 @@ describe("Types", function() {
 		});
 	});
 
+	describe("isNotIterable(input)", function() {
+		it("returns `true` if the input cannot be iterated over", function() {
+			assert(check.isNotIterable({ 0: "0", 1: "1" }));
+			assert(check.isNotIterable({ 0: "0", 1: "1", length: 2 }));
+			assert(!check.isNotIterable(new class extends Array{}));
+		});
+	});
+
 	describe("isNotArray(input)", function() {
 		it("returns `true` if the input is not an array", function() {
 			assert(check.isNotArray({}));

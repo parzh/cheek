@@ -414,7 +414,7 @@ check.every = function(inputs) {
 			if (obj[methodName])
 				return obj[methodName];
 
-			else return (...args) => inputs.map(input => check.input(input)[methodName](...args)).every(Boolean);
+			else return (...args) => inputs.map(input => check(input)[methodName](...args)).every(Boolean);
 		}
 	});
 },
@@ -425,7 +425,7 @@ check.some = function(inputs) {
 			if (obj[methodName])
 				return obj[methodName];
 
-			else return (...args) => inputs.map(input => check.input(input)[methodName](...args)).some(Boolean);
+			else return (...args) => inputs.map(input => check(input)[methodName](...args)).some(Boolean);
 		}
 	});
 },

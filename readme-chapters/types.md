@@ -149,8 +149,8 @@
 
   #### Examples:
   ```javascript
-  check.isArraylike({ 0: 0, 1: 1 }); // false
-  check.isArraylike({ 0: 0, 1: 1, length: 2 }); // true
+  check.isArraylike({ 0: "0", 1: "1" }); // false
+  check.isArraylike({ length: 2 }); // true
   check.isArraylike(new (class extends Array {})()); // true
   ```
 

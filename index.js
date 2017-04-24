@@ -53,7 +53,7 @@ check.nand = function(input, operand) {
 }
 
 check.or = function(input, operand) {
-	return !!input || !!operand;
+	return !!(+!!input | +!!operand);
 }
 
 check.nor = function(input, operand) {
@@ -61,7 +61,7 @@ check.nor = function(input, operand) {
 }
 
 check.xor = function(input, operand) {
-	return !!(!!input ^ !!operand);
+	return !!(+!!input ^ +!!operand);
 }
 
 // EXISTANCE
@@ -137,7 +137,7 @@ check.isArray = function(input) {
 },
 
 check.isArraylike = function(input) {
-	return check.isArray(input) || (check.isDefined(input) && (check.isIterable(input) || ("length" in input)));
+	return check.isArray(input) || (check.isDefined(input) && (check.isIterable(input) || check.isDefined(input.length)));
 },
 
 check.isIterable = function(input) {

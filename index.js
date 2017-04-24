@@ -64,6 +64,10 @@ check.xor = function(input, operand) {
 	return !!(+!!input ^ +!!operand);
 };
 
+check.ternary = function(input) {
+	return check.isNotDefined(input)? undefined : check.is(Number, input)? check.isNegative(input)? false : check.isPositive(input)? true : undefined : check.isFalsy(input)? false : true;
+};
+
 // EXISTANCE
 
 check.isUndefined = function(input) {

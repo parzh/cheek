@@ -7,8 +7,8 @@
 - [`.isNotFinite(input)`](./number.md#checkisnotfiniteinput-number-boolean)
 - [`.isInteger(input)`](./number.md#checkisintegerinput-number-boolean)
 - [`.isNotInteger(input)`](./number.md#checkisnotintegerinput-number-boolean)
-- [`.isNatural(input, zero)`](./number.md#checkisnaturalinput-number-zero-boolean-true-boolean)
-- [`.isNotNatural(input, zero)`](./number.md#checkisnotnaturalinput-number-zero-boolean-true-boolean)
+- [`.isNatural(input, zero)`](./number.md#checkisnaturalinput-number-zero-boolean--true-boolean)
+- [`.isNotNatural(input, zero)`](./number.md#checkisnotnaturalinput-number-zero-boolean--true-boolean)
 - [`.isPercent(input)`](./number.md#checkispercentinput-number-boolean)
 - [`.isNotPercent(input)`](./number.md#checkisnotpercentinput-number-boolean)
 - [`.isEqualTo(input, operand)`](./number.md#checkisequaltoinput-number-operand-number-boolean)
@@ -25,8 +25,8 @@
 - [`.isNotZero(input)`](./number.md#checkisnotzeroinput-number-boolean)
 - [`.isDivisibleBy(numerator, denominator)`](./number.md#checkisdivisiblebynumerator-number-denominator-number-boolean)
 - [`.isNotDivisibleBy(numerator, denominator)`](./number.md#checkisnotdivisiblebynumerator-number-denominator-number-boolean)
-- [`.isInRange(input, range, inclusively)`](./number.md#checkisinrangeinput-number-range-number-inclusively-boolean-inclusive-exclusive-excl-true-boolean)
-- [`.isNotInRange(input, range, inclusively)`](./number.md#checkisnotinrangeinput-number-range-number-inclusively-boolean-inclusive-exclusive-excl-true-boolean)
+- [`.isInRange(input, range, inclusively)`](./number.md#checkisinrangeinput-number-range-number-inclusively-boolean-inclusive-exclusive-excl--true-boolean)
+- [`.isNotInRange(input, range, inclusively)`](./number.md#checkisnotinrangeinput-number-range-number-inclusively-boolean-inclusive-exclusive-excl--true-boolean)
 
 ## Number
 - ### check.isNaN(input: number): boolean

@@ -1,6 +1,6 @@
 {
   "name": "checkjs",
-  "version": "3.3.1",
+  "version": "3.4.0",
   "description": "Yet another value-validator in JavaScript ... Or is it?",
   "main": "index.js",
   "scripts": {

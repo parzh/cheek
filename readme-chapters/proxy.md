@@ -2,6 +2,13 @@
 
 Each one of these methods returns Proxy object that allows to perform validations directly on itself.
 
+## Contents
+- [`.input(input)`](./proxy.md#checkinputinput-proxy)
+- [`.inputs(inputs)`](./proxy.md#checkinputsinputs-any-proxy)
+- [`.every(inputs)`](./proxy.md#checkeveryinputs-any-proxy)
+- [`.some(inputs)`](./proxy.md#checksomeinputs-any-proxy)
+- [`.none(inputs)`](./proxy.md#checknoneinputs-any-proxy)
+
 ## Proxy
 - ### check.input(input): Proxy
   Prepares single input for further validation.  

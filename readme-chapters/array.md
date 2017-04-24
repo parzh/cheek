@@ -1,5 +1,15 @@
 [← Back to `README.md`](../README.md)
 
+## Contents
+- [`.isEmptyArray(input)`](./array.md#checkisemptyarrayinput-any-boolean)
+- [`.isNotEmptyArray(input)`](./array.md#checkisnotemptyarrayinput-any-boolean)
+- [`.contains(array, element)`](./array.md#checkcontainsarray-any-element-any-boolean)
+- [`.lacks(array, element)`](./array.md#checklacksarray-any-element-any-boolean)
+- [`.isFirstIn(array, input)`](./array.md#checkisfirstinarray-any-input-any-boolean)
+- [`.isNotFirstIn(array, input)`](./array.md#checkisnotfirstinarray-any-input-any-boolean)
+- [`.isLastIn(array, input)`](./array.md#checkislastinarray-any-input-any-boolean)
+- [`.isNotLastIn(array, input)`](./array.md#checkisnotlastinarray-any-input-any-boolean)
+
 ## Array
 - ### check.isEmptyArray(input: any[]): boolean
   Checks whether the input is an empty array  

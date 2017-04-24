@@ -1,5 +1,12 @@
 [← Back to `README.md`](../README.md)
 
+## Contents
+- [`check.isEmptyString(input)`](./string.md#check.isemptystringinput-string-boolean)
+- [`check.isNotEmptyString(input)`](./string.md#check.isnotemptystringinput-string-boolean)
+- [`check.includes(source, substr)`](./string.md#check.includessource-substr-boolean)
+- [`check.startsWith(source, substr)`](./string.md#check.startswithsource-substr-boolean)
+- [`check.endsWith(source, substr)`](./string.md#check.endswithsource-substr-boolean)
+
 ## String
 - ### check.isEmptyString(input: string): boolean
   Checks whether the input is an empty string  

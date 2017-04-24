@@ -1,5 +1,12 @@
 [← Back to `README.md`](../README.md)
 
+## Contents
+- [`.isUndefined(input)`](./existance.md#checkisundefinedinput-boolean)
+- [`.isNull(input)`](./existance.md#checkisnullinput-boolean)
+- [`.isNotNull(input)`](./existance.md#checkisnotnullinput-boolean)
+- [`.isDefined(input)`](./existance.md#checkisdefinedinput-boolean)
+- [`.isNotDefined(input)`](./existance.md#checkisnotdefinedinput-boolean)
+
 ## Existance
 - ### check.isUndefined(input): boolean
   Checks whether the input is exactly `undefined`  

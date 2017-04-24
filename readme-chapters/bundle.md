@@ -1,5 +1,12 @@
 [← Back to `README.md`](../README.md)
 
+## Contents
+- [`.bundle(methodNames, inputs)`](./bundle.md#checkbundlemethodnames-string-inputs-any-boolean)
+- [`.everyMethod(methodNames, input)`](./bundle.md#checkeverymethodmethodnames-string-input-boolean)
+- [`.someMethod(methodNames, input)`](./bundle.md#checksomemethodmethodnames-string-input-boolean)
+- [`.everyInput(methodName, inputs)`](./bundle.md#checkeveryinputmethodname-string-inputs-any-boolean)
+- [`.someInput(methodName, inputs)`](./bundle.md#checksomeinputmethodname-string-inputs-any-boolean)
+
 ## Bundle
 - ### check.bundle(methodNames: string[], inputs: any[]): boolean[][]
   Returns a two-dimensional array of input-method verifications.  

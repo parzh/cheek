@@ -1,5 +1,16 @@
 [← Back to `README.md`](../README.md)
 
+## Contents
+- [`.isTruthy(input)`](./general.md#checkistruthyinput-boolean)
+- [`.isFalsy(input)`](./general.md#checkisfalsyinput-boolean)
+- [`.isTrue(input)`](./general.md#checkistrueinput-boolean)
+- [`.isFalse(input)`](./general.md#checkisfalseinput-boolean)
+- [`.and(input, operand)`](./general.md#checkandinput-operand-boolean)
+- [`.nand(input, operand)`](./general.md#checknandinput-operand-boolean)
+- [`.or(input, operand)`](./general.md#checkorinput-operand-boolean)
+- [`.nor(input, operand)`](./general.md#checknorinput-operand-boolean)
+- [`.xor(input, operand)`](./general.md#checkxorinput-operand-boolean)
+
 ## General
 - ### check.isTruthy(input): boolean
   Checks whether the input evaluates to `true`  

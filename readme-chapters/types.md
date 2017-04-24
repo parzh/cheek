@@ -1,5 +1,24 @@
 [← Back to `README.md`](../README.md)
 
+## Contents
+- [`.is(Type, input)`](./types.md#checkistype-function-input)-boolean)
+- [`.isNot(Type, input)`](./types.md#checkisnottype-function-input)-boolean)
+- [`.isEither(types, input)`](./types.md#checkiseithertypes-function-input)-boolean)
+- [`.isNeither(types, input)`](./types.md#checkisneithertypes-function-input)-boolean)
+- [`.isPrimitive(input)`](./types.md#checkisprimitiveinput)-boolean)
+- [`.isObject(input)`](./types.md#checkisobjectinput)-boolean)
+- [`.isString(input)`](./types.md#checkisstringinput)-boolean)
+- [`.isNotString(input)`](./types.md#checkisnotstringinput)-boolean)
+- [`.isNumber(input)`](./types.md#checkisnumberinput)-boolean)
+- [`.isNotNumber(input)`](./types.md#checkisnotnumberinput)-boolean)
+- [`.isArray(input)`](./types.md#checkisarrayinput)-boolean)
+- [`.isArraylike(input)`](./types.md#checkisarraylikeinput)-boolean)
+- [`.isIterable(input)`](./types.md#checkisiterableinput)-boolean)
+- [`.isNotIterable(input)`](./types.md#checkisnotiterableinput)-boolean)
+- [`.isNotArray(input)`](./types.md#checkisnotarrayinput)-boolean)
+- [`.isBoolean(input)`](./types.md#checkisbooleaninput)-boolean)
+- [`.isNotBoolean(input)`](./types.md#checkisnotbooleaninput)-boolean)
+
 ## Types
 - ### check.is(Type: Function, input): boolean
   Checks whether the input is an instance of provided class  

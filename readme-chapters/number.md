@@ -1,5 +1,33 @@
 [← Back to `README.md`](../README.md)
 
+## Contents
+- [`.isNaN(input)`](./number.md#checkisnaninput-number-boolean)
+- [`.isNotNaN(input)`](./number.md#checkisnotnaninput-number-boolean)
+- [`.isFinite(input)`](./number.md#checkisfiniteinput-number-boolean)
+- [`.isNotFinite(input)`](./number.md#checkisnotfiniteinput-number-boolean)
+- [`.isInteger(input)`](./number.md#checkisintegerinput-number-boolean)
+- [`.isNotInteger(input)`](./number.md#checkisnotintegerinput-number-boolean)
+- [`.isNatural(input, zero)`](./number.md#checkisnaturalinput-number-zero-boolean-true-boolean)
+- [`.isNotNatural(input, zero)`](./number.md#checkisnotnaturalinput-number-zero-boolean-true-boolean)
+- [`.isPercent(input)`](./number.md#checkispercentinput-number-boolean)
+- [`.isNotPercent(input)`](./number.md#checkisnotpercentinput-number-boolean)
+- [`.isEqualTo(input, operand)`](./number.md#checkisequaltoinput-number-operand-number-boolean)
+- [`.isEqualToAny(input, operands)`](./number.md#checkisequaltoanyinput-number-operands-number-boolean)
+- [`.isGreaterThan(input, operand)`](./number.md#checkisgreaterthaninput-number-operand-number-boolean)
+- [`.isGreaterThanOrEqualTo(input, operand)`](./number.md#checkisgreaterthanorequaltoinput-number-operand-number-boolean)
+- [`.isLessThan(input, operand)`](./number.md#checkislessthaninput-number-operand-number-boolean)
+- [`.isLessThanOrEqualTo(input, operand)`](./number.md#checkislessthanorequaltoinput-number-operand-number-boolean)
+- [`.isPositive(input)`](./number.md#checkispositiveinput-number-boolean)
+- [`.isNotPositive(input)`](./number.md#checkisnotpositiveinput-number-boolean)
+- [`.isNegative(input)`](./number.md#checkisnegativeinput-number-boolean)
+- [`.isNotNegative(input)`](./number.md#checkisnotnegativeinput-number-boolean)
+- [`.isZero(input)`](./number.md#checkiszeroinput-number-boolean)
+- [`.isNotZero(input)`](./number.md#checkisnotzeroinput-number-boolean)
+- [`.isDivisibleBy(numerator, denominator)`](./number.md#checkisdivisiblebynumerator-number-denominator-number-boolean)
+- [`.isNotDivisibleBy(numerator, denominator)`](./number.md#checkisnotdivisiblebynumerator-number-denominator-number-boolean)
+- [`.isInRange(input, range, inclusively)`](./number.md#checkisinrangeinput-number-range-number-inclusively-boolean-inclusive-exclusive-excl-true-boolean)
+- [`.isNotInRange(input, range, inclusively)`](./number.md#checkisnotinrangeinput-number-range-number-inclusively-boolean-inclusive-exclusive-excl-true-boolean)
+
 ## Number
 - ### check.isNaN(input: number): boolean
   Checks whether the input is exactly `NaN`  

@@ -1,7 +1,7 @@
 let assert = require("assert");
 let check = require("./../index.js");
 
-class MyObject {}
+class MyObject{}
 
 describe("Types", function() {
 	describe("is(Type, input)", function() {
@@ -56,7 +56,7 @@ describe("Types", function() {
 		it("checks whether the input is a string", function() {
 			assert(check.isString(""));
 			assert(check.isString(new String()));
-			assert(check.isString(new (class extends String {})()));
+			assert(check.isString(new class extends String{}));
 		});
 	});
 
@@ -64,7 +64,7 @@ describe("Types", function() {
 		it("returns `true` if the input is not a string", function() {
 			assert(!check.isNotString(""));
 			assert(!check.isNotString(new String()));
-			assert(check.isNotString(new (class {})()));
+			assert(check.isNotString(new class{}));
 		});
 	});
 
@@ -88,7 +88,7 @@ describe("Types", function() {
 		it("checks whether the input is an array", function() {
 			assert(!check.isArray({}));
 			assert(check.isArray([]));
-			assert(check.isArray(new (class extends Array {})()));
+			assert(check.isArray(new class extends Array{}));
 		});
 	});
 
@@ -96,7 +96,7 @@ describe("Types", function() {
 		it("checks whether the input is array-like object", function() {
 			assert(!check.isArraylike({ 0: 0, 1: 1 }));
 			assert(check.isArraylike({ 0: 0, 1: 1, length: 2 }));
-			assert(check.isArraylike(new (class extends Array {})()));
+			assert(check.isArraylike(new class extends Array{}));
 		});
 	});
 
@@ -120,7 +120,7 @@ describe("Types", function() {
 		it("returns `true` if the input is not an array", function() {
 			assert(check.isNotArray({}));
 			assert(!check.isNotArray([]));
-			assert(check.isNotArray(new (class {})()));
+			assert(check.isNotArray(new class{}));
 		});
 	});
 

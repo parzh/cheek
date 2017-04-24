@@ -442,6 +442,8 @@ check.none = function(inputs) {
 }
 
 // Setting alias
+check.hasFirst = check.isFirstIn;
+check.hasLast = check.isLastIn;
 
 check.isNonZero = check.isNotZero;
 check.isInfinite = check.isNotFinite;

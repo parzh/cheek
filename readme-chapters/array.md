@@ -65,6 +65,8 @@
   check.isFirstIn([1, 2, 3], 2); // false
   ```
 
+  _alias: `check.hasFirst()`_  
+
 - ### check.isNotFirstIn(array: any[], input: any): boolean
   Returns `true` if the input is not the first element of the array  
   @param `array` Test array  
@@ -86,6 +88,8 @@
   check.isLastIn([1, 2, 3], 3); // true
   check.isLastIn([1, 2, 3], 2); // false
   ```
+
+  _alias: `check.hasLast()`_  
 
 - ### check.isNotLastIn(array: any[], input: any): boolean
   Returns `true` if the input is not the last element of the array  

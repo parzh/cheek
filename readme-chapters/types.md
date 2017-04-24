@@ -161,6 +161,24 @@
   }
   ```
 
+- ### check.isIterable(input): boolean
+  Checks whether the input can be iterated over  
+  @param `input` Test value  
+
+  #### Examples:
+  ```javascript
+  check.isIterable({ 0: "0", 1: "1" }); // false
+  check.isIterable({ 0: "0", 1: "1", length: 2 }); // false
+  check.isIterable(new (class extends Array {})()); // true
+  ```
+
+  ```javascript
+  function(...args) {
+    check.isIterable(arguments); // true
+    check.isIterable(args); // true
+  }
+  ```
+
 - ### check.isNotArray(input): boolean
   Returns `true` if the input is not an array  
   @param `input` Test value  

@@ -84,7 +84,7 @@
   ```javascript
   check.isString(""); // true
   check.isString(new String()); // true
-  check.isString(new (class extends String {})()); // true
+  check.isString(new class extends String{}); // true
   ``` 
 
 - ### check.isNotString(input): boolean
@@ -95,7 +95,7 @@
   ```javascript
   check.isNotString(""); // false
   check.isNotString(new String()); // false
-  check.isNotString(new (class {})()); // true
+  check.isNotString(new class{}); // true
   ``` 
 
   _reversed `check.isString()`_
@@ -133,7 +133,7 @@
   ```javascript
   check.isArray({}); // false
   check.isArray([]); // true
-  check.isArray(new (class extends Array {})()); // true
+  check.isArray(new class extends Array{}); // true
   ```
 
   ```javascript
@@ -151,7 +151,7 @@
   ```javascript
   check.isArraylike({ 0: "0", 1: "1" }); // false
   check.isArraylike({ length: 2 }); // true
-  check.isArraylike(new (class extends Array {})()); // true
+  check.isArraylike(new class extends Array{}); // true
   ```
 
   ```javascript
@@ -169,7 +169,7 @@
   ```javascript
   check.isIterable({ 0: "0", 1: "1" }); // false
   check.isIterable({ 0: "0", 1: "1", length: 2 }); // false
-  check.isIterable(new (class extends Array {})()); // true
+  check.isIterable(new class extends Array{}); // true
   ```
 
   ```javascript
@@ -187,7 +187,7 @@
   ```javascript
   check.isNotIterable({ 0: "0", 1: "1" }); // true
   check.isNotIterable({ 0: "0", 1: "1", length: 2 }); // true
-  check.isNotIterable(new (class extends Array {})()); // false
+  check.isNotIterable(new class extends Array{}); // false
   ```
 
   _reversed `check.isIterable()`_
@@ -200,7 +200,7 @@
   ```javascript
   check.isNotArray({}); // true
   check.isNotArray([]); // false
-  check.isNotArray(new (class {})()); // true
+  check.isNotArray(new class{}); // true
   ```
 
   _reversed `check.isArray()`_

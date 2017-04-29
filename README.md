@@ -59,7 +59,7 @@ catch(error) {
 }
 
 // how will you use it in future
-if (check(app).hasNoProperty(["profile", "person", "age"]))
+if (check(app).noprop(["profile", "person", "age"]))
 	throw new TypeError("Cannot find the age property");
 
 else if (check(app.profile.person.age).isNotInRange([5, 42]))

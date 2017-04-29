@@ -381,7 +381,7 @@ check.input = function(input) {
 				case "isNeither":
 				case "everyMethod":
 				case "someMethod":
-					return (additional) => check[methodName](additional, input);
+					return (additional) => getMethodByName(methodName)(additional, input);
 
 				case "bundle":
 				case "everyInput":
@@ -406,7 +406,7 @@ check.inputs = function(inputs) {
 				case "bundle":
 				case "everyInput":
 				case "someInput":
-					return (methodNameOrNames) => check[methodName](methodNameOrNames, inputs);
+					return (methodNameOrNames) => getMethodByName(methodName)(methodNameOrNames, inputs);
 			}
 		}
 	});

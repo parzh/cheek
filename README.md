@@ -83,8 +83,11 @@ else if (check(app.profile.person.age).isNotInRange([5, 42]))
 - [Bundle](readme-chapters/bundle.md)
 - [Proxy](readme-chapters/proxy.md)
 
+Currently the [wiki] is in progress.
+
 ## TODO:
 
 See [issues].
 
 [issues]: https://github.com/parzh/check/issues
+[wiki]: https://github.com/parzh/check/wiki

@@ -171,6 +171,10 @@ let check = input => check.input(input);
 		return !check.isBoolean(input);
 	};
 
+	check.equals = function(input, operand) {
+		throw new ReleaseError();
+	}
+
 	// ARRAY
 
 	check.isEmptyArray = function(input) {
@@ -464,7 +468,7 @@ check.isNotFloat = check.isInteger;
 check.isFloat = check.isNotInteger;
 check.isNonNegative = check.isNotNegative;
 
-check.eq = check.equals = check.isEqualTo;
+check.eq = check.isEqualTo;
 check.eqa = check.isEqualToAny;
 check.gt = check.isGreaterThan;
 check.gte = check.isGreaterThanOrEqualTo;

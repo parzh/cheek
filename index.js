@@ -82,7 +82,7 @@ let check = input => check.input(input);
 	};
 
 	check.isNull = function(input) {
-		return Object.is(null, input);
+		return input === null;
 	};
 
 	check.isNotNull = function(input) {
@@ -202,7 +202,7 @@ let check = input => check.input(input);
 
 	check.hasProperty = function(object, key) {
 		if (check.isNotArray(key))
-			return toString(key) in Object(object);
+			return check.isDefined(object[key]) || (toString(key) in Object(object));
 
 		else if (key.length <= 1)
 			return check.hasProperty(object, key[0]);
@@ -328,7 +328,7 @@ let check = input => check.input(input);
 	// NUMBER
 
 	check.isNaN = function(input) {
-		return Object.is(NaN, input);
+		return Number.isNaN(input);
 	};
 
 	check.isNotNaN = function(input) {
@@ -372,7 +372,7 @@ let check = input => check.input(input);
 	// ***
 
 	check.isEqualTo = function(input, operand) {
-		return Object.is(input, operand);
+		return input === operand;
 	};
 
 	check.isEqualToAny = function(input, operands) {

@@ -180,6 +180,21 @@ let check = input => check.input(input);
 	};
 
 	check.equals = function(input, operand) {
+	check.isCircular = function(object) {
+		let result = true;
+
+		try {
+			JSON.stringify(object);
+			result = false;
+		}
+
+		return result;
+	};
+
+	check.isNotCircular = function(object) {
+		return !check.isCircular(object);
+	};
+
 		throw new ReleaseError();
 	}
 

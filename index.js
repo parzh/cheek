@@ -175,6 +175,14 @@ let check = input => check.input(input);
 		throw new ReleaseError();
 	}
 
+	check.hasProperty = function(object, property) {
+		throw new ReleaseError();
+	}
+
+	check.hasNoProperty = function(object, property) {
+		throw new ReleaseError();
+	}
+
 	// ARRAY
 
 	check.isEmptyArray = function(input) {
@@ -458,6 +466,9 @@ let check = input => check.input(input);
 })();
 
 // Setting alias
+check.prop = check.hasProperty;
+check.noprop = check.hasNoProperty;
+
 check.hasFirst = check.isFirstIn;
 check.hasLast = check.isLastIn;
 

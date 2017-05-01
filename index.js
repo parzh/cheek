@@ -369,7 +369,7 @@ let check = input => check.input(input);
 	check.input = function(input) {
 		return new Proxy(prepareProxyBase(), {
 			get(obj, methodName) {
-				if (obj[methodName])
+				if (check.isDefined(obj[methodName]))
 					return obj[methodName];
 
 				else switch (methodName) {
@@ -396,7 +396,7 @@ let check = input => check.input(input);
 	check.inputs = function(inputs) {
 		return new Proxy(prepareProxyBase(), {
 			get(obj, methodName) {
-				if (obj[methodName])
+				if (check.isDefined(obj[methodName]))
 					return obj[methodName];
 
 				else switch (methodName) {
@@ -416,7 +416,7 @@ let check = input => check.input(input);
 	check.every = function(inputs) {
 		return new Proxy(prepareProxyBase(), {
 			get(obj, methodName) {
-				if (obj[methodName])
+				if (check.isDefined(obj[methodName]))
 					return obj[methodName];
 
 				else return (...args) => inputs.map(input => check(input)[methodName](...args)).every(Boolean);
@@ -427,7 +427,7 @@ let check = input => check.input(input);
 	check.some = function(inputs) {
 		return new Proxy(prepareProxyBase(), {
 			get(obj, methodName) {
-				if (obj[methodName])
+				if (check.isDefined(obj[methodName]))
 					return obj[methodName];
 
 				else return (...args) => inputs.map(input => check(input)[methodName](...args)).some(Boolean);
@@ -438,7 +438,7 @@ let check = input => check.input(input);
 	check.none = function(inputs) {
 		return new Proxy(prepareProxyBase(), {
 			get(obj, methodName) {
-				if (obj[methodName])
+				if (check.isDefined(obj[methodName]))
 					return obj[methodName];
 
 				else return (...args) => !check.some(inputs)[methodName](...args);

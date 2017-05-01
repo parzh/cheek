@@ -179,6 +179,8 @@ let check = input => check.input(input);
 		return !check.isBoolean(input);
 	};
 
+	// OBJECT
+
 	check.isCircular = function(object) {
 		let result = null;
 

@@ -65,7 +65,7 @@
   _alias: `check.prop()`_  
 
 - ### check.hasNoProperty(object: any, key: string | string[]): boolean
-  Check whether a property or path `key` is present in `object`  
+  Retrns `true` if a property or path `key` is not present in `object`  
   @param `input` Test array  
 
   #### Examples:

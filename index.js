@@ -5,6 +5,12 @@ let check = input => check.input(input);
 // ***
 
 (function() {
+	class ReleaseError extends Error {
+		constructor() {
+			super("This feature is not yet implemented");
+		}
+	}
+
 	function getMethodByName(methodName) {
 		let method = check[methodName];
 

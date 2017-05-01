@@ -163,6 +163,14 @@ let check = input => check.input(input);
 		return !check.isArray(input);
 	};
 
+	check.isFunction = function(input) {
+		return check.is(Function, input);
+	};
+
+	check.isNotFunction = function(input) {
+		return !check.isFunction(input);
+	};
+
 	check.isBoolean = function(input) {
 		return check.is(Boolean, input);
 	};

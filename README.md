@@ -78,7 +78,7 @@ else if (check(app.profile.person.age).isNotInRange([5, 42]))
 ## Chapters:
 
 - [General](readme-chapters/general.md)
-- [Existance](readme-chapters/existance.md)
+- [Existence](readme-chapters/existence.md)
 - [Types](readme-chapters/types.md)
 - [Array](readme-chapters/array.md)
 - [String](readme-chapters/string.md)

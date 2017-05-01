@@ -1,7 +1,7 @@
 let assert = require("assert");
 let check = require("./../index.js");
 
-describe("Existance", function() {
+describe("Existence", function() {
 	describe("isUndefined(input)", function() {
 		it("checks whether the input is exactly `undefined`", function() {
 			assert(check.isUndefined(undefined));

@@ -75,7 +75,7 @@ let check = input => check.input(input);
 		return check.isNotDefined(input)? undefined : check.is(Number, input)? check.isNegative(input)? false : check.isPositive(input)? true : undefined : check.isFalsy(input)? false : true;
 	};
 
-	// EXISTANCE
+	// EXISTENCE
 
 	check.isUndefined = function(input) {
 		return typeof input === "undefined";

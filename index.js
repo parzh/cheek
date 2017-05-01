@@ -36,7 +36,7 @@ let check = input => check.input(input);
 	// GENERAL
 
 	check.isTruthy = function(input) {
-		return new Boolean(input).valueOf();
+		return !!input;
 	};
 
 	check.isFalsy = function(input) {

@@ -210,6 +210,33 @@ let check = input => check.input(input);
 		throw new ReleaseError();
 	}
 
+	check.hasProperty = function(object, key) {
+		if (check.isNotArray(key))
+			return object.hasOwnProperty(key);
+
+		else if (key.length <= 1)
+			return check.hasProperty(object, key[0]);
+
+		let result = false;
+		let last = key.pop();
+		let path = key.join(".");
+
+		try {
+			result = check.hasProperty(eval(`object${path? "." : ""}${path}`), last);
+		}
+
+		catch(error) {
+			if (!(error instanceof TypeError))
+				throw error;
+		}
+
+		return result;
+	};
+
+	check.hasNoProperty = function(object, key) {
+		return !check.hasProperty(object, key);
+	};
+
 	// ARRAY
 
 	check.isEmptyArray = function(input) {

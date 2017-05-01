@@ -3,20 +3,23 @@
 *__check__* (or *__checkjs__*) is a library of various validation methods.
 
 ```javascript
-if (check.isArray(input))
-	myArray.push(...input);
-
-else myArray.push(input);
-```
-
-It allows you to keep your code clean and *vastly* increases its readability.
-
-```javascript
 // somewhere in the code
 let numbers = [8, 11, -5, 32];
 
 if (check.every(numbers).isPositive())
 	doSomething(); // this does not happen
+```
+
+It allows you to keep your code clean and *vastly* increases its readability.
+
+```javascript
+if (check(myArray).includes(input))
+	myArray.splice(myArray.indexOf(input), 1);
+
+else if (check.isArray(input))
+	myArray.push(...input);
+
+else myArray.push(input);
 ```
 
 It has become much easier to do the same type of tests over the array of elements.

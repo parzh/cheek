@@ -202,7 +202,7 @@ let check = input => check.input(input);
 
 	check.hasProperty = function(object, key) {
 		if (check.isNotArray(key))
-			return check.isDefined(object[key]) || (toString(key) in Object(object));
+			return check.isDefined(object[key]) || (key || "").toString() in Object(object);
 
 		else if (key.length <= 1)
 			return check.hasProperty(object, key[0]);
@@ -243,25 +243,17 @@ let check = input => check.input(input);
 		else if (typesafe)
 			return false;
 
-		// ***
-
-		let objectKeysLength = Object.keys(object).length;
-
-		if (Object.keys(operand).length !== objectKeysLength)
+		if (check.every([object, operand]).isPrimitive())
 			return false;
 
-		for (let key in object)
-			if (check.hasNoProperty(operand, key))
-				return false;
+		// ***
 
-			else if (!check.equals(object[key], operand[key]))
+		for (let key in object)
+			if (!check.equals(object[key], operand[key]))
 				return false;
 
 		for (let key in operand)
-			if (check.hasNoProperty(object, key))
-				return false;
-
-			else if (!check.equals(operand[key], object[key]))
+			if (!check.equals(operand[key], object[key]))
 				return false;
 
 		return true;

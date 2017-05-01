@@ -181,11 +181,15 @@ let check = input => check.input(input);
 
 	check.equals = function(input, operand) {
 	check.isCircular = function(object) {
-		let result = true;
+		let result = null;
 
 		try {
 			JSON.stringify(object);
 			result = false;
+		}
+
+		catch (error) {
+			result = true;
 		}
 
 		return result;

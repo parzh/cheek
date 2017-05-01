@@ -210,7 +210,7 @@ let check = input => check.input(input);
 	};
 
 	check.includes = function(source, element) {
-		return check.isString(source) && !!~source.indexOf(element);
+		return check.isEither([String, Array], source) && !!~source.indexOf(element);
 	};
 
 		/* no opposed method for '.includes()' */

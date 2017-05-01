@@ -52,6 +52,8 @@
   check.contains([3, , 5], undefined); // false
   ```
 
+  _alias: `check.includes()`_  <sup>(#20)</sup>
+
 - ### check.lacks(array: any[], element: any): boolean
   Returns `true` if the array does not contain the element  
   @param `array` Test array  

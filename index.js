@@ -209,10 +209,10 @@ let check = input => check.input(input);
 
 		let result = false;
 		let last = key.pop();
-		let path = key.join(".");
+		let path = `object.${ key.join(".") }`;
 
 		try {
-			result = check.hasProperty(eval(`object${path? "." : ""}${path}`), last);
+			result = check.hasProperty(eval(path), last);
 		}
 
 		catch(error) {

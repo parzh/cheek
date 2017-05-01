@@ -82,7 +82,7 @@ let check = input => check.input(input);
 	};
 
 	check.isNull = function(input) {
-		return input === null;
+		return Object.is(null, input);
 	};
 
 	check.isNotNull = function(input) {
@@ -144,7 +144,7 @@ let check = input => check.input(input);
 	};
 
 	check.isArray = function(input) {
-		return Array.isArray? Array.isArray(input) : check.is(Array, input);
+		return Array.isArray(input);
 	};
 
 	check.isArraylike = function(input) {
@@ -244,7 +244,7 @@ let check = input => check.input(input);
 	// NUMBER
 
 	check.isNaN = function(input) {
-		return (Number.isNaN || isNaN)(input);
+		return Object.is(NaN, input);
 	};
 
 	check.isNotNaN = function(input) {
@@ -252,7 +252,7 @@ let check = input => check.input(input);
 	};
 
 	check.isFinite = function(input) {
-		return (Number.isFinite || isFinite)(input);
+		return Number.isFinite(input);
 	};
 
 	check.isNotFinite = function(input) {
@@ -288,7 +288,7 @@ let check = input => check.input(input);
 	// ***
 
 	check.isEqualTo = function(input, operand) {
-		return input === operand;
+		return Object.is(input, operand);
 	};
 
 	check.isEqualToAny = function(input, operands) {

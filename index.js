@@ -100,7 +100,7 @@ let check = input => check.input(input);
 	// TYPES
 
 	check.is = function(Type, input) {
-		return input instanceof Type || (typeof Symbol !== "undefined") && Type[Symbol.hasInstance](input) || typeof input === Type.name.toLowerCase();
+		return input instanceof Type || Type[Symbol.hasInstance](input) || check.hasProperty(Type, "name") && (typeof input === Type.name.toLowerCase());
 	};
 
 	check.isNot = function(Type, input) {

@@ -179,7 +179,6 @@ let check = input => check.input(input);
 		return !check.isBoolean(input);
 	};
 
-	check.equals = function(input, operand) {
 	check.isCircular = function(object) {
 		let result = null;
 
@@ -199,16 +198,45 @@ let check = input => check.input(input);
 		return !check.isCircular(object);
 	};
 
-		throw new ReleaseError();
-	}
+	check.equals = function(object, operand, typesafe = false) {
+		if (Object.is(object, operand) || object === operand)
+			return true;
 
-	check.hasProperty = function(object, property) {
-		throw new ReleaseError();
-	}
+		if (check(operand).is(object.constructor))
+			if (check(object).isEither([Number, String, Boolean]))
+				return object == operand;
 
-	check.hasNoProperty = function(object, property) {
-		throw new ReleaseError();
-	}
+			else if (check(object).isFunction())
+				return object.toString() === operand.toString();
+
+			else null; // i don't like it either
+
+		else if (typesafe)
+			return false;
+
+		// ***
+
+		let objectKeysLength = Object.keys(object).length;
+
+		if (Object.keys(operand).length !== objectKeysLength)
+			return false;
+
+		for (let key in object)
+			if (check.hasNoProperty(operand, key))
+				return false;
+
+			else if (!check.equals(object[key], operand[key]))
+				return false;
+
+		for (let key in operand)
+			if (check.hasNoProperty(object, key))
+				return false;
+
+			else if (!check.equals(operand[key], object[key]))
+				return false;
+
+		return true;
+	};
 
 	check.hasProperty = function(object, key) {
 		if (check.isNotArray(key))

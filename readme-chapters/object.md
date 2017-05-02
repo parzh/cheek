@@ -42,7 +42,7 @@
 
 - ### check.hasProperty(object: any, key: string | string[]): boolean
   Check whether a property or path `key` is present in `object`  
-  @param `input` Test array  
+  @param `object` Test object  
 
   #### Examples:
   ```javascript
@@ -66,7 +66,7 @@
 
 - ### check.hasNoProperty(object: any, key: string | string[]): boolean
   Retrns `true` if a property or path `key` is not present in `object`  
-  @param `input` Test array  
+  @param `object` Test object  
 
   #### Examples:
   ```javascript
@@ -91,7 +91,7 @@
 
 - ### check.equals(object: any, operand: any): boolean
   Checks whether two compared objects are effectively the same  
-  @param `input` Test object  
+  @param `object` Test object  
   @param `operand` Comparison object  
 
   #### Examples:

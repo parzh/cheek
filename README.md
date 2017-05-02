@@ -71,11 +71,11 @@ else if (check(app.profile.person.age).isNotInRange([5, 42]))
 
 `check` is constantly evolving. You may suggest or ask for new method in [issues] if you haven't found it in the `check`.
 
-## [Install](https://github.com/parzh/check/wiki):
+## [Install]
 
 	npm install checkjs
 
-## Chapters:
+## [Chapters]:
 
 - [General](readme-chapters/general.md)
 - [Existence](readme-chapters/existence.md)
@@ -95,3 +95,6 @@ See [issues].
 
 [issues]: https://github.com/parzh/check/issues
 [wiki]: https://github.com/parzh/check/wiki
+
+[Install]: https://github.com/parzh/check/wiki/Installation-and-usage
+[Chapters]: https://github.com/parzh/check/wiki

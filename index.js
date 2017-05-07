@@ -246,14 +246,11 @@ let check = input => check.input(input);
 		if (check.every([object, operand]).isPrimitive())
 			return false;
 
-		// ***
-
 		for (let key in object)
-			if (!check.equals(object[key], operand[key]))
-				return false;
+			if (object[key] === object)
+				return operand[key] === operand;
 
-		for (let key in operand)
-			if (!check.equals(operand[key], object[key]))
+			else if (!check.equals(object[key], operand[key]))
 				return false;
 
 		return true;

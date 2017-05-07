@@ -235,30 +235,36 @@ let check = input => check.input(input);
 		return !check.hasProperty(object, key);
 	};
 
-	check.equals = function(object, operand, typesafe = false) {
+	check.equals = function(object, operand, sameType = false) {
+		throw new ReleaseError(); 
+
 		if (Object.is(object, operand) || object === operand)
 			return true;
 
-		if (check(operand).is(object.constructor))
+		if (check(operand).is(object.constructor)) {
 			if (check(object).isEither([Number, String, Boolean]))
 				return object == operand;
+		}
 
-			else if (check(object).isFunction())
-				return object.toString() === operand.toString();
-
-			else null; // i try to avoid curly braces in if-else statements
-
-		else if (typesafe)
+		else if (sameType)
 			return false;
 
-		if (check.every([object, operand]).isPrimitive())
+		// ***
+
+		if (check(check(object).isCircular()).xor(check(operand).isCircular()))
 			return false;
 
-		for (let key in object)
-			if (object[key] === object)
+		else if (Object.keys(object).length !== Object.keys(operand).length)
+			return false;
+
+		else for (let key in object)
+			if (check(operand).hasNoProperty(key))
+				return false;
+
+			else if (object[key] === object)
 				return operand[key] === operand;
 
-			else if (!check.equals(object[key], operand[key]))
+			else if (!check(object[key]).equals(operand[key]))
 				return false;
 
 		return true;

@@ -89,10 +89,11 @@
   _reversed `check.hasProperty()`_  
   _alias: `check.noprop()`_  
 
-- ### check.equals(object: any, operand: any): boolean
+- ### check.equals(object: any, operand: any, sameType?: boolean): boolean
   Checks whether two compared objects are effectively the same  
   @param `object` Test object  
   @param `operand` Comparison object  
+  @param `sameType` Type sameness is required; default is `false`  
 
   #### Examples:
   ```javascript
@@ -108,8 +109,12 @@
   check.equals(5, new Number(5)); // true
   check.equals(NaN, 0 / 0); // true
   check.equals(0, -0); // true
+
+  check.equals([], []); // true
   check.equals([], {}); // true
+  check.equals([], {}, true); // false
   check.equals([], { length: 0 }); // true
+  check.equals([], { length: 0 }, true); // false
   ```
 
   _not to be confused with `check.isEqualTo()`_  

@@ -256,6 +256,25 @@ let check = input => check.input(input);
 		return true;
 	};
 
+	check.isCallable = function(object) {
+		let result = null;
+
+		try {
+			object();
+			result = true;
+		}
+
+		catch (error) {
+			result = false;
+		}
+
+		return result;
+	};
+
+	check.isNotCallable = function(object) {
+		return !check.isCallable(object);
+	};
+
 	// ARRAY
 
 	check.isEmptyArray = function(input) {

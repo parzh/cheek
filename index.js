@@ -215,7 +215,7 @@ let check = input => check.input(input);
 			result = check.hasProperty(eval(path), last);
 		}
 
-		catch(error) {
+		catch (error) {
 			if (!(error instanceof TypeError))
 				throw error;
 		}
@@ -238,7 +238,7 @@ let check = input => check.input(input);
 			else if (check(object).isFunction())
 				return object.toString() === operand.toString();
 
-			else null; // i don't like it either
+			else null; // i try to avoid curly braces in if-else statements
 
 		else if (typesafe)
 			return false;
@@ -495,7 +495,7 @@ let check = input => check.input(input);
 
 				else switch (methodName) {
 					default:
-						getMethodByName(methodName); // verify the presence of a method at the first place
+						getMethodByName(methodName); // verify presence of the method at the first place
 						throw new TypeError(`The method 'check.${methodName}' requires a single input. Use 'check.input( ... ).${methodName}' instead`);
 
 					case "bundle":

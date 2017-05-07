@@ -171,6 +171,14 @@ let check = input => check.input(input);
 		return !check.isFunction(input);
 	};
 
+	check.isGenerator = function(input) {
+		return check.is((function*(){}).constructor, input);
+	};
+
+	check.isNotGenerator = function(input) {
+		return !check.isGenerator(input);
+	};
+
 	check.isBoolean = function(input) {
 		return check.is(Boolean, input);
 	};

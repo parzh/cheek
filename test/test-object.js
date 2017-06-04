@@ -90,4 +90,22 @@ describe("Object", function() {
 			assert(check.equals(0, -0));
 		});
 	});
+
+	describe("check.isCallable(object)", function() {
+		it("checks if object can be called as function", function() {
+			assert(check.isCallable(function() {}));
+			assert(check.isCallable(function*() {}));
+			assert(check.isCallable(() => {}));
+			assert(!check.isCallable({}));
+		});
+	});
+
+	describe("check.isNotCallable(object)", function() {
+		it("returns `true` if object cannot be called as function", function() {
+			assert(!check.isNotCallable(function() {}));
+			assert(!check.isNotCallable(function*() {}));
+			assert(!check.isNotCallable(() => {}));
+			assert(check.isNotCallable({}));
+		});
+	});
 });

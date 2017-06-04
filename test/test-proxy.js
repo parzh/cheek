@@ -8,14 +8,14 @@ describe("Proxy", function() {
 		it("prepares single input for further validation", function() {
 			let input = check.input(-42.5);
 
-			assert.equal(input.isDefined(), true);
-			assert.equal(input.is(Number), true);
-			assert.equal(input.isNot(Number), false);
-			assert.equal(input.isEither([String, Array]), false);
-			assert.equal(input.isNeither([String, Array]), true);
+			assert(input.isDefined());
+			assert(input.is(Number));
+			assert(input.isNeither([String, Array]));
+			assert(!input.isNot(Number));
+			assert(!input.isEither([String, Array]));
 
-			assert.equal(input.everyMethod(["isNotDefined", "isFalse"]), false);
-			assert.equal(input.someMethod(["isUndefined", "isFalsy"]), false);
+			assert(!input.everyMethod(["isNotDefined", "isFalse"]));
+			assert(!input.someMethod(["isUndefined", "isFalsy"]));
 
 			assert.throws(() => input.bundle(["isDefined", "isTrue"]), TypeError);
 			assert.throws(() => input.everyInput("isPositive"), TypeError);
@@ -27,13 +27,11 @@ describe("Proxy", function() {
 		it("prepares a bunch of inputs for further validation", function() {
 			let inputs = check.inputs(INPUTS);
 
-			assert.deepEqual(
-				inputs.bundle(["isPrimitive", "isNumber"]),
-				[ [true, true], [true, true], [false, false], [true, false] ]
-			);
+			assert.deepEqual(inputs.bundle(["isPrimitive", "isNumber"]), [[true, true], [true, true], [false, false], [true, false]]);
 
-			assert.equal(inputs.everyInput("isPrimitive"), false);
 			assert.throws(() => inputs.isNotDefined(), TypeError);
+
+			assert(!inputs.everyInput("isPrimitive"));
 		});
 	});
 
@@ -41,8 +39,9 @@ describe("Proxy", function() {
 		it("checks whether all input values pass verification", function() {
 			let every = check.every(INPUTS);
 
-			assert.equal(every.isPrimitive(), false);
-			assert.equal(every.isNumber(), false);
+			assert(!every.isPrimitive());
+			assert(!every.isNumber());
+
 			assert(check.every([1, 2, -3, 4]).isInRange([-4, 4]));
 		});
 	});
@@ -51,9 +50,10 @@ describe("Proxy", function() {
 		it("checks whether any of the input values passes verification", function() {
 			let some = check.some(INPUTS);
 			
-			assert.equal(some.isNotDefined(), true);
+			assert(some.isNotDefined());
+			assert(!some.isInRange([10, 39], "exclusive"));
+
 			assert.throws(() => some.isNotInRange(), SyntaxError);
-			assert.equal(some.isInRange([10, 39], "exclusive"), false);
 		});
 
 	});
@@ -61,9 +61,10 @@ describe("Proxy", function() {
 		it("checks whether none of the input values passes verification", function() {
 			let none = check.none(INPUTS);
 
-			assert.equal(none.isDefined(), false);
-			assert.equal(none.isString([]), true);
-			assert.equal(none.isInRange([10, 39], "exclusive"), true);
+			assert(none.isString());
+			assert(none.isInRange([10, 39], "exclusive"));
+
+			assert(!none.isDefined());
 		});
 	});
 });

@@ -139,4 +139,20 @@ describe("Types", function() {
 			assert(check.isNotBoolean(null));
 		});
 	});
+
+	describe("isGenerator(input)", function() {
+		it("checks whether the input is a generator", function() {
+			assert(check.isGenerator(function*(){}));
+			assert(!check.isGenerator(function(){}));
+			assert(!check.isGenerator(42));
+		});
+	});
+
+	describe("isNotGenerator(input)", function() {
+		it("returns `true` if the input is not a generator", function() {
+			assert(!check.isNotGenerator(function*(){}));
+			assert(check.isNotGenerator(function(){}));
+			assert(check.isNotGenerator(42));
+		});
+	});
 });

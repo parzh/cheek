@@ -493,8 +493,10 @@ let check = input => check.input(input);
 	// ***
 
 	check.isInRange = function(input, range, inclusively = true) {
-		inclusively = /^excl/i.test(inclusively)? false : !!inclusively;
-		return inclusively? (input >= range[0] && input <= range[1]) : (input > range[0] && input < range[1]);
+		let _inclusively = /^excl/i.test(inclusively)? false : !!inclusively;
+		let _range = [ Math.min(...range), Math.max(...range) ];
+
+		return _inclusively? (input >= _range[0] && input <= _range[1]) : (input > _range[0] && input < _range[1]);
 	};
 
 	check.isNotInRange = function(input, range, inclusively = true) {

@@ -31,74 +31,6 @@ let check = input => check.input(input);
 		else return method;
 	}
 
-	function _prepareProxyBase() {
-		return new Object();
-	}
-
-	function _proxify(callback) {
-		return new Proxy(_prepareProxyBase(), {
-			get(obj, methodName) {
-				if (check.hasProperty(obj, methodName))
-					return obj[methodName];
-
-				else return callback(obj, methodName);
-			}
-		});
-	}
-
-	function _equals(object, operand, _memory) {
-		// strictly compare inputs
-		// NaN === NaN; -0 === +0;
-		if (Object.is(object, operand) || object === operand)
-			return true;
-
-		// ensure that both inputs are defined
-		if (check.any([object, operand]).isNotDefined())
-			return object === operand;
-
-		// ensure inputs are of the same type
-		if (check(operand).isNot(object.constructor))
-			return false;
-
-		// loosely compare inputs
-		if (check(object).isEither([Number, String, Boolean]))
-			return object == operand;
-
-		// ***
-
-		// check non-primitive inputs are equally circular (or equally not)
-		if (check.xor(check.isCircular(object), check.isCircular(operand)))
-			return false;
-
-		// prepare memory for this loop
-		if (check(_memory).isNotDefined())
-			_memory = { object: [], operand: [] };
-
-		// check circular inputs are circular in the same way
-		for (let _object of _memory.object)
-			if (_object === object)
-				return _memory.operand[_memory.object.indexOf(_object)] === operand;
-
-		// prepare memory for the next loop
-		_memory.object.push(object);
-		_memory.operand.push(operand);
-
-		// make the next loop
-		for (let key in object)
-			if (check(operand).hasNoProperty(key))
-				return false;
-
-			else if (!_equals(object[key], operand[key], _memory))
-				return false;
-
-		// exclude current loop from memory
-		_memory.object.pop();
-		_memory.operand.pop();
-
-		// return default result
-		return true;
-	}
-
 	// ***
 
 	// GENERAL
@@ -256,6 +188,59 @@ let check = input => check.input(input);
 	};
 
 	// OBJECT
+
+	function _equals(object, operand, _memory) {
+		// strictly compare inputs
+		// NaN === NaN; -0 === +0;
+		if (Object.is(object, operand) || object === operand)
+			return true;
+
+		// ensure that both inputs are defined
+		if (check.any([object, operand]).isNotDefined())
+			return object === operand;
+
+		// ensure inputs are of the same type
+		if (check(operand).isNot(object.constructor))
+			return false;
+
+		// loosely compare inputs
+		if (check(object).isEither([Number, String, Boolean]))
+			return object == operand;
+
+		// ***
+
+		// check non-primitive inputs are equally circular (or equally not)
+		if (check.xor(check.isCircular(object), check.isCircular(operand)))
+			return false;
+
+		// prepare memory for this loop
+		if (check(_memory).isNotDefined())
+			_memory = { object: [], operand: [] };
+
+		// check circular inputs are circular in the same way
+		for (let _object of _memory.object)
+			if (_object === object)
+				return _memory.operand[_memory.object.indexOf(_object)] === operand;
+
+		// prepare memory for the next loop
+		_memory.object.push(object);
+		_memory.operand.push(operand);
+
+		// make the next loop
+		for (let key in object)
+			if (check(operand).hasNoProperty(key))
+				return false;
+
+			else if (!_equals(object[key], operand[key], _memory))
+				return false;
+
+		// exclude current loop from memory
+		_memory.object.pop();
+		_memory.operand.pop();
+
+		// return default result
+		return true;
+	}
 
 	check.isCircular = function(object) {
 		let result = null;
@@ -528,6 +513,21 @@ let check = input => check.input(input);
 	};
 
 	// PROXY
+
+	function _prepareProxyBase() {
+		return new Object();
+	}
+
+	function _proxify(callback) {
+		return new Proxy(_prepareProxyBase(), {
+			get(obj, methodName) {
+				if (check.hasProperty(obj, methodName))
+					return obj[methodName];
+
+				else return callback(obj, methodName);
+			}
+		});
+	}
 
 	check.input = function(input) {
 		return _proxify(function(obj, methodName) {

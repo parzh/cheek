@@ -18,6 +18,8 @@
 - [`.isNotArray(input)`](./types.md#checkisnotarrayinput)-boolean)
 - [`.isBoolean(input)`](./types.md#checkisbooleaninput)-boolean)
 - [`.isNotBoolean(input)`](./types.md#checkisnotbooleaninput)-boolean)
+- `.isGenerator(input)`
+- `.isNotGenerator(input)`
 
 ## Types
 - ### check.is(Type: Function, input): boolean
@@ -247,5 +249,29 @@
   ``` 
 
   _reversed `check.isBoolean()`_
+
+- ### check.isGenerator(input): boolean
+  Checks whether the input is a generator  
+  @param `input` Test value  
+
+  #### Examples:
+  ```javascript
+  check.isGenerator(function*(){}); // true
+  check.isGenerator(function(){}); // false
+  check.isGenerator(42); // false
+  ``` 
+
+- ### check.isNotGenerator(input): boolean
+  Returns `true` if the input is not a generator  
+  @param `input` Test value  
+
+  #### Examples:
+  ```javascript
+  check.isNotGenerator(function*(){}); // false
+  check.isNotGenerator(function(){}); // true
+  check.isNotGenerator(42); // true
+  ``` 
+
+  _reversed `check.isGenerator()`_  
 
 [← Back to `README.md`](../README.md)

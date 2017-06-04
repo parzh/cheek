@@ -35,6 +35,16 @@ let check = input => check.input(input);
 		return new Object();
 	}
 
+	function _proxify(callback) {
+		return new Proxy(_prepareProxyBase(), {
+			get(obj, methodName) {
+				if (check.hasProperty(obj, methodName))
+					return obj[methodName];
+
+				else return callback(obj, methodName);
+			}
+		});
+	}
 
 	function _equals(object, operand, _memory) {
 		// strictly compare inputs
@@ -518,82 +528,61 @@ let check = input => check.input(input);
 	// PROXY
 
 	check.input = function(input) {
-		return new Proxy(_prepareProxyBase(), {
-			get(obj, methodName) {
-				if (check.isDefined(obj[methodName]))
-					return obj[methodName];
+		return _proxify(function(obj, methodName) {
+			switch (methodName) {
+				default:
+					return (...args) => _getLongEnoughMethodByName({ methodName, argsLength: args.length + 1 })(input, ...args);
 
-				else switch (methodName) {
-					default:
-						return (...args) => _getLongEnoughMethodByName({ methodName, argsLength: args.length + 1 })(input, ...args);
+				case "is":
+				case "isNot":
+				case "isEither":
+				case "isNeither":
+				case "everyMethod":
+				case "someMethod":
+					return (arg) => _getMethodByName(methodName)(arg, input);
 
-					case "is":
-					case "isNot":
-					case "isEither":
-					case "isNeither":
-					case "everyMethod":
-					case "someMethod":
-						return (additional) => _getMethodByName(methodName)(additional, input);
-
-					case "bundle":
-					case "everyInput":
-					case "someInput":
-						throw new TypeError(`The method 'check.${methodName}' requires multiple inputs. Use 'check.inputs( ... ).${methodName}' instead`);
-				}
+				case "bundle":
+				case "everyInput":
+				case "someInput":
+					throw new TypeError(`The method 'check.${methodName}' requires multiple inputs. Use 'check.inputs( ... ).${methodName}' instead`);
 			}
 		});
 	};
 
 	check.inputs = function(inputs) {
-		return new Proxy(_prepareProxyBase(), {
-			get(obj, methodName) {
-				if (check.isDefined(obj[methodName]))
-					return obj[methodName];
+		return _proxify(function(obj, methodName) {
+			if (check(inputs).isNotIterable())
+				throw new TypeError(`The method 'check.inputs' requires an array of inputs`);
 
-				else switch (methodName) {
-					default:
-						_getMethodByName(methodName); // verify presence of the method at the first place
-						throw new TypeError(`The method 'check.${methodName}' requires a single input. Use 'check.input( ... ).${methodName}' instead`);
+			let method = _getMethodByName(methodName);
 
-					case "bundle":
-					case "everyInput":
-					case "someInput":
-						return (methodNameOrNames) => _getMethodByName(methodName)(methodNameOrNames, inputs);
-				}
+			switch (methodName) {
+				default:
+					throw new TypeError(`The method 'check.${methodName}' requires a single input. Use 'check.input( ... ).${methodName}' instead`);
+
+				case "bundle":
+				case "everyInput":
+				case "someInput":
+					return (methodNameOrNames) => method(methodNameOrNames, inputs);
 			}
 		});
 	};
 
 	check.every = function(inputs) {
-		return new Proxy(_prepareProxyBase(), {
-			get(obj, methodName) {
-				if (check.isDefined(obj[methodName]))
-					return obj[methodName];
-
-				else return (...args) => inputs.map(input => check(input)[methodName](...args)).every(Boolean);
-			}
+		return _proxify(function(obj, methodName) {
+			return (...args) => inputs.map(input => check(input)[methodName](...args)).every(check.isTrue);
 		});
 	};
 
 	check.some = function(inputs) {
-		return new Proxy(_prepareProxyBase(), {
-			get(obj, methodName) {
-				if (check.isDefined(obj[methodName]))
-					return obj[methodName];
-
-				else return (...args) => inputs.map(input => check(input)[methodName](...args)).some(Boolean);
-			}
+		return _proxify(function(obj, methodName) {
+			return (...args) => inputs.map(input => check(input)[methodName](...args)).some(check.isTrue);
 		});
 	};
 
 	check.none = function(inputs) {
-		return new Proxy(_prepareProxyBase(), {
-			get(obj, methodName) {
-				if (check.isDefined(obj[methodName]))
-					return obj[methodName];
-
-				else return (...args) => !check.some(inputs)[methodName](...args);
-			}
+		return _proxify(function(obj, methodName) {
+			return (...args) => !check.some(inputs)[methodName](...args);
 		});
 	};
 })();

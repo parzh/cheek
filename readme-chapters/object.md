@@ -3,6 +3,8 @@
 ## Contents
 - `.isCircular(object)`
 - `.isNotCircular(object)`
+- `.isCallable(object)`
+- `.isNotCallable(object)`
 - `.hasProperty(object, property)`
 - `.hasNoProperty(object, property)`
 - `.equals(input, operand)`
@@ -118,5 +120,31 @@
   ```
 
   _not to be confused with `check.isEqualTo()`_  
+
+- ### check.isCallable(object: any): boolean
+  Checks if object can be called as function  
+  @param `object` Test object  
+
+  #### Examples:
+  ```javascript
+  check.isCallable(function() {}); // true
+  check.isCallable(function*() {}); // true
+  check.isCallable(() => {}); // true
+  check.isCallable({}); // false
+  ```
+
+- ### check.isNotCallable(object: any): boolean
+  Returns `true` if object cannot be called as function  
+  @param `object` Test object  
+
+  #### Examples:
+  ```javascript
+  check.isNotCallable(function() {}); // false
+  check.isNotCallable(function*() {}); // false
+  check.isNotCallable(() => {}); // false
+  check.isNotCallable({}); // true
+  ```
+
+  _reversed `check.isCallable()`_  
 
 [← Back to `README.md`](../README.md)

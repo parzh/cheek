@@ -45,7 +45,7 @@
   check.isNot(Number, {}); // true
   check.isNot(Array, []); // false
   ```
-  _reversed `check.is()`_
+  _reversed `check.is()`_  
 
 - ### check.isEither(types: Function[], input): boolean
   Checks whether the input is an instance of any of provided classes  
@@ -70,7 +70,7 @@
   check.isNeither([RegExp, String], /test/); // false
   check.isNeither([Number, RegExp, Array], 4); // false
   ```
-  _reversed `check.isEither()`_
+  _reversed `check.isEither()`_  
   _not to be confused with `check.neither()`_  
 
 - ### check.isPrimitive(input): boolean
@@ -95,7 +95,7 @@
   check.isObject(null); // false
   ``` 
 
-  _reversed `check.isPrimitive()`_
+  _reversed `check.isPrimitive()`_  
 
 - ### check.isString(input): boolean
   Checks whether the input is a string  
@@ -119,7 +119,7 @@
   check.isNotString(new class{}); // true
   ``` 
 
-  _reversed `check.isString()`_
+  _reversed `check.isString()`_  
 
 - ### check.isNumber(input): boolean
   Checks whether the input is a number  
@@ -211,7 +211,7 @@
   check.isNotIterable(new class extends Array{}); // false
   ```
 
-  _reversed `check.isIterable()`_
+  _reversed `check.isIterable()`_  
 
 - ### check.isNotArray(input): boolean
   Returns `true` if the input is not an array  
@@ -224,7 +224,7 @@
   check.isNotArray(new class{}); // true
   ```
 
-  _reversed `check.isArray()`_
+  _reversed `check.isArray()`_  
 
 - ### check.isBoolean(input): boolean
   Checks whether the input is a boolean value  
@@ -248,7 +248,7 @@
   check.isNotBoolean(null); // true
   ``` 
 
-  _reversed `check.isBoolean()`_
+  _reversed `check.isBoolean()`_  
 
 - ### check.isGenerator(input): boolean
   Checks whether the input is a generator  

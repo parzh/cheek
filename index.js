@@ -22,7 +22,7 @@ let check = input => check.input(input);
 		else return method;
 	}
 
-	function _getLongEnoughMethodByName({ methodName, argsLength = 1 }) {
+	function _getLongEnoughMethodByName(methodName, argsLength = 1) {
 		let method = _getMethodByName(methodName);
 
 		if (method.length > argsLength)
@@ -491,7 +491,7 @@ let check = input => check.input(input);
 	// BUNDLE
 
 	check.bundle = function(methodNames, inputs) {
-		let methods = methodNames.map(methodName => _getLongEnoughMethodByName({ methodName }));
+		let methods = methodNames.map(methodName => _getLongEnoughMethodByName(methodName));
 
 		return inputs.map(input => methods.map(method => method(input)));
 	};
@@ -518,22 +518,22 @@ let check = input => check.input(input);
 		return new Object();
 	}
 
-	function _proxify(callback) {
+	function _Proxy(callback) {
 		return new Proxy(_prepareProxyBase(), {
 			get(obj, methodName) {
 				if (check.hasProperty(obj, methodName))
 					return obj[methodName];
 
-				else return callback(obj, methodName);
+				else return callback(methodName);
 			}
 		});
 	}
 
 	check.input = function(input) {
-		return _proxify(function(obj, methodName) {
+		return _Proxy(function(methodName) {
 			switch (methodName) {
 				default:
-					return (...args) => _getLongEnoughMethodByName({ methodName, argsLength: args.length + 1 })(input, ...args);
+					return (...args) => _getLongEnoughMethodByName(methodName, args.length + 1)(input, ...args);
 
 				case "is":
 				case "isNot":
@@ -552,7 +552,7 @@ let check = input => check.input(input);
 	};
 
 	check.inputs = function(inputs) {
-		return _proxify(function(obj, methodName) {
+		return _Proxy(function(methodName) {
 			if (check(inputs).isNotIterable())
 				throw new TypeError(`The method 'check.inputs' requires an array of inputs`);
 
@@ -570,41 +570,34 @@ let check = input => check.input(input);
 		});
 	};
 
+	function _multiple(inputs, methodName, ...args) {
+		let results = [];
+
+		for (let input of inputs)
+			results.push(check(input)[methodName](...args));
+
+		return results
+	}
+
 	check.every = function(inputs) {
-		return _proxify(function(obj, methodName) {
-			return (...args) => inputs.map(input => check(input)[methodName](...args)).every(check.isTrue);
-		});
+		return _Proxy(methodName => (...args) => _multiple(inputs, methodName, ...args).every(check.isTrue));
 	};
 
 	check.some = function(inputs) {
-		return _proxify(function(obj, methodName) {
-			return (...args) => inputs.map(input => check(input)[methodName](...args)).some(check.isTrue);
-		});
+		return _Proxy(methodName => (...args) => _multiple(inputs, methodName, ...args).some(check.isTrue));
 	};
 
 	check.none = function(inputs) {
-		return _proxify(function(obj, methodName) {
-			return (...args) => !check.some(inputs)[methodName](...args);
-		});
+		return _Proxy(methodName => (...args) => !check.some(inputs)[methodName](...args));
 	};
 })();
 
-// Setting alias
+// Shortening alias
 check.def = check.isDefined;
 check.ndef = check.isNotDefined;
 
 check.prop = check.hasProperty;
 check.noprop = check.hasNoProperty;
-
-check.hasFirst = check.isFirstIn;
-check.hasLast = check.isLastIn;
-
-check.isNonZero = check.isNotZero;
-check.isInfinite = check.isNotFinite;
-check.isIndivisibleBy = check.isNotDivisibleBy;
-check.isNotFloat = check.isInteger;
-check.isFloat = check.isNotInteger;
-check.isNonNegative = check.isNotNegative;
 
 check.eq = check.isEqualTo;
 check.eqa = check.isEqualToAny;
@@ -618,6 +611,17 @@ check.neg = check.isNegative;
 check.each = check.every;
 check.any = check.some;
 check.neither = check.none;
+
+// Convenience alias
+check.hasFirst = check.isFirstIn;
+check.hasLast = check.isLastIn;
+
+check.isNonZero = check.isNotZero;
+check.isInfinite = check.isNotFinite;
+check.isIndivisibleBy = check.isNotDivisibleBy;
+check.isNotFloat = check.isInteger;
+check.isFloat = check.isNotInteger;
+check.isNonNegative = check.isNotNegative;
 
 if (typeof module !== "undefined" && check.isDefined(module.exports))
 	module.exports = check;

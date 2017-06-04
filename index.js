@@ -590,6 +590,9 @@ let check = input => check.input(input);
 })();
 
 // Setting alias
+check.def = check.isDefined;
+check.ndef = check.isNotDefined;
+
 check.prop = check.hasProperty;
 check.noprop = check.hasNoProperty;
 

@@ -13,7 +13,7 @@ let check = input => check.input(input);
 
 	// ***
 
-	function getMethodByName(methodName) {
+	function _getMethodByName(methodName) {
 		let method = check[methodName];
 
 		if (!method)
@@ -22,8 +22,8 @@ let check = input => check.input(input);
 		else return method;
 	}
 
-	function getLongEnoughMethodByName({ methodName, argsLength = 1 }) {
-		let method = getMethodByName(methodName);
+	function _getLongEnoughMethodByName({ methodName, argsLength = 1 }) {
+		let method = _getMethodByName(methodName);
 
 		if (method.length > argsLength)
 			throw new SyntaxError(`Not enough arguments for method 'check.${methodName}' to proceed`);
@@ -31,7 +31,7 @@ let check = input => check.input(input);
 		else return method;
 	}
 
-	function prepareProxyBase() {
+	function _prepareProxyBase() {
 		return new Object();
 	}
 
@@ -494,7 +494,7 @@ let check = input => check.input(input);
 	// BUNDLE
 
 	check.bundle = function(methodNames, inputs) {
-		let methods = methodNames.map(methodName => getLongEnoughMethodByName({ methodName }));
+		let methods = methodNames.map(methodName => _getLongEnoughMethodByName({ methodName }));
 
 		return inputs.map(input => methods.map(method => method(input)));
 	};
@@ -518,14 +518,14 @@ let check = input => check.input(input);
 	// PROXY
 
 	check.input = function(input) {
-		return new Proxy(prepareProxyBase(), {
+		return new Proxy(_prepareProxyBase(), {
 			get(obj, methodName) {
 				if (check.isDefined(obj[methodName]))
 					return obj[methodName];
 
 				else switch (methodName) {
 					default:
-						return (...args) => getLongEnoughMethodByName({ methodName, argsLength: args.length + 1 })(input, ...args);
+						return (...args) => _getLongEnoughMethodByName({ methodName, argsLength: args.length + 1 })(input, ...args);
 
 					case "is":
 					case "isNot":
@@ -533,7 +533,7 @@ let check = input => check.input(input);
 					case "isNeither":
 					case "everyMethod":
 					case "someMethod":
-						return (additional) => getMethodByName(methodName)(additional, input);
+						return (additional) => _getMethodByName(methodName)(additional, input);
 
 					case "bundle":
 					case "everyInput":
@@ -545,27 +545,27 @@ let check = input => check.input(input);
 	};
 
 	check.inputs = function(inputs) {
-		return new Proxy(prepareProxyBase(), {
+		return new Proxy(_prepareProxyBase(), {
 			get(obj, methodName) {
 				if (check.isDefined(obj[methodName]))
 					return obj[methodName];
 
 				else switch (methodName) {
 					default:
-						getMethodByName(methodName); // verify presence of the method at the first place
+						_getMethodByName(methodName); // verify presence of the method at the first place
 						throw new TypeError(`The method 'check.${methodName}' requires a single input. Use 'check.input( ... ).${methodName}' instead`);
 
 					case "bundle":
 					case "everyInput":
 					case "someInput":
-						return (methodNameOrNames) => getMethodByName(methodName)(methodNameOrNames, inputs);
+						return (methodNameOrNames) => _getMethodByName(methodName)(methodNameOrNames, inputs);
 				}
 			}
 		});
 	};
 
 	check.every = function(inputs) {
-		return new Proxy(prepareProxyBase(), {
+		return new Proxy(_prepareProxyBase(), {
 			get(obj, methodName) {
 				if (check.isDefined(obj[methodName]))
 					return obj[methodName];
@@ -576,7 +576,7 @@ let check = input => check.input(input);
 	};
 
 	check.some = function(inputs) {
-		return new Proxy(prepareProxyBase(), {
+		return new Proxy(_prepareProxyBase(), {
 			get(obj, methodName) {
 				if (check.isDefined(obj[methodName]))
 					return obj[methodName];
@@ -587,7 +587,7 @@ let check = input => check.input(input);
 	};
 
 	check.none = function(inputs) {
-		return new Proxy(prepareProxyBase(), {
+		return new Proxy(_prepareProxyBase(), {
 			get(obj, methodName) {
 				if (check.isDefined(obj[methodName]))
 					return obj[methodName];

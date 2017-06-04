@@ -11,6 +11,8 @@ let check = input => check.input(input);
 		}
 	}
 
+	// ***
+
 	function getMethodByName(methodName) {
 		let method = check[methodName];
 
@@ -32,6 +34,62 @@ let check = input => check.input(input);
 	function prepareProxyBase() {
 		return new Object();
 	}
+
+
+	function _equals(object, operand, _memory) {
+		// strictly compare inputs
+		// NaN === NaN; -0 === +0;
+		if (Object.is(object, operand) || object === operand)
+			return true;
+
+		// ensure that both inputs are defined
+		if (check.any([object, operand]).isNotDefined())
+			return object === operand;
+
+		// ensure inputs are of the same type
+		if (check(operand).isNot(object.constructor))
+			return false;
+
+		// loosely compare inputs
+		if (check(object).isEither([Number, String, Boolean]))
+			return object == operand;
+
+		// ***
+
+		// check non-primitive inputs are equally circular (or equally not)
+		if (check.xor(check.isCircular(object), check.isCircular(operand)))
+			return false;
+
+		// prepare memory for this loop
+		if (check(_memory).isNotDefined())
+			_memory = { object: [], operand: [] };
+
+		// check circular inputs are circular in the same way
+		for (let _object of _memory.object)
+			if (_object === object)
+				return _memory.operand[_memory.object.indexOf(_object)] === operand;
+
+		// prepare memory for the next loop
+		_memory.object.push(object);
+		_memory.operand.push(operand);
+
+		// make the next loop
+		for (let key in object)
+			if (check(operand).hasNoProperty(key))
+				return false;
+
+			else if (!_equals(object[key], operand[key], _memory))
+				return false;
+
+		// exclude current loop from memory
+		_memory.object.pop();
+		_memory.operand.pop();
+
+		// return default result
+		return true;
+	}
+
+	// ***
 
 	// GENERAL
 
@@ -235,39 +293,8 @@ let check = input => check.input(input);
 		return !check.hasProperty(object, key);
 	};
 
-	check.equals = function(object, operand, sameType = false) {
-		throw new ReleaseError(); 
-
-		if (Object.is(object, operand) || object === operand)
-			return true;
-
-		if (check(operand).is(object.constructor)) {
-			if (check(object).isEither([Number, String, Boolean]))
-				return object == operand;
-		}
-
-		else if (sameType)
-			return false;
-
-		// ***
-
-		if (check(check(object).isCircular()).xor(check(operand).isCircular()))
-			return false;
-
-		else if (Object.keys(object).length !== Object.keys(operand).length)
-			return false;
-
-		else for (let key in object)
-			if (check(operand).hasNoProperty(key))
-				return false;
-
-			else if (object[key] === object)
-				return operand[key] === operand;
-
-			else if (!check(object[key]).equals(operand[key]))
-				return false;
-
-		return true;
+	check.equals = function(object, operand) {
+		return _equals(object, operand, null);
 	};
 
 	check.isCallable = function(object) {

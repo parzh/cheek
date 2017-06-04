@@ -7,7 +7,6 @@ let obj = {
 	prop2: { foo: { bar: undefined } },
 	prop3: 42
 };
-let object = { prop: "value" };
 
 describe("Object", function() {
 	describe("check.isCircular(object)", function() {
@@ -62,22 +61,33 @@ describe("Object", function() {
 
 	describe("check.equals(object, operand)", function() {
 		it("checks whether two compared objects are effectively the same", function() {
-		 //	assert(check.equals(object, object));
-		 //	assert(check.equals(object, { prop: "value" }));
-		 //	assert(check.equals({}, {}));
-			assert(!check.equals(object, {}));
-			assert(!check.equals(object, NaN));
 
-		 //	assert(check.equals([1, 2, 3], { 0: 1, 1: 2, 2: 3 }));
-		 //	assert(check.equals(5, new Number(5)));
-		 //	assert(check.equals(NaN, 0 / 0));
-		 //	assert(check.equals(0, -0));
+			let first = { prop: "val" };
+			let second = { prop: "val" };
 
-		 //	assert(check.equals([], []));
-		 //	assert(check.equals([], {}));
-		 //	assert(!check.equals([], {}, true));
-		 //	assert(check.equals([], { length: 0 }));
-		 //	assert(!check.equals([], { length: 0 }, true));
+			first.self = first;
+			second.self = second;
+
+			first.other = second;
+			second.other = first;
+
+			// ***
+
+			assert(check.equals(first, first));
+			assert(check.equals(first, second));
+			assert(check.equals(first, { prop: "val", self: first, other: second }));
+			assert(!check.equals(first, {}));
+			assert(!check.equals(first, NaN));
+
+			assert(check.equals([], []));
+			assert(check.equals({}, {}));
+			assert(!check.equals([], {}));
+			assert(!check.equals([], { length: 0 }));
+			assert(!check.equals([1, 2, 3], { 0: 1, 1: 2, 2: 3 }));
+
+			assert(check.equals(5, new Number(5)));
+			assert(check.equals(NaN, 0 / 0));
+			assert(check.equals(0, -0));
 		});
 	});
 });

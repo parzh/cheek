@@ -608,10 +608,6 @@ check.lte = check.isLessThanOrEqualTo;
 check.pos = check.isPositive;
 check.neg = check.isNegative;
 
-check.each = check.every;
-check.any = check.some;
-check.neither = check.none;
-
 // Convenience alias
 check.hasFirst = check.isFirstIn;
 check.hasLast = check.isLastIn;
@@ -622,6 +618,10 @@ check.isIndivisibleBy = check.isNotDivisibleBy;
 check.isNotFloat = check.isInteger;
 check.isFloat = check.isNotInteger;
 check.isNonNegative = check.isNotNegative;
+
+check.each = check.every;
+check.any = check.some;
+check.neither = check.none;
 
 if (typeof module !== "undefined" && check.isDefined(module.exports))
 	module.exports = check;

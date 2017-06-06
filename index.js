@@ -13,19 +13,13 @@ let check = input => check.input(input);
 
 	// ***
 
-	function _getMethodByName(methodName) {
+	function _getMethodByName(methodName, argsLength = null) {
 		let method = check[methodName];
 
 		if (!method)
 			throw new ReferenceError(`'check.${methodName}' is not a function`);
 
-		else return method;
-	}
-
-	function _getLongEnoughMethodByName(methodName, argsLength = 1) {
-		let method = _getMethodByName(methodName);
-
-		if (method.length > argsLength)
+		else if (argsLength && method.length > (argsLength || 1))
 			throw new SyntaxError(`Not enough arguments for method 'check.${methodName}' to proceed`);
 
 		else return method;
@@ -533,7 +527,7 @@ let check = input => check.input(input);
 		return _Proxy(function(methodName) {
 			switch (methodName) {
 				default:
-					return (...args) => _getLongEnoughMethodByName(methodName, args.length + 1)(input, ...args);
+					return (...args) => _getMethodByName(methodName, args.length + 1)(input, ...args);
 
 				case "is":
 				case "isNot":

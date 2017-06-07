@@ -13,19 +13,13 @@ let check = input => check.input(input);
 
 	// ***
 
-	function _getMethodByName(methodName) {
+	function _getMethodByName(methodName, argsLength = null) {
 		let method = check[methodName];
 
 		if (!method)
 			throw new ReferenceError(`'check.${methodName}' is not a function`);
 
-		else return method;
-	}
-
-	function _getLongEnoughMethodByName(methodName, argsLength = 1) {
-		let method = _getMethodByName(methodName);
-
-		if (method.length > argsLength)
+		else if (argsLength && method.length > (argsLength || 1))
 			throw new SyntaxError(`Not enough arguments for method 'check.${methodName}' to proceed`);
 
 		else return method;
@@ -491,7 +485,7 @@ let check = input => check.input(input);
 	// BUNDLE
 
 	check.bundle = function(methodNames, inputs) {
-		let methods = methodNames.map(methodName => _getLongEnoughMethodByName(methodName));
+		let methods = methodNames.map(methodName => _getMethodByName(methodName, 1));
 
 		return inputs.map(input => methods.map(method => method(input)));
 	};
@@ -533,7 +527,7 @@ let check = input => check.input(input);
 		return _Proxy(function(methodName) {
 			switch (methodName) {
 				default:
-					return (...args) => _getLongEnoughMethodByName(methodName, args.length + 1)(input, ...args);
+					return (...args) => _getMethodByName(methodName, args.length + 1)(input, ...args);
 
 				case "is":
 				case "isNot":
@@ -541,7 +535,7 @@ let check = input => check.input(input);
 				case "isNeither":
 				case "everyMethod":
 				case "someMethod":
-					return (arg) => _getMethodByName(methodName)(arg, input);
+					return operand => _getMethodByName(methodName)(operand, input);
 
 				case "bundle":
 				case "everyInput":
@@ -576,7 +570,7 @@ let check = input => check.input(input);
 		for (let input of inputs)
 			results.push(check(input)[methodName](...args));
 
-		return results
+		return results;
 	}
 
 	check.every = function(inputs) {
@@ -608,10 +602,6 @@ check.lte = check.isLessThanOrEqualTo;
 check.pos = check.isPositive;
 check.neg = check.isNegative;
 
-check.each = check.every;
-check.any = check.some;
-check.neither = check.none;
-
 // Convenience alias
 check.hasFirst = check.isFirstIn;
 check.hasLast = check.isLastIn;
@@ -622,6 +612,10 @@ check.isIndivisibleBy = check.isNotDivisibleBy;
 check.isNotFloat = check.isInteger;
 check.isFloat = check.isNotInteger;
 check.isNonNegative = check.isNotNegative;
+
+check.each = check.every;
+check.any = check.some;
+check.neither = check.none;
 
 if (typeof module !== "undefined" && check.isDefined(module.exports))
 	module.exports = check;

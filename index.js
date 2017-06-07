@@ -485,7 +485,7 @@ let check = input => check.input(input);
 	// BUNDLE
 
 	check.bundle = function(methodNames, inputs) {
-		let methods = methodNames.map(methodName => _getLongEnoughMethodByName(methodName));
+		let methods = methodNames.map(methodName => _getMethodByName(methodName, 1));
 
 		return inputs.map(input => methods.map(method => method(input)));
 	};

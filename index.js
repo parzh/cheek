@@ -535,7 +535,7 @@ let check = input => check.input(input);
 				case "isNeither":
 				case "everyMethod":
 				case "someMethod":
-					return (arg) => _getMethodByName(methodName)(arg, input);
+					return operand => _getMethodByName(methodName)(operand, input);
 
 				case "bundle":
 				case "everyInput":
@@ -570,7 +570,7 @@ let check = input => check.input(input);
 		for (let input of inputs)
 			results.push(check(input)[methodName](...args));
 
-		return results
+		return results;
 	}
 
 	check.every = function(inputs) {

@@ -483,30 +483,6 @@ let check = input => check.input(input);
 		return !check.isInRange(input, range, inclusively);
 	};
 
-	// BUNDLE
-
-	check.bundle = function(methodNames, inputs) {
-		let methods = methodNames.map(methodName => _getMethodByName(methodName, 1));
-
-		return inputs.map(input => methods.map(method => method(input)));
-	};
-
-	check.everyMethod = function(methodNames, input) {
-		return check.bundle(methodNames, [input])[0].every(Boolean);
-	};
-
-	check.someMethod = function(methodNames, input) {
-		return check.bundle(methodNames, [input])[0].some(Boolean);
-	};
-
-	check.everyInput = function(methodName, inputs) {
-		return check.bundle([methodName], inputs).map(result => result[0]).every(Boolean);
-	};
-
-	check.someInput = function(methodName, inputs) {
-		return check.bundle([methodName], inputs).map(result => result[0]).some(Boolean);
-	};
-
 	// PROXY
 
 	function _prepareProxyBase() {
@@ -534,14 +510,7 @@ let check = input => check.input(input);
 				case "isNot":
 				case "isEither":
 				case "isNeither":
-				case "everyMethod":
-				case "someMethod":
 					return operand => _getMethodByName(methodName)(operand, input);
-
-				case "bundle":
-				case "everyInput":
-				case "someInput":
-					throw new TypeError(`The method 'check.${methodName}' requires multiple inputs. Use 'check.inputs( ... ).${methodName}' instead`);
 			}
 		});
 	};
@@ -551,28 +520,16 @@ let check = input => check.input(input);
 			if (check(inputs).isNotIterable())
 				throw new TypeError(`The method 'check.inputs' requires an array of inputs`);
 
-			let method = _getMethodByName(methodName);
+			else return (...args) => {
+				let results = [];
 
-			switch (methodName) {
-				default:
-					throw new TypeError(`The method 'check.${methodName}' requires a single input. Use 'check.input( ... ).${methodName}' instead`);
+				for (let input of inputs)
+					results.push(check(input)[methodName](...args));
 
-				case "bundle":
-				case "everyInput":
-				case "someInput":
-					return (methodNameOrNames) => method(methodNameOrNames, inputs);
-			}
+				return results;
+			};
 		});
 	};
-
-	function _multiple(inputs, methodName, ...args) {
-		let results = [];
-
-		for (let input of inputs)
-			results.push(check(input)[methodName](...args));
-
-		return results;
-	}
 
 	check.every = function(inputs) {
 		return _Proxy(methodName => (...args) => _multiple(inputs, methodName, ...args).every(check.isTrue));

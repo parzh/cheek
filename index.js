@@ -142,7 +142,7 @@ let check = input => check.input(input);
 	};
 
 	check.isArraylike = function(input) {
-		return check.isArray(input) || (check.isDefined(input) && (check.isIterable(input) || check.isDefined(input.length)));
+		return check.isArray(input) || check.isDefined(input) && (check.isIterable(input) || check.isDefined(input.length));
 	};
 
 	check.isIterable = function(input) {
@@ -356,11 +356,11 @@ let check = input => check.input(input);
 		/* no opposed method for '.includes()' */
 
 	check.startsWith = function(source, substr) {
-		return check.isString(source) && !source.indexOf(substr);
+		return source.startsWith(substr);
 	};
 
 	check.endsWith = function(source, substr) {
-		return check.isString(source) && (source.lastIndexOf(substr) === source.length - substr.length);
+		return source.endsWith(substr);
 	};
 
 	// NUMBER

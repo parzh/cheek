@@ -255,31 +255,32 @@ let check = input => check.input(input);
 		return !check.isCircular(object);
 	};
 
-	check.hasProperty = function(object, key) {
-		if (check.isNotArray(key))
-			return check.isDefined(object[key]) || (key || "").toString() in Object(object);
+	check.hasProperty = function(object, keys) {
+		if (check.isNotArray(keys))
+			return String(keys) in Object(object);
 
-		else if (key.length <= 1)
-			return check.hasProperty(object, key[0]);
+		else if (keys.length <= 1)
+			return check.hasProperty(object, keys[0]);
 
-		let result = false;
-		let last = key.pop();
-		let path = `object.${ key.join(".") }`;
+		let _keys = [...keys];
+		let last = _keys.pop();
+		let temp = null;
 
-		try {
-			result = check.hasProperty(eval(path), last);
+		while (_keys.length) {
+			let source = temp || Object(object);
+			let prop = _keys.shift();
+
+			temp = source[prop];
+
+			if (check.isNotDefined(temp))
+				break;
 		}
 
-		catch (error) {
-			if (!(error instanceof TypeError))
-				throw error;
-		}
-
-		return result;
+		return _keys.length? false : check.hasProperty(temp, last);
 	};
 
-	check.hasNoProperty = function(object, key) {
-		return !check.hasProperty(object, key);
+	check.hasNoProperty = function(object, keys) {
+		return !check.hasProperty(object, keys);
 	};
 
 	check.equals = function(object, operand) {

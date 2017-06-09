@@ -276,7 +276,7 @@ let check = input => check.input(input);
 				break;
 		}
 
-		return _keys.length? false : check.hasProperty(temp, last);
+		return check.hasProperty(temp, last);
 	};
 
 	check.hasNoProperty = function(object, keys) {

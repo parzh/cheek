@@ -13,13 +13,6 @@ describe("Proxy", function() {
 			assert(input.isNeither([String, Array]));
 			assert(!input.isNot(Number));
 			assert(!input.isEither([String, Array]));
-
-			assert(!input.everyMethod(["isNotDefined", "isFalse"]));
-			assert(!input.someMethod(["isUndefined", "isFalsy"]));
-
-			assert.throws(() => input.bundle(["isDefined", "isTrue"]), TypeError);
-			assert.throws(() => input.everyInput("isPositive"), TypeError);
-			assert.throws(() => input.someInput("isPositive"), TypeError);
 		});
 	});
 
@@ -27,11 +20,8 @@ describe("Proxy", function() {
 		it("prepares a bunch of inputs for further validation", function() {
 			let inputs = check.inputs(INPUTS);
 
-			assert.deepEqual(inputs.bundle(["isPrimitive", "isNumber"]), [[true, true], [true, true], [false, false], [true, false]]);
-
 			assert.throws(() => inputs.isNotDefined(), TypeError);
 
-			assert(!inputs.everyInput("isPrimitive"));
 		});
 	});
 

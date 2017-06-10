@@ -20,8 +20,9 @@ describe("Proxy", function() {
 		it("prepares a bunch of inputs for further validation", function() {
 			let inputs = check.inputs(INPUTS);
 
-			assert.throws(() => inputs.isNotDefined(), TypeError);
-
+			assert.deepEqual(inputs.isNotDefined(), [ false, false, false, true ]);
+			assert.deepEqual(inputs.isEither([Number, String]), [ true, true, false, false ]);
+			assert.deepEqual(inputs.isNeither([Number, String]), [ false, false, true, true ]);
 		});
 	});
 

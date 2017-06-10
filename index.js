@@ -520,7 +520,7 @@ let check = input => check.input(input);
 			if (check(inputs).isNotIterable())
 				throw new TypeError(`The method 'check.inputs' requires an array of inputs`);
 
-			else return (...args) => {
+			return (...args) => {
 				let results = [];
 
 				for (let input of inputs)
@@ -532,11 +532,11 @@ let check = input => check.input(input);
 	};
 
 	check.every = function(inputs) {
-		return _Proxy(methodName => (...args) => _multiple(inputs, methodName, ...args).every(check.isTrue));
+		return _Proxy(methodName => (...args) => check.inputs(inputs)[methodName](...args).every(check.isTrue));
 	};
 
 	check.some = function(inputs) {
-		return _Proxy(methodName => (...args) => _multiple(inputs, methodName, ...args).some(check.isTrue));
+		return _Proxy(methodName => (...args) => check.inputs(inputs)[methodName](...args).some(check.isTrue));
 	};
 
 	check.none = function(inputs) {
